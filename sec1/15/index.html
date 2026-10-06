@@ -1,0 +1,4156 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>درس المحسنات البديعية - الصف الأول الثانوي</title>
+    <!-- استدعاء خط احترافي -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;800;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #134e4a;      
+            --primary-light: #0d9488; 
+            --secondary: #0e7490;    
+            --success: #10b981;      
+            --danger: #ef4444;       
+            --warning: #f59e0b;      
+            --dark: #1e293b;         
+            --light: #f8fafc;
+            --card-bg: #ffffff;
+        }
+
+        * {
+            box-sizing: border-box;
+            font-family: 'Cairo', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            user-select: none;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            background-color: #ecfeff;
+            background-image: radial-gradient(#a5d4ce 1.5px, transparent 1.5px);
+            background-size: 25px 25px;
+            color: var(--dark);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow-x: hidden;
+        }
+
+        .hidden { display: none !important; }
+        
+        /* --- الهيدر الرئيسي --- */
+        .header-main {
+            background: linear-gradient(135deg, #042f2e, var(--primary), var(--secondary));
+            color: white;
+            padding: 30px 20px 90px 20px; 
+            text-align: center;
+            position: relative;
+            margin-bottom: 20px;
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .title-line1 {
+            font-size: clamp(1.1rem, 4vw, 1.5rem); 
+            font-weight: 700;
+            color: #ccfbf1;
+            margin-bottom: 5px;
+            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-shadow: 1px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .title-line2 {
+            font-size: clamp(1.4rem, 5.5vw, 2.6rem); 
+            font-weight: 900;
+            background: linear-gradient(to right, #2dd4bf, #0f766e);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 15px;
+            filter: drop-shadow(2px 4px 6px rgba(0,0,0,0.5));
+            line-height: 1.3;
+            text-align: center;
+        }
+
+        .header-main h2 { font-size: clamp(1rem, 3vw, 1.3rem); font-weight: 600; color: #f0fdfa; margin-bottom: 8px; text-shadow: 1px 1px 2px rgba(0,0,0,0.3);}
+        .header-main p { font-size: clamp(0.9rem, 2.5vw, 1.1rem); font-weight: 600; background: rgba(0,0,0,0.3); display: inline-block; padding: 6px 20px; border-radius: 30px; border: 1px solid rgba(255,255,255,0.15); box-shadow: 0 4px 6px rgba(0,0,0,0.1);}
+
+        .header-wave {
+            position: absolute;
+            bottom: -1px;
+            left: 0;
+            width: 100%;
+            height: auto;
+            z-index: 1;
+        }
+
+        /* --- الأزرار --- */
+        .btn {
+            background: linear-gradient(to bottom, var(--primary-light), var(--primary));
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            border-bottom: 3px solid rgba(0,0,0,0.3);
+        }
+        .btn:hover { transform: translateY(-2px); box-shadow: 0 6px 12px rgba(0,0,0,0.2); }
+        .btn:active { transform: translateY(2px); border-bottom: 0px; margin-top: 3px; }
+        .btn-correct { filter: brightness(1.2); pointer-events: none; border-bottom-width: 0; transform: translateY(2px);}
+        .btn-wrong { filter: brightness(0.8); pointer-events: none; border-bottom-width: 0; transform: translateY(2px);}
+
+        /* --- الشاشة الرئيسية --- */
+        #home-screen {
+            flex: 1;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .grid-menu {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            width: 100%;
+            max-width: 1000px;
+            padding-bottom: 80px;
+        }
+
+        .menu-card {
+            background: var(--card-bg);
+            border-radius: 20px;
+            padding: 30px 20px;
+            text-align: center;
+            box-shadow: 0 10px 15px -3px rgba(0,0,0,0.05), 0 4px 6px -2px rgba(0,0,0,0.025);
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: 2px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
+        .menu-card::before {
+            content: ""; position: absolute; top: 0; left: 0; right: 0; height: 6px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            opacity: 0; transition: opacity 0.3s;
+        }
+        .menu-card:hover { transform: translateY(-8px); box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1); border-color: rgba(34, 197, 94, 0.25); }
+        .menu-card:hover::before { opacity: 1; }
+        
+        .menu-card .icon-container {
+            width: 80px; height: 80px;
+            margin: 0 auto 15px auto;
+            background: linear-gradient(135deg, #ccfbf1, #99f6e4);
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            box-shadow: inset 0 3px 6px rgba(255,255,255,0.8), 0 4px 8px rgba(0,0,0,0.05);
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .menu-card .icon-container svg {
+            width: 40px; height: 40px; stroke: #134e4a; fill: none;
+            stroke-width: 2; stroke-linecap: round; stroke-linejoin: round;
+        }
+        .menu-card:hover .icon-container { transform: scale(1.1) rotate(10deg); }
+        .menu-card h3 { font-size: 1.4rem; color: var(--dark); font-weight: 800; margin-bottom: 8px;}
+        .menu-card p { font-size: 1rem; color: #64748b; font-weight: 600;}
+
+        /* --- شاشة اللعب --- */
+        #game-screen {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .game-nav {
+            background: white;
+            padding: 15px 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            border-bottom-left-radius: 20px;
+            border-bottom-right-radius: 20px;
+            margin-bottom: 20px;
+            font-weight: bold;
+            font-size: clamp(0.9rem, 3vw, 1.2rem);
+        }
+        .back-btn { background: #e2e8f0; color: var(--dark); border-bottom: 3px solid #cbd5e1; padding: 8px 15px;}
+        #game-progress { background: #0d9488; color: white; padding: 6px 15px; border-radius: 20px;}
+        
+        .game-container {
+            flex: 1;
+            padding: 0 20px 40px 20px;
+            max-width: 900px;
+            margin: 0 auto;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .question-box {
+            background: white;
+            padding: 20px 25px;
+            border-radius: 16px;
+            text-align: center;
+            font-size: clamp(1.2rem, 4vw, 1.6rem);
+            font-weight: 800;
+            color: #134e4a;
+            margin-bottom: 25px;
+            box-shadow: 0 10px 15px -3px rgba(0,0,0,0.05);
+            border-right: 8px solid #0e7490;
+            line-height: 1.6;
+        }
+
+        .shake { animation: shake 0.5s cubic-bezier(.36,.07,.19,.97) both; }
+        @keyframes shake {
+            10%, 90% { transform: translate3d(-2px, 0, 0); }
+            20%, 80% { transform: translate3d(4px, 0, 0); }
+            30%, 50%, 70% { transform: translate3d(-6px, 0, 0); }
+            40%, 60% { transform: translate3d(6px, 0, 0); }
+        }
+
+        /* MCQ Style */
+        .options-grid { display: flex; flex-direction: column; gap: 15px; }
+        .options-grid .btn { padding: 18px; font-size: clamp(1.1rem, 3.5vw, 1.4rem); text-align: right; justify-content: flex-start; border-radius: 12px;}
+
+        /* True/False Style */
+        .tf-grid { display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; }
+
+        /* Bubbles Style */
+        .bubbles-area {
+            position: relative; height: 400px;
+            background: linear-gradient(to bottom, #042f2e, #134e4a);
+            border-radius: 16px; overflow: hidden;
+            border: 4px solid #0d9488; margin-top: 10px;
+            box-shadow: inset 0 0 20px rgba(0,0,0,0.5);
+        }
+        .bubble {
+            position: absolute;
+            background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.9), rgba(224,231,255,0.9));
+            color: #134e4a;
+            border: 2px solid #ffffff;
+            padding: 10px 5px;
+            border-radius: 30px;
+            font-weight: 800; font-size: clamp(0.85rem, 2vw, 1.05rem);
+            box-shadow: 0 10px 15px rgba(0,0,0,0.2), inset -4px -4px 10px rgba(0,0,0,0.1);
+            cursor: pointer;
+            display: flex; align-items: center; justify-content: center;
+            text-align: center;
+            width: 22%;
+            transition: transform 0.2s, background 0.2s;
+            z-index: 5;
+        }
+        .bubble:hover { transform: scale(1.05); }
+        .bubble::after {
+            content: ''; position: absolute; top: 10%; left: 15%;
+            width: 20%; height: 20%; background: rgba(255,255,255,0.8);
+            border-radius: 50%; filter: blur(2px);
+        }
+
+        /* Shooting Style */
+        .shooting-area {
+            position: relative; height: 400px; background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%"><rect fill="%23e0fbfc" width="100%" height="100%"/><circle fill="%23bae6fd" cx="20%" cy="30%" r="50"/><circle fill="%23bae6fd" cx="80%" cy="60%" r="70"/><circle fill="%23bae6fd" cx="50%" cy="80%" r="40"/></svg>') no-repeat center center;
+            background-size: cover; border-radius: 16px; overflow: hidden;
+            border: 4px solid #0d9488; margin-top: 10px; box-shadow: inset 0 0 20px rgba(0,0,0,0.1);
+        }
+        .target-bird {
+            position: absolute; background: white; color: var(--dark);
+            padding: 10px 20px; border-radius: 30px; font-weight: 800; font-size: clamp(0.95rem, 3vw, 1.15rem);
+            box-shadow: 0 8px 15px rgba(0,0,0,0.15); cursor: crosshair;
+            border: 3px solid var(--warning); white-space: nowrap; transition: background 0.2s;
+            display: flex; align-items: center; gap: 8px;
+        }
+        .target-bird:hover { transform: scale(1.05); background: #f0fdfa; }
+
+        /* Genius Challenge Style */
+        .genius-wrap {
+            background: linear-gradient(135deg, #042f2e, #134e4a, #0f766e);
+            border-radius: 16px; padding: 20px; margin-top: 10px;
+            border: 4px solid #2dd4bf; box-shadow: inset 0 0 25px rgba(0,0,0,0.4), 0 10px 20px rgba(21,128,61,0.35);
+        }
+        .genius-timer-track {
+            width: 100%; height: 14px; background: rgba(0,0,0,0.35);
+            border-radius: 10px; overflow: hidden; margin-bottom: 18px;
+            border: 2px solid rgba(255,255,255,0.2);
+        }
+        .genius-timer-bar {
+            height: 100%; width: 100%;
+            background: linear-gradient(to right, #2dd4bf, #0d9488, #ef4444);
+            border-radius: 10px;
+            transition: width 0.1s linear;
+        }
+        .genius-options { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+        @media (max-width: 600px) { .genius-options { grid-template-columns: 1fr; } }
+        .genius-options .btn {
+            padding: 16px 10px; font-size: clamp(1rem, 3vw, 1.25rem);
+            background: linear-gradient(to bottom, #14b8a6, #0f766e);
+            border-bottom: 3px solid #134e4a; border-radius: 14px; min-height: 70px;
+        }
+        .genius-badge {
+            display: inline-flex; align-items: center; gap: 8px;
+            background: rgba(74, 222, 128, 0.15); color: #2dd4bf;
+            font-weight: 800; padding: 6px 16px; border-radius: 20px;
+            border: 1px solid rgba(253,224,71,0.4); margin-bottom: 12px; font-size: 0.95rem;
+        }
+
+        /* Result Share (WhatsApp) */
+        .share-box {
+            margin-top: 25px; background: #f0fdfa; border: 2px solid #99f6e4;
+            border-radius: 16px; padding: 20px; text-align: center;
+        }
+        .share-box h4 { color: #115e59; font-size: 1.2rem; margin-bottom: 12px; font-weight: 800;}
+        .share-name-input {
+            width: 100%; max-width: 320px; padding: 12px 16px; border-radius: 12px;
+            border: 2px solid #5eead4; font-size: 1.05rem; text-align: center;
+            font-family: 'Cairo', sans-serif; font-weight: 700; margin-bottom: 12px;
+            color: var(--dark);
+        }
+        .share-name-input:focus { outline: none; border-color: #0d9488; }
+        .btn-share {
+            background: linear-gradient(to bottom, #25d366, #1da851);
+            border-bottom-color: #128c3e; display: inline-flex; gap: 10px;
+        }
+        .share-warning { color: var(--danger); font-weight: 700; font-size: 0.9rem; margin-top: 8px; display: none; }
+
+        /* Modal Overlay */
+        .overlay {
+            position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(15, 23, 42, 0.8); backdrop-filter: blur(4px);
+            display: flex; justify-content: center; align-items: center;
+            z-index: 1000; opacity: 0; pointer-events: none; transition: opacity 0.3s ease;
+        }
+        .overlay.active { opacity: 1; pointer-events: all; }
+        .modal {
+            background: white; padding: 40px; border-radius: 25px;
+            text-align: center; max-width: 90%; width: 400px;
+            transform: scale(0.7) translateY(50px); transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 25px 50px -12px rgba(0,0,0,0.25);
+        }
+        .overlay.active .modal { transform: scale(1) translateY(0); }
+        .modal-icon { display: flex; justify-content: center; margin-bottom: 20px; }
+
+        /* Summary Errors Scrolling */
+        .errors-list::-webkit-scrollbar { width: 8px; }
+        .errors-list::-webkit-scrollbar-track { background: #f1f5f9; border-radius: 8px; }
+        .errors-list::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 8px; }
+        .errors-list::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+
+        /* الفوتر (Footer) */
+        .footer-main {
+            background: var(--dark); color: #cbd5e1;
+            text-align: center; padding: 25px 20px; margin-top: auto;
+            border-top: 4px solid var(--primary);
+        }
+        .footer-main p { margin: 5px 0; font-size: 1.1rem; font-weight: 600;}
+        .footer-main .designer { font-size: 1rem; color: #94a3b8; font-weight: 400;}
+
+        /* WhatsApp */
+        .whatsapp-float {
+            position: fixed; bottom: 25px; left: 25px;
+            background: #25d366; color: white;
+            width: 65px; height: 65px; border-radius: 50%;
+            display: flex; justify-content: center; align-items: center;
+            text-decoration: none; box-shadow: 0 8px 15px rgba(37, 211, 102, 0.4);
+            z-index: 100; transition: all 0.3s;
+        }
+        .whatsapp-float:hover { transform: scale(1.15) rotate(-5deg); box-shadow: 0 12px 20px rgba(37, 211, 102, 0.6); }
+        .whatsapp-float svg { width: 35px; height: 35px; fill: currentColor; }
+
+        /* Confetti effect */
+        .confetti {
+            position: fixed; top: -10px; width: 12px; height: 12px; z-index: 9999;
+            animation: fall linear forwards; border-radius: 3px;
+        }
+        @keyframes fall { to { transform: translateY(110vh) rotate(720deg); opacity: 0; } }
+
+        /* Goals (تسجيل الأهداف) Style */
+        .pitch {
+            position: relative; height: 320px; margin-top: 10px; border-radius: 16px; overflow: hidden;
+            border: 4px solid #0d9488; box-shadow: inset 0 0 25px rgba(0,0,0,0.35);
+            background: repeating-linear-gradient(to bottom, #15803d 0px, #15803d 40px, #16a34a 40px, #16a34a 80px);
+        }
+        .pitch::before { /* منطقة الجزاء */
+            content: ""; position: absolute; left: 8%; right: 8%; top: 0; height: 200px;
+            border: 3px solid rgba(255,255,255,0.75); border-top: none; border-radius: 0 0 10px 10px;
+        }
+        .pitch::after { /* نقطة الجزاء */
+            content: ""; position: absolute; left: 50%; bottom: 52px; width: 10px; height: 10px;
+            background: rgba(255,255,255,0.85); border-radius: 50%; transform: translateX(-50%);
+        }
+        .goal-frame {
+            position: absolute; left: 15%; right: 15%; top: 14px; height: 120px; z-index: 1;
+            border: 7px solid #ffffff; border-bottom: none; border-radius: 6px 6px 0 0;
+            box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+            background:
+                repeating-linear-gradient(0deg, rgba(255,255,255,0.35) 0 2px, transparent 2px 14px),
+                repeating-linear-gradient(90deg, rgba(255,255,255,0.35) 0 2px, transparent 2px 14px),
+                rgba(4,47,46,0.35);
+        }
+        .goal-frame.net-shake { animation: netShake 0.5s ease; }
+        @keyframes netShake {
+            0%,100% { transform: scale(1); } 30% { transform: scale(1.04, 1.07); } 60% { transform: scale(0.98); }
+        }
+        .keeper {
+            position: absolute; left: 50%; top: 58px; width: 64px; height: 82px; z-index: 3;
+            transform: translateX(-50%); transition: left 0.45s ease-out, transform 0.45s ease-out;
+        }
+        .keeper.idle { animation: keeperSway 1.6s ease-in-out infinite alternate; }
+        @keyframes keeperSway { from { margin-left: -45px; } to { margin-left: 45px; } }
+        .keeper svg { width: 100%; height: 100%; filter: drop-shadow(0 4px 4px rgba(0,0,0,0.35)); }
+        .soccer-ball {
+            position: absolute; left: 50%; top: 250px; width: 46px; height: 46px; z-index: 4;
+            font-size: 42px; line-height: 46px; text-align: center;
+            transform: translate(-50%, 0) scale(1); filter: drop-shadow(0 6px 4px rgba(0,0,0,0.4));
+            transition: left 0.6s cubic-bezier(.2,.8,.3,1), top 0.6s cubic-bezier(.2,.8,.3,1), transform 0.6s ease;
+        }
+        .goal-banner {
+            position: absolute; left: 50%; top: 50%; z-index: 6; transform: translate(-50%, -50%) scale(0.4);
+            background: rgba(255,255,255,0.96); color: var(--primary); font-weight: 900;
+            font-size: clamp(1.4rem, 5vw, 2.2rem); padding: 10px 28px; border-radius: 40px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.35); opacity: 0; transition: all 0.3s cubic-bezier(.17,.89,.32,1.27);
+            white-space: nowrap; pointer-events: none;
+        }
+        .goal-banner.show { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+        .goal-banner.miss { color: var(--danger); }
+        .shot-options { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 18px; }
+        @media (max-width: 600px) { .shot-options { grid-template-columns: 1fr; } }
+        .shot-options .btn {
+            padding: 14px 12px; font-size: clamp(1rem, 3vw, 1.2rem); min-height: 64px; border-radius: 14px;
+            background: linear-gradient(to bottom, #16a34a, #15803d); border-bottom: 3px solid #14532d;
+            justify-content: flex-start; text-align: right;
+        }
+        .shot-options .btn .ball-ico { font-size: 1.3rem; flex-shrink: 0; }
+    </style>
+</head>
+<body>
+
+    <!-- الهيدر مع اللوجو -->
+    <header class="header-main" id="main-header">
+        <div class="header-content">
+            <div style="display: flex; align-items: center; justify-content: center; gap: 40px; flex-wrap: wrap;">
+                <!-- اللوجو (على اليمين) -->
+                <img src="logo.jpg" alt="شعار الأستاذ كَرِيم بَكْر" style="width: 260px; height: 260px; border-radius: 30px; border: 4px solid var(--warning); box-shadow: 0 8px 16px rgba(0,0,0,0.4); background-color: white; object-fit: cover; flex-shrink: 0;">
+                
+                <!-- النصوص -->
+                <div style="display: flex; flex-direction: column; align-items: center; text-align: center;">
+                    <h1 class="title-line1">
+                        درس 
+                        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#2dd4bf" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="6"></circle><circle cx="12" cy="12" r="2"></circle></svg>
+                        لعبة
+                    </h1>
+                    <h1 class="title-line2">مع الأستاذ كَرِيم بَكْر</h1>
+                    <h2>الصَّفُّ الْأَوَّلُ الثَّانَوِيُّ - الْفَصْلُ الدِّرَاسِيُّ الْأَوَّلُ - الْمُحَسِّنَاتُ الْبَدِيعِيَّةُ</h2>
+                    <p style="margin-top: 10px;">البَلَاغَةُ</p>
+                </div>
+            </div>
+        </div>
+        <!-- تموجات زخرفية -->
+        <svg class="header-wave" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+            <path fill="#ecfeff" fill-opacity="1" d="M0,192L48,197.3C96,203,192,213,288,229.3C384,245,480,267,576,250.7C672,235,768,181,864,170.7C960,160,1056,192,1152,208C1248,224,1344,224,1392,224L1440,224L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
+        </svg>
+    </header>
+
+    <!-- الشاشة الرئيسية -->
+    <div id="home-screen">
+        <div class="grid-menu" id="menu-grid">
+            <!-- سيتم حقن البطاقات هنا برمجياً -->
+        </div>
+    </div>
+
+    <!-- شاشة اللعب -->
+    <div id="game-screen" class="hidden">
+        <div class="game-nav">
+            <button class="btn back-btn" onclick="returnToMenu()">
+                <svg width="20" height="20" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+                رجوع
+            </button>
+            <strong id="game-title">عنوان اللعبة</strong>
+            <span id="game-progress">1 / 25</span>
+        </div>
+        <div class="game-container" id="game-container">
+            <!-- سيتم حقن الأسئلة هنا برمجياً -->
+        </div>
+    </div>
+
+    <!-- نافذة الملاحظات السريعة -->
+    <div class="overlay" id="feedback-modal">
+        <div class="modal">
+            <div class="modal-icon" id="feedback-icon"></div>
+            <h2 id="feedback-title" style="font-size: 2.5rem; font-weight: 900;">إجابة صحيحة!</h2>
+        </div>
+    </div>
+
+    <!-- الفوتر -->
+    <footer class="footer-main" id="main-footer">
+        <p>جميع الحقوق محفوظة &copy; | دروس وألعاب تعليمية</p>
+        <p class="designer">الأستاذ / كَرِيم بَكْر</p>
+    </footer>
+
+    <!-- زر الواتساب -->
+    <a href="https://wa.me/201033621345" class="whatsapp-float" target="_blank" title="تواصل معنا">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M12.031 0C5.385 0 0 5.385 0 12.031c0 2.656.843 5.12 2.26 7.15L.626 24l5.01-1.61c1.983 1.25 4.27 1.91 6.395 1.91 6.646 0 12.03-5.385 12.03-12.031S18.677 0 12.031 0zm6.544 17.202c-.273.766-1.58 1.464-2.185 1.503-.56.035-1.28.23-4.085-.86-3.39-1.32-5.59-4.78-5.736-4.97-.145-.19-1.37-1.82-1.37-3.475 0-1.655.857-2.47 1.164-2.8.307-.33.67-.413.89-.413.22 0 .44 0 .633.01.205.01.482-.08.736.53.264.634.904 2.203.984 2.366.08.163.133.353.033.553-.1.2-.153.326-.307.506-.154.18-.32.38-.453.506-.153.153-.314.316-.134.626.18.31.8 1.32 1.71 2.13.176.157.363.31.558.45 1.05.76 1.83 1.05 2.13 1.18.3.13.474.11.652-.09.18-.205.766-.893.97-1.2.204-.307.41-.256.69-.153.28.103 1.77.836 2.074.99.304.153.506.23.582.356.076.126.076.73-.197 1.496z"/>
+        </svg>
+    </a>
+
+<script>
+    const LESSON_NAME = "البَلَاغَةُ: الْمُحَسِّنَاتُ الْبَدِيعِيَّةُ";
+    const allGamesData = [
+        {
+            "id": "goals_7136",
+            "title": "تسجيل الأهداف",
+            "type": "goals",
+            "desc": "سدّد الكرة نحو الإجابة الصحيحة عن المحسنات البديعية وسجّل هدفًا",
+            "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\"><circle cx=\"12\" cy=\"12\" r=\"10\"></circle><polygon points=\"12 7 16 10 14.5 15 9.5 15 8 10 12 7\"></polygon><path d=\"M12 7V2.5M16 10l4.5-1.5M14.5 15l2.8 3.8M9.5 15l-2.8 3.8M8 10L3.5 8.5\"></path></svg>",
+            "questions": [
+                {
+                    "q": "المحسنات البديعية تُدرس في علم:",
+                    "options": [
+                        "البيان",
+                        "المعاني",
+                        "العروض",
+                        "البديع"
+                    ],
+                    "ans": 3
+                },
+                {
+                    "q": "تنقسم المحسنات البديعية إلى:",
+                    "options": [
+                        "حقيقية ومجازية",
+                        "خبرية وإنشائية",
+                        "مكنية وتصريحية",
+                        "معنوية ولفظية"
+                    ],
+                    "ans": 3
+                },
+                {
+                    "q": "من المحسنات المعنوية:",
+                    "options": [
+                        "الطباق - المقابلة - التورية",
+                        "الجناس - السجع - التصريع",
+                        "التشبيه - الاستعارة",
+                        "الإيجاز - الإطناب"
+                    ],
+                    "ans": 0
+                },
+                {
+                    "q": "من المحسنات اللفظية:",
+                    "options": [
+                        "الطباق - المقابلة - التورية",
+                        "الكناية - المجاز",
+                        "التوكيد - القصر",
+                        "الجناس - السجع - التصريع - الازدواج - حسن التقسيم"
+                    ],
+                    "ans": 3
+                },
+                {
+                    "q": "الطباق هو:",
+                    "options": [
+                        "تضاد بين معنيين أو أكثر وما يقابلهما بالترتيب",
+                        "اتفاق كلمتين في اللفظ واختلافهما في المعنى",
+                        "اتفاق الفواصل في الحرف الأخير",
+                        "تضاد بين كلمتين"
+                    ],
+                    "ans": 3
+                },
+                {
+                    "q": "نوعا الطباق:",
+                    "options": [
+                        "تام وناقص",
+                        "طباق إيجاب وطباق سلب",
+                        "لفظي ومعنوي",
+                        "قريب وبعيد"
+                    ],
+                    "ans": 1
+                },
+                {
+                    "q": "«أحرامٌ على بلابله الدوحُ * حلالٌ للطير من كل جنس» المحسن بين «حرام - حلال»:",
+                    "options": [
+                        "طباق سلب",
+                        "طباق إيجاب",
+                        "مقابلة",
+                        "جناس"
+                    ],
+                    "ans": 1
+                },
+                {
+                    "q": "طباق السلب هو أن تكون:",
+                    "options": [
+                        "إحدى الكلمتين مثبتة والأخرى منفية، أو أمرًا ونهيًا",
+                        "الكلمتان مثبتتين",
+                        "الكلمتان منفيتين",
+                        "الكلمتان متفقتين في الحروف"
+                    ],
+                    "ans": 0
+                },
+                {
+                    "q": "قال تعالى: «يستخفون من الناس ولا يستخفون من الله» المحسن:",
+                    "options": [
+                        "طباق إيجاب",
+                        "طباق سلب",
+                        "مقابلة",
+                        "جناس تام"
+                    ],
+                    "ans": 1
+                },
+                {
+                    "q": "قال تعالى: «فلا تخشوا الناس واخشون» المحسن:",
+                    "options": [
+                        "طباق إيجاب",
+                        "طباق سلب (نهي وأمر)",
+                        "مقابلة",
+                        "جناس ناقص"
+                    ],
+                    "ans": 1
+                },
+                {
+                    "q": "سر جمال الطباق:",
+                    "options": [
+                        "إثارة الذهن بالمعنى البعيد",
+                        "إبراز المعنى وتوضيحه، وقد يفيد العموم والشمول",
+                        "جرس موسيقي فقط",
+                        "التشخيص"
+                    ],
+                    "ans": 1
+                },
+                {
+                    "q": "المقابلة هي:",
+                    "options": [
+                        "تضاد بين كلمتين",
+                        "أن يُؤتى بمعنيين أو أكثر ثم بما يقابلهما على الترتيب",
+                        "كلمة تحتمل معنيين",
+                        "تساوي الجمل في الطول"
+                    ],
+                    "ans": 1
+                },
+                {
+                    "q": "قال تعالى: «يأمرهم بالمعروف وينهاهم عن المنكر ويحل لهم الطيبات ويحرم عليهم الخبائث» المحسن:",
+                    "options": [
+                        "طباق",
+                        "جناس",
+                        "مقابلة",
+                        "سجع"
+                    ],
+                    "ans": 2
+                },
+                {
+                    "q": "سر جمال المقابلة:",
+                    "options": [
+                        "توضيح الفكرة وتقويتها",
+                        "إثارة الذهن",
+                        "الجرس الموسيقي",
+                        "التجسيم"
+                    ],
+                    "ans": 0
+                },
+                {
+                    "q": "التورية هي أن تَرِد كلمة تحتمل معنيين:",
+                    "options": [
+                        "قريبًا هو المراد وبعيدًا غير مراد",
+                        "متضادين",
+                        "قريبًا غير مراد، وبعيدًا هو المراد",
+                        "مترادفين"
+                    ],
+                    "ans": 2
+                },
+                {
+                    "q": "«أقول وقد شنّوا إلى الحرب غارة * دعوني فإني آكل العيش بالجبن» التورية في:",
+                    "options": [
+                        "العيش",
+                        "الحرب",
+                        "الجبن",
+                        "غارة"
+                    ],
+                    "ans": 2
+                },
+                {
+                    "q": "في البيت السابق المعنى البعيد المراد لكلمة «الجبن»:",
+                    "options": [
+                        "الطعام المعروف",
+                        "الحرب",
+                        "الخوف",
+                        "الغارة"
+                    ],
+                    "ans": 2
+                },
+                {
+                    "q": "سر جمال التورية:",
+                    "options": [
+                        "الجرس الموسيقي",
+                        "توضيح المعنى بالتضاد",
+                        "إثارة الذهن",
+                        "التجسيم"
+                    ],
+                    "ans": 2
+                },
+                {
+                    "q": "السجع هو:",
+                    "options": [
+                        "اتفاق الفواصل (أواخر الجمل) في الحرف الأخير، ولا يكون إلا في النثر",
+                        "اتفاق نهاية شطري البيت الأول",
+                        "تساوي الجمل في الطول",
+                        "تقسيم البيت إلى مقاطع"
+                    ],
+                    "ans": 0
+                },
+                {
+                    "q": "«اللهم إن كنت قد أبليت، فإنك طالما قد عافيت» المحسن:",
+                    "options": [
+                        "سجع",
+                        "تصريع",
+                        "ازدواج",
+                        "حسن تقسيم"
+                    ],
+                    "ans": 0
+                },
+                {
+                    "q": "الازدواج هو:",
+                    "options": [
+                        "تساوي الجمل في الطول والجرس الموسيقي، ولا يكون إلا في النثر",
+                        "اتفاق الفواصل في الحرف الأخير",
+                        "اتفاق نهاية شطري البيت",
+                        "اختلاف اللفظين في المعنى"
+                    ],
+                    "ans": 0
+                },
+                {
+                    "q": "قال ابن المقفع: «فإن لكل مخلوق حاجة، ولكل حاجة غاية، ولكل غاية سبيلًا» المحسن:",
+                    "options": [
+                        "تصريع",
+                        "مقابلة",
+                        "ازدواج",
+                        "تورية"
+                    ],
+                    "ans": 2
+                },
+                {
+                    "q": "التصريع هو:",
+                    "options": [
+                        "اتفاق الفواصل في النثر",
+                        "اتفاق نهاية شطري البيت الأول في الحرف الأخير وحركة إعرابه، ولا يكون إلا في الشعر",
+                        "تساوي الجمل",
+                        "تقسيم البيت إلى مقاطع متساوية"
+                    ],
+                    "ans": 1
+                },
+                {
+                    "q": "«على قدر أهل العزم تأتي العزائم * وتأتي على قدر الكرام المكارم» المحسن:",
+                    "options": [
+                        "سجع",
+                        "ازدواج",
+                        "تصريع",
+                        "مقابلة"
+                    ],
+                    "ans": 2
+                },
+                {
+                    "q": "حسن التقسيم هو:",
+                    "options": [
+                        "تقسيم البيت أو بعضه إلى مقاطع متساوية وقد تتكرر فيه بعض الكلمات، ولا يكون إلا في الشعر",
+                        "اتفاق الفواصل في النثر",
+                        "اتفاق شطري البيت الأول",
+                        "تضاد بين معنيين"
+                    ],
+                    "ans": 0
+                },
+                {
+                    "q": "قال مطران: «متفرد بصبابتي، متفرد * بكآبتي، متفرد بعنائي» المحسن:",
+                    "options": [
+                        "تصريع",
+                        "حسن التقسيم",
+                        "سجع",
+                        "جناس تام"
+                    ],
+                    "ans": 1
+                },
+                {
+                    "q": "الجناس هو:",
+                    "options": [
+                        "تضاد كلمتين",
+                        "كلمة تحتمل معنيين",
+                        "تشابه الكلمتين في المبنى واختلافهما في المعنى",
+                        "تساوي الجمل"
+                    ],
+                    "ans": 2
+                },
+                {
+                    "q": "الجناس التام ما اتفق فيه اللفظان في أمور أربعة هي:",
+                    "options": [
+                        "المعنى والوزن والقافية والحركة",
+                        "عدد الحروف فقط",
+                        "نوع الحروف وعددها وترتيبها وهيئتها (ضبطها)",
+                        "الوزن والضبط فقط"
+                    ],
+                    "ans": 2
+                },
+                {
+                    "q": "«ولو كان البكاء بقدر شوقي * لملأت العيونَ من العيون» نوع الجناس:",
+                    "options": [
+                        "تام",
+                        "ناقص باختلاف العدد",
+                        "ناقص باختلاف الضبط",
+                        "ناقص باختلاف الترتيب"
+                    ],
+                    "ans": 0
+                },
+                {
+                    "q": "في البيت السابق «العيون» الأولى والثانية بمعنى:",
+                    "options": [
+                        "العيون الباصرة في الموضعين",
+                        "عيون الماء في الموضعين",
+                        "الجواسيس - العيون الباصرة",
+                        "عيون الماء - العيون الباصرة"
+                    ],
+                    "ans": 3
+                },
+                {
+                    "q": "الجناس الناقص هو اختلاف اللفظين في المعنى وفي واحد مما يلي:",
+                    "options": [
+                        "المعنى فقط",
+                        "الوزن فقط",
+                        "عدد الحروف أو نوعها أو ضبطها أو ترتيبها",
+                        "لا شيء من ذلك"
+                    ],
+                    "ans": 2
+                },
+                {
+                    "q": "«من نفثة السِّحر أو من نفحة السَّحَر» نوع الجناس بين «السحر - السحر»:",
+                    "options": [
+                        "تام",
+                        "ناقص باختلاف العدد",
+                        "ناقص باختلاف الضبط",
+                        "ناقص باختلاف الترتيب"
+                    ],
+                    "ans": 2
+                },
+                {
+                    "q": "«اللهم استر عوراتنا وآمن روعاتنا» نوع الجناس:",
+                    "options": [
+                        "ناقص باختلاف الترتيب",
+                        "تام",
+                        "ناقص باختلاف الضبط",
+                        "ناقص باختلاف العدد"
+                    ],
+                    "ans": 0
+                },
+                {
+                    "q": "«أيما قاتلٍ من التلاقِ تلافِ» نوع الجناس بين «تلاق - تلاف»:",
+                    "options": [
+                        "ناقص باختلاف نوع الحروف",
+                        "تام",
+                        "ناقص باختلاف الترتيب",
+                        "ناقص باختلاف العدد"
+                    ],
+                    "ans": 0
+                },
+                {
+                    "q": "«وحدك أن يُثنى له عزمُ عازمِ» نوع الجناس بين «عزم - عازم»:",
+                    "options": [
+                        "تام",
+                        "ناقص باختلاف عدد الحروف",
+                        "ناقص باختلاف الضبط",
+                        "ناقص باختلاف الترتيب"
+                    ],
+                    "ans": 1
+                },
+                {
+                    "q": "سر جمال المحسنات اللفظية (الجناس والسجع والتصريع...):",
+                    "options": [
+                        "تعطي جرسًا موسيقيًا تطرب له الأذن",
+                        "إثارة الذهن بالمعنى البعيد",
+                        "توضيح المعنى بالتضاد",
+                        "التشخيص"
+                    ],
+                    "ans": 0
+                },
+                {
+                    "q": "الفرق بين السجع والتصريع:",
+                    "options": [
+                        "السجع في الشعر، والتصريع في النثر",
+                        "السجع في النثر، والتصريع في الشعر",
+                        "كلاهما في الشعر",
+                        "كلاهما في النثر"
+                    ],
+                    "ans": 1
+                },
+                {
+                    "q": "الفرق بين الطباق والمقابلة:",
+                    "options": [
+                        "الطباق بين جمل والمقابلة بين كلمتين",
+                        "لا فرق بينهما",
+                        "الطباق بين كلمتين، والمقابلة بين معنيين أو أكثر وما يقابلهما",
+                        "الطباق لفظي والمقابلة معنوية"
+                    ],
+                    "ans": 2
+                },
+                {
+                    "q": "«وما ضرّنا أنا قليلٌ وجارنا * عزيزٌ وجار الأكثرين ذليل» بحسب الكتاب المحسن:",
+                    "options": [
+                        "جناس",
+                        "تصريع",
+                        "تورية",
+                        "مقابلة"
+                    ],
+                    "ans": 3
+                },
+                {
+                    "q": "«وباسطُ خيرٍ فيكم بيمينه * وقابضُ شرٍّ عنكم بشماله» المحسن:",
+                    "options": [
+                        "طباق سلب",
+                        "جناس تام",
+                        "مقابلة",
+                        "تصريع"
+                    ],
+                    "ans": 2
+                },
+                {
+                    "q": "في وصية أمامة: «خرجتِ - درجتِ» و«تعرفيه - تألفيه» المحسن:",
+                    "options": [
+                        "طباق",
+                        "مقابلة",
+                        "تورية",
+                        "سجع"
+                    ],
+                    "ans": 3
+                },
+                {
+                    "q": "في وصية أمامة: «النساء - الرجال»، «العاقل - الغافل» المحسن:",
+                    "options": [
+                        "طباق",
+                        "جناس",
+                        "سجع",
+                        "مقابلة"
+                    ],
+                    "ans": 0
+                },
+                {
+                    "q": "في وصية أمامة: «الترحَ إن كان فرحًا، والاكتئاب عنده إن كان ترحًا» المحسن:",
+                    "options": [
+                        "مقابلة",
+                        "طباق سلب",
+                        "جناس تام",
+                        "ازدواج"
+                    ],
+                    "ans": 0
+                },
+                {
+                    "q": "«يبلغها - تبغيل» في قصيدة كعب المحسن:",
+                    "options": [
+                        "طباق",
+                        "تورية",
+                        "جناس ناقص",
+                        "جناس تام"
+                    ],
+                    "ans": 2
+                },
+                {
+                    "q": "«سلامته - محمول» في قصيدة كعب المحسن:",
+                    "options": [
+                        "جناس",
+                        "طباق",
+                        "مقابلة",
+                        "تورية"
+                    ],
+                    "ans": 1
+                },
+                {
+                    "q": "قال تعالى: «ما ظهر منها وما بطن» المحسن وقيمته:",
+                    "options": [
+                        "مقابلة تقوي الفكرة",
+                        "جناس يعطي جرسًا",
+                        "طباق يوضح المعنى ويفيد العموم والشمول",
+                        "تورية تثير الذهن"
+                    ],
+                    "ans": 2
+                },
+                {
+                    "q": "قال تعالى: «قل تعالوا أتل ما حرّم ربكم... نحن نرزقكم» التحول من الغيبة إلى التكلم يسمى:",
+                    "options": [
+                        "التفاتًا",
+                        "طباقًا",
+                        "جناسًا",
+                        "مقابلة"
+                    ],
+                    "ans": 0
+                },
+                {
+                    "q": "«تعقلون - تذكرون» في ختام الآيات بحسب الكتاب:",
+                    "options": [
+                        "طباق",
+                        "تناسب فواصل يعطي جرسًا موسيقيًا",
+                        "تورية",
+                        "مقابلة"
+                    ],
+                    "ans": 1
+                },
+                {
+                    "q": "«غُرر - حُجول» في شعر السموءل:",
+                    "options": [
+                        "طباق",
+                        "جناس تام",
+                        "تورية",
+                        "مراعاة النظير"
+                    ],
+                    "ans": 3
+                },
+                {
+                    "q": "«الإقدام - الإحجام» في آداب صناعة الكتاب:",
+                    "options": [
+                        "جناس تام",
+                        "تورية",
+                        "طباق",
+                        "تصريع"
+                    ],
+                    "ans": 2
+                },
+                {
+                    "q": "«أحكمه - لم يحكمه» نوع المحسن:",
+                    "options": [
+                        "طباق إيجاب",
+                        "طباق سلب",
+                        "جناس",
+                        "مقابلة"
+                    ],
+                    "ans": 1
+                },
+                {
+                    "q": "«الحِلم - الحُكم» و«عدته - عتاده - عادته»:",
+                    "options": [
+                        "طباق",
+                        "سجع",
+                        "جناس تام",
+                        "جناس ناقص"
+                    ],
+                    "ans": 3
+                },
+                {
+                    "q": "«العلم - التعليم» في قصيدة «ابدأ بنفسك»:",
+                    "options": [
+                        "طباق",
+                        "تورية",
+                        "مقابلة",
+                        "جناس ناقص (غير تام)"
+                    ],
+                    "ans": 3
+                },
+                {
+                    "q": "«الدواء - السقام» و«غيره - نفسك» بحسب الكتاب:",
+                    "options": [
+                        "طباق",
+                        "جناس",
+                        "سجع",
+                        "تصريع"
+                    ],
+                    "ans": 0
+                },
+                {
+                    "q": "قال تعالى: «ويوم تقوم الساعة يقسم المجرمون ما لبثوا غير ساعة» نوع الجناس:",
+                    "options": [
+                        "ناقص",
+                        "لا يوجد جناس",
+                        "طباق",
+                        "تام"
+                    ],
+                    "ans": 3
+                },
+                {
+                    "q": "قال تعالى: «فليضحكوا قليلًا وليبكوا كثيرًا» المحسن:",
+                    "options": [
+                        "مقابلة",
+                        "طباق",
+                        "جناس",
+                        "سجع"
+                    ],
+                    "ans": 0
+                },
+                {
+                    "q": "قال تعالى: «وتحسبهم أيقاظًا وهم رقود» المحسن:",
+                    "options": [
+                        "طباق سلب",
+                        "مقابلة",
+                        "طباق إيجاب",
+                        "جناس"
+                    ],
+                    "ans": 2
+                },
+                {
+                    "q": "قال تعالى: «هل يستوي الذين يعلمون والذين لا يعلمون» المحسن:",
+                    "options": [
+                        "طباق إيجاب",
+                        "مقابلة",
+                        "جناس تام",
+                        "طباق سلب"
+                    ],
+                    "ans": 3
+                },
+                {
+                    "q": "قال ﷺ: «اللهم أعط منفقًا خلفًا، وأعط ممسكًا تلفًا» المحسنات:",
+                    "options": [
+                        "تصريع وطباق",
+                        "جناس تام وتورية",
+                        "سجع ومقابلة",
+                        "ازدواج فقط"
+                    ],
+                    "ans": 2
+                },
+                {
+                    "q": "«أبيات شعرك كالقصور ولا قصور بها يعوق» التورية في:",
+                    "options": [
+                        "أبيات",
+                        "شعرك",
+                        "يعوق",
+                        "قصور (المعنى البعيد: العجز والنقص)"
+                    ],
+                    "ans": 3
+                }
+            ]
+        },
+        {
+            "id": "bubbles_1628",
+            "title": "الفقاعات المتساقطة",
+            "type": "bubbles",
+            "desc": "التقط الفقاعة ذات الإجابة الصحيحة عن المحسنات البديعية",
+            "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\"><path d=\"M21.21 15.89A10 10 0 1 1 8 2.83\"></path><path d=\"M22 12A10 10 0 0 0 12 2v10z\"></path></svg>",
+            "questions": [
+                {
+                    "q": "«حرام - حلال»:",
+                    "options": [
+                        "طباق سلب",
+                        "مقابلة",
+                        "جناس",
+                        "طباق إيجاب"
+                    ],
+                    "ans": 3
+                },
+                {
+                    "q": "«يستخفون - لا يستخفون»:",
+                    "options": [
+                        "طباق إيجاب",
+                        "مقابلة",
+                        "طباق سلب",
+                        "جناس"
+                    ],
+                    "ans": 2
+                },
+                {
+                    "q": "«لا تخشوا - اخشون»:",
+                    "options": [
+                        "طباق إيجاب",
+                        "جناس",
+                        "طباق سلب",
+                        "مقابلة"
+                    ],
+                    "ans": 2
+                },
+                {
+                    "q": "«أيقاظًا - رقود»:",
+                    "options": [
+                        "طباق سلب",
+                        "مقابلة",
+                        "جناس",
+                        "طباق إيجاب"
+                    ],
+                    "ans": 3
+                },
+                {
+                    "q": "«يعلمون - لا يعلمون»:",
+                    "options": [
+                        "طباق إيجاب",
+                        "جناس",
+                        "طباق سلب",
+                        "تورية"
+                    ],
+                    "ans": 2
+                },
+                {
+                    "q": "«ظهر - بطن»:",
+                    "options": [
+                        "جناس",
+                        "طباق",
+                        "مقابلة",
+                        "سجع"
+                    ],
+                    "ans": 1
+                },
+                {
+                    "q": "«النساء - الرجال»:",
+                    "options": [
+                        "جناس",
+                        "طباق",
+                        "سجع",
+                        "تورية"
+                    ],
+                    "ans": 1
+                },
+                {
+                    "q": "«العاقل - الغافل»:",
+                    "options": [
+                        "جناس تام",
+                        "مقابلة",
+                        "طباق",
+                        "تصريع"
+                    ],
+                    "ans": 2
+                },
+                {
+                    "q": "«الإقدام - الإحجام»:",
+                    "options": [
+                        "جناس تام",
+                        "طباق",
+                        "تورية",
+                        "تصريع"
+                    ],
+                    "ans": 1
+                },
+                {
+                    "q": "«العرب - العجم»:",
+                    "options": [
+                        "طباق",
+                        "جناس تام",
+                        "تورية",
+                        "سجع"
+                    ],
+                    "ans": 0
+                },
+                {
+                    "q": "«شباب - كهول»:",
+                    "options": [
+                        "جناس",
+                        "طباق",
+                        "سجع",
+                        "تورية"
+                    ],
+                    "ans": 1
+                },
+                {
+                    "q": "«عالم - جهول»:",
+                    "options": [
+                        "طباق",
+                        "جناس",
+                        "سجع",
+                        "مقابلة"
+                    ],
+                    "ans": 0
+                },
+                {
+                    "q": "«الموجود - المفقود»:",
+                    "options": [
+                        "جناس تام",
+                        "طباق",
+                        "تورية",
+                        "تصريع"
+                    ],
+                    "ans": 1
+                },
+                {
+                    "q": "«أحببت - كرهت»:",
+                    "options": [
+                        "طباق",
+                        "جناس",
+                        "سجع",
+                        "تورية"
+                    ],
+                    "ans": 0
+                },
+                {
+                    "q": "«أحكمه - لم يحكمه»:",
+                    "options": [
+                        "طباق إيجاب",
+                        "جناس",
+                        "طباق سلب",
+                        "مقابلة"
+                    ],
+                    "ans": 2
+                },
+                {
+                    "q": "«العيون - العيون»:",
+                    "options": [
+                        "جناس ناقص",
+                        "جناس تام",
+                        "طباق",
+                        "تورية"
+                    ],
+                    "ans": 1
+                },
+                {
+                    "q": "«الساعة - ساعة»:",
+                    "options": [
+                        "جناس ناقص",
+                        "طباق",
+                        "جناس تام",
+                        "سجع"
+                    ],
+                    "ans": 2
+                },
+                {
+                    "q": "«السِّحر - السَّحَر»:",
+                    "options": [
+                        "جناس تام",
+                        "طباق",
+                        "جناس ناقص",
+                        "تورية"
+                    ],
+                    "ans": 2
+                },
+                {
+                    "q": "«عوراتنا - روعاتنا»:",
+                    "options": [
+                        "جناس تام",
+                        "طباق",
+                        "جناس ناقص",
+                        "سجع فقط"
+                    ],
+                    "ans": 2
+                },
+                {
+                    "q": "«عزم - عازم»:",
+                    "options": [
+                        "جناس تام",
+                        "طباق",
+                        "جناس ناقص",
+                        "تورية"
+                    ],
+                    "ans": 2
+                },
+                {
+                    "q": "«الحلم - الحكم»:",
+                    "options": [
+                        "جناس تام",
+                        "طباق",
+                        "مقابلة",
+                        "جناس ناقص"
+                    ],
+                    "ans": 3
+                },
+                {
+                    "q": "«العلم - التعليم»:",
+                    "options": [
+                        "جناس ناقص",
+                        "جناس تام",
+                        "طباق",
+                        "تورية"
+                    ],
+                    "ans": 0
+                },
+                {
+                    "q": "«يبلغها - تبغيل»:",
+                    "options": [
+                        "جناس تام",
+                        "طباق",
+                        "تصريع",
+                        "جناس ناقص"
+                    ],
+                    "ans": 3
+                },
+                {
+                    "q": "«ينهون - ينأون»:",
+                    "options": [
+                        "جناس تام",
+                        "طباق",
+                        "مقابلة",
+                        "جناس ناقص"
+                    ],
+                    "ans": 3
+                },
+                {
+                    "q": "«همزة - لمزة»:",
+                    "options": [
+                        "جناس ناقص",
+                        "جناس تام",
+                        "طباق",
+                        "تورية"
+                    ],
+                    "ans": 0
+                },
+                {
+                    "q": "«الخيل - الخير»:",
+                    "options": [
+                        "جناس ناقص",
+                        "جناس تام",
+                        "طباق",
+                        "سجع"
+                    ],
+                    "ans": 0
+                },
+                {
+                    "q": "«أبليت - عافيت»:",
+                    "options": [
+                        "تصريع",
+                        "سجع",
+                        "طباق",
+                        "جناس تام"
+                    ],
+                    "ans": 1
+                },
+                {
+                    "q": "«خرجتِ - درجتِ»:",
+                    "options": [
+                        "تصريع",
+                        "سجع",
+                        "طباق",
+                        "تورية"
+                    ],
+                    "ans": 1
+                },
+                {
+                    "q": "«تعرفيه - تألفيه»:",
+                    "options": [
+                        "سجع",
+                        "تصريع",
+                        "مقابلة",
+                        "تورية"
+                    ],
+                    "ans": 0
+                },
+                {
+                    "q": "«القناعة - الطاعة»:",
+                    "options": [
+                        "طباق",
+                        "تصريع",
+                        "تورية",
+                        "سجع"
+                    ],
+                    "ans": 3
+                },
+                {
+                    "q": "«خلفًا - تلفًا»:",
+                    "options": [
+                        "تصريع",
+                        "سجع",
+                        "تورية",
+                        "جناس تام"
+                    ],
+                    "ans": 1
+                },
+                {
+                    "q": "«العزائم - المكارم»:",
+                    "options": [
+                        "سجع",
+                        "جناس",
+                        "تصريع",
+                        "طباق"
+                    ],
+                    "ans": 2
+                },
+                {
+                    "q": "«ومنزل - فحومل»:",
+                    "options": [
+                        "سجع",
+                        "ازدواج",
+                        "تصريع",
+                        "جناس"
+                    ],
+                    "ans": 2
+                },
+                {
+                    "q": "«الجُبن» المقصود الخوف:",
+                    "options": [
+                        "طباق",
+                        "جناس",
+                        "سجع",
+                        "تورية"
+                    ],
+                    "ans": 3
+                },
+                {
+                    "q": "«قصور» بمعنى العجز:",
+                    "options": [
+                        "طباق",
+                        "جناس تام",
+                        "مقابلة",
+                        "تورية"
+                    ],
+                    "ans": 3
+                },
+                {
+                    "q": "«غرر - حجول»:",
+                    "options": [
+                        "طباق",
+                        "جناس",
+                        "مراعاة النظير",
+                        "تورية"
+                    ],
+                    "ans": 2
+                },
+                {
+                    "q": "«تعقلون - تذكرون»:",
+                    "options": [
+                        "طباق",
+                        "تناسب فواصل",
+                        "تورية",
+                        "تصريع"
+                    ],
+                    "ans": 1
+                },
+                {
+                    "q": "«ربكم ... نحن نرزقكم»:",
+                    "options": [
+                        "طباق",
+                        "جناس",
+                        "سجع",
+                        "التفات"
+                    ],
+                    "ans": 3
+                },
+                {
+                    "q": "السجع يكون في:",
+                    "options": [
+                        "الشعر",
+                        "الشعر والنثر",
+                        "القرآن فقط",
+                        "النثر"
+                    ],
+                    "ans": 3
+                },
+                {
+                    "q": "التصريع يكون في:",
+                    "options": [
+                        "الشعر",
+                        "النثر",
+                        "الشعر والنثر",
+                        "الخطب"
+                    ],
+                    "ans": 0
+                },
+                {
+                    "q": "الازدواج يكون في:",
+                    "options": [
+                        "الشعر",
+                        "النثر",
+                        "الشعر والنثر",
+                        "المقامات فقط"
+                    ],
+                    "ans": 1
+                },
+                {
+                    "q": "حسن التقسيم في:",
+                    "options": [
+                        "النثر",
+                        "الشعر",
+                        "الشعر والنثر",
+                        "القصة"
+                    ],
+                    "ans": 1
+                },
+                {
+                    "q": "الطباق يكون في:",
+                    "options": [
+                        "الشعر فقط",
+                        "الشعر والنثر",
+                        "النثر فقط",
+                        "القرآن فقط"
+                    ],
+                    "ans": 1
+                },
+                {
+                    "q": "الجناس يكون في:",
+                    "options": [
+                        "الشعر والنثر",
+                        "الشعر فقط",
+                        "النثر فقط",
+                        "الخطب فقط"
+                    ],
+                    "ans": 0
+                },
+                {
+                    "q": "التصريع في البيت:",
+                    "options": [
+                        "الأخير",
+                        "الأول",
+                        "الأوسط",
+                        "كل بيت"
+                    ],
+                    "ans": 1
+                },
+                {
+                    "q": "سر جمال التورية:",
+                    "options": [
+                        "جرس موسيقي",
+                        "التوضيح",
+                        "التجسيم",
+                        "إثارة الذهن"
+                    ],
+                    "ans": 3
+                },
+                {
+                    "q": "سر جمال الطباق:",
+                    "options": [
+                        "جرس موسيقي",
+                        "إبراز المعنى",
+                        "إثارة الذهن",
+                        "التشخيص"
+                    ],
+                    "ans": 1
+                },
+                {
+                    "q": "سر جمال المقابلة:",
+                    "options": [
+                        "تقوية الفكرة",
+                        "إثارة الذهن",
+                        "جرس موسيقي",
+                        "التجسيم"
+                    ],
+                    "ans": 0
+                },
+                {
+                    "q": "سر جمال السجع:",
+                    "options": [
+                        "إثارة الذهن",
+                        "جرس موسيقي",
+                        "التوضيح",
+                        "التجسيم"
+                    ],
+                    "ans": 1
+                },
+                {
+                    "q": "سر جمال الجناس:",
+                    "options": [
+                        "إثارة الذهن",
+                        "التوضيح",
+                        "التشخيص",
+                        "جرس موسيقي"
+                    ],
+                    "ans": 3
+                },
+                {
+                    "q": "الطباق محسن:",
+                    "options": [
+                        "لفظي",
+                        "بياني",
+                        "معنوي",
+                        "نحوي"
+                    ],
+                    "ans": 2
+                },
+                {
+                    "q": "الجناس محسن:",
+                    "options": [
+                        "معنوي",
+                        "بياني",
+                        "لفظي",
+                        "نحوي"
+                    ],
+                    "ans": 2
+                },
+                {
+                    "q": "التورية محسن:",
+                    "options": [
+                        "لفظي",
+                        "بياني",
+                        "معنوي",
+                        "صرفي"
+                    ],
+                    "ans": 2
+                },
+                {
+                    "q": "السجع محسن:",
+                    "options": [
+                        "لفظي",
+                        "معنوي",
+                        "بياني",
+                        "نحوي"
+                    ],
+                    "ans": 0
+                },
+                {
+                    "q": "المقابلة محسن:",
+                    "options": [
+                        "لفظي",
+                        "معنوي",
+                        "بياني",
+                        "صرفي"
+                    ],
+                    "ans": 1
+                },
+                {
+                    "q": "التصريع محسن:",
+                    "options": [
+                        "معنوي",
+                        "بياني",
+                        "نحوي",
+                        "لفظي"
+                    ],
+                    "ans": 3
+                },
+                {
+                    "q": "«المؤمن مرآة أخيه»:",
+                    "options": [
+                        "طباق",
+                        "تشبيه",
+                        "جناس",
+                        "سجع"
+                    ],
+                    "ans": 1
+                },
+                {
+                    "q": "«تؤتي - تنزع»:",
+                    "options": [
+                        "جناس",
+                        "طباق",
+                        "سجع",
+                        "تورية"
+                    ],
+                    "ans": 1
+                },
+                {
+                    "q": "«تعز - تذل»:",
+                    "options": [
+                        "جناس",
+                        "مقابلة",
+                        "تصريع",
+                        "طباق"
+                    ],
+                    "ans": 3
+                },
+                {
+                    "q": "«الدواء - السقام»:",
+                    "options": [
+                        "طباق",
+                        "جناس",
+                        "تورية",
+                        "سجع"
+                    ],
+                    "ans": 0
+                }
+            ]
+        },
+        {
+            "id": "shooting_6793",
+            "title": "التنشين والاصطياد",
+            "type": "shooting",
+            "desc": "صوّب نحو الإجابة الصحيحة عن المحسنات البديعية",
+            "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\"><circle cx=\"12\" cy=\"12\" r=\"10\"></circle><circle cx=\"12\" cy=\"12\" r=\"6\"></circle><circle cx=\"12\" cy=\"12\" r=\"2\"></circle></svg>",
+            "questions": [
+                {
+                    "q": "أكمل: «المحسنات البديعية من علم ...».",
+                    "options": [
+                        "البديع",
+                        "البيان",
+                        "المعاني",
+                        "النحو"
+                    ],
+                    "ans": 0
+                },
+                {
+                    "q": "أكمل: «المحسنات نوعان: معنوية و...».",
+                    "options": [
+                        "بيانية",
+                        "نحوية",
+                        "لفظية",
+                        "صرفية"
+                    ],
+                    "ans": 2
+                },
+                {
+                    "q": "أكمل: «الطباق تضاد بين ...».",
+                    "options": [
+                        "كلمتين",
+                        "جملتين",
+                        "بيتين",
+                        "فقرتين"
+                    ],
+                    "ans": 0
+                },
+                {
+                    "q": "أكمل: «نوعا الطباق: إيجاب و...».",
+                    "options": [
+                        "تام",
+                        "ناقص",
+                        "عكس",
+                        "سلب"
+                    ],
+                    "ans": 3
+                },
+                {
+                    "q": "أكمل: «المقابلة: معنيان أو أكثر ثم ما يقابلهما على ...».",
+                    "options": [
+                        "التوالي العكسي",
+                        "الترتيب",
+                        "التكرار",
+                        "الإجمال"
+                    ],
+                    "ans": 1
+                },
+                {
+                    "q": "أكمل: «التورية: معنى قريب غير مراد ومعنى ... مراد».",
+                    "options": [
+                        "قريب",
+                        "مضاد",
+                        "مرادف",
+                        "بعيد"
+                    ],
+                    "ans": 3
+                },
+                {
+                    "q": "أكمل: «السجع: اتفاق الفواصل في الحرف ...».",
+                    "options": [
+                        "الأول",
+                        "الأخير",
+                        "الأوسط",
+                        "الثاني"
+                    ],
+                    "ans": 1
+                },
+                {
+                    "q": "أكمل: «السجع والازدواج لا يكونان إلا في ...».",
+                    "options": [
+                        "النثر",
+                        "الشعر",
+                        "القرآن",
+                        "الحكم"
+                    ],
+                    "ans": 0
+                },
+                {
+                    "q": "أكمل: «التصريع وحسن التقسيم لا يكونان إلا في ...».",
+                    "options": [
+                        "الشعر",
+                        "النثر",
+                        "الخطب",
+                        "الرسائل"
+                    ],
+                    "ans": 0
+                },
+                {
+                    "q": "أكمل: «التصريع: اتفاق نهاية شطري البيت ...».",
+                    "options": [
+                        "الأول",
+                        "الأخير",
+                        "الأوسط",
+                        "الثاني"
+                    ],
+                    "ans": 0
+                },
+                {
+                    "q": "أكمل: «الجناس: اتفاق في المبنى واختلاف في ...».",
+                    "options": [
+                        "الحروف",
+                        "المعنى",
+                        "الضبط",
+                        "العدد"
+                    ],
+                    "ans": 1
+                },
+                {
+                    "q": "أكمل: «الجناس التام يتفق في ... أمور».",
+                    "options": [
+                        "ثلاثة",
+                        "أربعة",
+                        "خمسة",
+                        "اثنين"
+                    ],
+                    "ans": 1
+                },
+                {
+                    "q": "أكمل: «سر جمال التورية: ... الذهن».",
+                    "options": [
+                        "تهدئة",
+                        "إراحة",
+                        "إثارة",
+                        "إشغال"
+                    ],
+                    "ans": 2
+                },
+                {
+                    "q": "أكمل: «المحسنات اللفظية تعطي ... موسيقيًا».",
+                    "options": [
+                        "معنى",
+                        "جرسًا",
+                        "دليلًا",
+                        "تشخيصًا"
+                    ],
+                    "ans": 1
+                },
+                {
+                    "q": "أكمل: «أحرام على بلابله الدوح * ... للطير من كل جنس».",
+                    "options": [
+                        "حرام",
+                        "جميل",
+                        "مباح له",
+                        "حلال"
+                    ],
+                    "ans": 3
+                },
+                {
+                    "q": "أكمل: «يستخفون من الناس ولا ... من الله».",
+                    "options": [
+                        "يخافون",
+                        "يهربون",
+                        "يستخفون",
+                        "يستحيون"
+                    ],
+                    "ans": 2
+                },
+                {
+                    "q": "أكمل: «فلا تخشوا الناس و...».",
+                    "options": [
+                        "اتقون",
+                        "اخشون",
+                        "أطيعون",
+                        "اعبدون"
+                    ],
+                    "ans": 1
+                },
+                {
+                    "q": "أكمل: «يأمرهم بالمعروف وينهاهم عن ...».",
+                    "options": [
+                        "الشر",
+                        "الكفر",
+                        "الظلم",
+                        "المنكر"
+                    ],
+                    "ans": 3
+                },
+                {
+                    "q": "أكمل: «ويحل لهم الطيبات ويحرم عليهم ...».",
+                    "options": [
+                        "المحرمات",
+                        "السيئات",
+                        "الخبائث",
+                        "الفواحش"
+                    ],
+                    "ans": 2
+                },
+                {
+                    "q": "أكمل: «دعوني فإني آكل العيش بـ...».",
+                    "options": [
+                        "الجبن",
+                        "الخبز",
+                        "الملح",
+                        "العسل"
+                    ],
+                    "ans": 0
+                },
+                {
+                    "q": "أكمل: «اللهم إن كنت قد أبليت فإنك طالما قد ...».",
+                    "options": [
+                        "عافيت",
+                        "أعطيت",
+                        "رحمت",
+                        "غفرت"
+                    ],
+                    "ans": 0
+                },
+                {
+                    "q": "أكمل: «لكل مخلوق حاجة ولكل حاجة غاية ولكل غاية ...».",
+                    "options": [
+                        "حاجة",
+                        "نهاية",
+                        "سبيلًا",
+                        "طريقًا"
+                    ],
+                    "ans": 2
+                },
+                {
+                    "q": "أكمل: «على قدر أهل العزم تأتي ...».",
+                    "options": [
+                        "المكارم",
+                        "الهمم",
+                        "الأماني",
+                        "العزائم"
+                    ],
+                    "ans": 3
+                },
+                {
+                    "q": "أكمل: «وتأتي على قدر الكرام ...».",
+                    "options": [
+                        "المكارم",
+                        "العزائم",
+                        "النعم",
+                        "الأماني"
+                    ],
+                    "ans": 0
+                },
+                {
+                    "q": "أكمل: «متفرد بصبابتي متفرد بكآبتي متفرد بـ...».",
+                    "options": [
+                        "شقائي",
+                        "بكائي",
+                        "رجائي",
+                        "عنائي"
+                    ],
+                    "ans": 3
+                },
+                {
+                    "q": "أكمل: «نفسي مرجلٌ وقلبي ...».",
+                    "options": [
+                        "شراع",
+                        "سفينة",
+                        "مجداف",
+                        "بحر"
+                    ],
+                    "ans": 0
+                },
+                {
+                    "q": "أكمل: «لملأت العيون من ...».",
+                    "options": [
+                        "الدموع",
+                        "الماء",
+                        "العيون",
+                        "البكاء"
+                    ],
+                    "ans": 2
+                },
+                {
+                    "q": "أكمل: «اللهم استر عوراتنا وآمن ...».",
+                    "options": [
+                        "عوراتنا",
+                        "خوفنا",
+                        "روعاتنا",
+                        "قلوبنا"
+                    ],
+                    "ans": 2
+                },
+                {
+                    "q": "أكمل: «من نفثة السِّحر أو من نفحة ...».",
+                    "options": [
+                        "الصباح",
+                        "الفجر",
+                        "الليل",
+                        "السَّحَر"
+                    ],
+                    "ans": 3
+                },
+                {
+                    "q": "أكمل: «وتحسبهم أيقاظًا وهم ...».",
+                    "options": [
+                        "نيام",
+                        "قعود",
+                        "رقود",
+                        "جلوس"
+                    ],
+                    "ans": 2
+                },
+                {
+                    "q": "أكمل: «هل يستوي الذين يعلمون والذين ...».",
+                    "options": [
+                        "يجهلون",
+                        "يعملون",
+                        "لا يعلمون",
+                        "ينسون"
+                    ],
+                    "ans": 2
+                },
+                {
+                    "q": "أكمل: «فليضحكوا قليلًا وليبكوا ...».",
+                    "options": [
+                        "قليلًا",
+                        "كثيرًا",
+                        "طويلًا",
+                        "دائمًا"
+                    ],
+                    "ans": 1
+                },
+                {
+                    "q": "أكمل: «اللهم أعط منفقًا خلفًا وأعط ممسكًا ...».",
+                    "options": [
+                        "خلفًا",
+                        "مالًا",
+                        "تلفًا",
+                        "خيرًا"
+                    ],
+                    "ans": 2
+                },
+                {
+                    "q": "أكمل: «ويوم تقوم الساعة يقسم المجرمون ما لبثوا غير ...».",
+                    "options": [
+                        "ساعة",
+                        "يوم",
+                        "ليلة",
+                        "لحظة"
+                    ],
+                    "ans": 0
+                },
+                {
+                    "q": "أكمل: «وهم ينهون عنه و... عنه».",
+                    "options": [
+                        "يبتعدون",
+                        "ينأون",
+                        "يفرون",
+                        "ينهون"
+                    ],
+                    "ans": 1
+                },
+                {
+                    "q": "أكمل: «ويل لكل همزة ...».",
+                    "options": [
+                        "غمزة",
+                        "لمزة",
+                        "نمّام",
+                        "كذاب"
+                    ],
+                    "ans": 1
+                },
+                {
+                    "q": "أكمل: «ما ظهر منها وما ...».",
+                    "options": [
+                        "خفي",
+                        "استتر",
+                        "بطن",
+                        "غاب"
+                    ],
+                    "ans": 2
+                },
+                {
+                    "q": "أكمل: «قؤول لما قال الكرام ...».",
+                    "options": [
+                        "جهول",
+                        "قتول",
+                        "عجول",
+                        "فعول"
+                    ],
+                    "ans": 3
+                },
+                {
+                    "q": "أكمل: «وما ضرّنا أنا قليل وجارنا عزيز وجار الأكثرين ...».",
+                    "options": [
+                        "عزيز",
+                        "ذليل",
+                        "قليل",
+                        "كثير"
+                    ],
+                    "ans": 1
+                },
+                {
+                    "q": "أكمل: «فليس سواءً عالمٌ و...».",
+                    "options": [
+                        "عليم",
+                        "عاقل",
+                        "حكيم",
+                        "جهول"
+                    ],
+                    "ans": 3
+                },
+                {
+                    "q": "أكمل: «لنا شبابٌ تسامى للعلا و...».",
+                    "options": [
+                        "شيوخ",
+                        "رجال",
+                        "فتيان",
+                        "كهول"
+                    ],
+                    "ans": 3
+                },
+                {
+                    "q": "أكمل: «مقدامًا في موضع الإقدام ومحجمًا في موضع ...».",
+                    "options": [
+                        "الإقدام",
+                        "الإحجام",
+                        "القتال",
+                        "الحرب"
+                    ],
+                    "ans": 1
+                },
+                {
+                    "q": "أكمل: «حليمًا في موضع الحلم، فهيمًا في موضع ...».",
+                    "options": [
+                        "الحلم",
+                        "الحكم",
+                        "العلم",
+                        "الحرب"
+                    ],
+                    "ans": 1
+                },
+                {
+                    "q": "أكمل: «يعدّ لكل أمر عدته و...».",
+                    "options": [
+                        "عتاده",
+                        "رجاله",
+                        "ماله",
+                        "سلاحه"
+                    ],
+                    "ans": 0
+                },
+                {
+                    "q": "أكمل: «خلّفتِ العش الذي فيه ...».",
+                    "options": [
+                        "درجتِ",
+                        "نشأتِ",
+                        "عشتِ",
+                        "ولدتِ"
+                    ],
+                    "ans": 0
+                },
+                {
+                    "q": "أكمل: «إلى وكر لم تعرفيه وقرين لم ...».",
+                    "options": [
+                        "تعرفيه",
+                        "تحبيه",
+                        "تريه",
+                        "تألفيه"
+                    ],
+                    "ans": 3
+                },
+                {
+                    "q": "أكمل: «فكوني له أمةً يكن لك ...».",
+                    "options": [
+                        "سيدًا",
+                        "خادمًا",
+                        "عبدًا",
+                        "حارسًا"
+                    ],
+                    "ans": 2
+                },
+                {
+                    "q": "أكمل: «تصف الدواء لذي ...».",
+                    "options": [
+                        "السقام",
+                        "الصحة",
+                        "العافية",
+                        "الألم"
+                    ],
+                    "ans": 0
+                },
+                {
+                    "q": "أكمل: «ابدأ بنفسك فانهها عن غيّها * فإذا ... عنه فأنت حكيم».",
+                    "options": [
+                        "انتهت",
+                        "بدأت",
+                        "أقبلت",
+                        "استمرت"
+                    ],
+                    "ans": 0
+                },
+                {
+                    "q": "أكمل: «تؤتي الملك من تشاء و... الملك ممن تشاء».",
+                    "options": [
+                        "تنزع",
+                        "تعطي",
+                        "تمنح",
+                        "تهب"
+                    ],
+                    "ans": 0
+                },
+                {
+                    "q": "أكمل: «وتعز من تشاء و... من تشاء».",
+                    "options": [
+                        "تعز",
+                        "ترفع",
+                        "تكرم",
+                        "تذل"
+                    ],
+                    "ans": 3
+                },
+                {
+                    "q": "أكمل: «التحول من الغيبة إلى التكلم يسمى ...».",
+                    "options": [
+                        "طباقًا",
+                        "التفاتًا",
+                        "جناسًا",
+                        "سجعًا"
+                    ],
+                    "ans": 1
+                },
+                {
+                    "q": "أكمل: «تعقلون - تذكرون: تناسب ...».",
+                    "options": [
+                        "طباق",
+                        "تصريع",
+                        "فواصل",
+                        "جناس"
+                    ],
+                    "ans": 2
+                },
+                {
+                    "q": "أكمل: «غرر - حجول: مراعاة ...».",
+                    "options": [
+                        "النظير",
+                        "الطباق",
+                        "الفواصل",
+                        "الجناس"
+                    ],
+                    "ans": 0
+                },
+                {
+                    "q": "أكمل: «جناس اختلف فيه ضبط الحروف: ...».",
+                    "options": [
+                        "تام",
+                        "مقابلة",
+                        "ناقص",
+                        "تورية"
+                    ],
+                    "ans": 2
+                },
+                {
+                    "q": "أكمل: «اختلاف ترتيب الحروف في (عوراتنا - روعاتنا) جناس ...».",
+                    "options": [
+                        "ناقص",
+                        "تام",
+                        "مكرر",
+                        "معنوي"
+                    ],
+                    "ans": 0
+                },
+                {
+                    "q": "أكمل: «أطيب الطيب ... المفقود» (في وصية أمامة).",
+                    "options": [
+                        "المسك",
+                        "العطر",
+                        "الكحل",
+                        "الماء"
+                    ],
+                    "ans": 3
+                },
+                {
+                    "q": "أكمل: «والكحل أحسن الحسن ...».",
+                    "options": [
+                        "المفقود",
+                        "الموجود",
+                        "المعروف",
+                        "الجميل"
+                    ],
+                    "ans": 1
+                },
+                {
+                    "q": "أكمل: «الطباق قد يفيد العموم و...».",
+                    "options": [
+                        "الشمول",
+                        "التخصيص",
+                        "التحقير",
+                        "الشك"
+                    ],
+                    "ans": 0
+                },
+                {
+                    "q": "أكمل: «المقابلة سر جمالها توضيح الفكرة و...».",
+                    "options": [
+                        "إخفاؤها",
+                        "تقويتها",
+                        "تكرارها",
+                        "تحريكها"
+                    ],
+                    "ans": 1
+                }
+            ]
+        },
+        {
+            "id": "true_false_9493",
+            "title": "صح أم خطأ",
+            "type": "true_false",
+            "desc": "حدد صحة العبارات المتعلقة بـ المحسنات البديعية",
+            "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\"><path d=\"M22 11.08V12a10 10 0 1 1-5.93-9.14\"></path><polyline points=\"22 4 12 14.01 9 11.01\"></polyline></svg>",
+            "questions": [
+                {
+                    "q": "المحسنات البديعية من علم البديع.",
+                    "options": [
+                        "خطأ",
+                        "صح"
+                    ],
+                    "ans": 1
+                },
+                {
+                    "q": "الطباق والجناس من المحسنات المعنوية.",
+                    "options": [
+                        "خطأ",
+                        "صح"
+                    ],
+                    "ans": 0
+                },
+                {
+                    "q": "الطباق تضاد بين كلمتين.",
+                    "options": [
+                        "صح",
+                        "خطأ"
+                    ],
+                    "ans": 0
+                },
+                {
+                    "q": "طباق السلب أن تكون الكلمتان مثبتتين.",
+                    "options": [
+                        "صح",
+                        "خطأ"
+                    ],
+                    "ans": 1
+                },
+                {
+                    "q": "قد يكون طباق السلب بين أمر ونهي مثل: «فلا تخشوا الناس واخشون».",
+                    "options": [
+                        "خطأ",
+                        "صح"
+                    ],
+                    "ans": 1
+                },
+                {
+                    "q": "سر جمال الطباق إبراز المعنى وتوضيحه وقد يفيد العموم والشمول.",
+                    "options": [
+                        "خطأ",
+                        "صح"
+                    ],
+                    "ans": 1
+                },
+                {
+                    "q": "المقابلة تضاد بين كلمتين فقط.",
+                    "options": [
+                        "خطأ",
+                        "صح"
+                    ],
+                    "ans": 0
+                },
+                {
+                    "q": "في قوله تعالى: «يأمرهم بالمعروف وينهاهم عن المنكر» مقابلة.",
+                    "options": [
+                        "خطأ",
+                        "صح"
+                    ],
+                    "ans": 1
+                },
+                {
+                    "q": "التورية كلمة لها معنيان: قريب هو المراد وبعيد غير مراد.",
+                    "options": [
+                        "صح",
+                        "خطأ"
+                    ],
+                    "ans": 1
+                },
+                {
+                    "q": "في «آكل العيش بالجبن» المعنى المراد لكلمة الجبن الخوف.",
+                    "options": [
+                        "صح",
+                        "خطأ"
+                    ],
+                    "ans": 0
+                },
+                {
+                    "q": "سر جمال التورية الجرس الموسيقي.",
+                    "options": [
+                        "صح",
+                        "خطأ"
+                    ],
+                    "ans": 1
+                },
+                {
+                    "q": "السجع يكون في النثر فقط.",
+                    "options": [
+                        "خطأ",
+                        "صح"
+                    ],
+                    "ans": 1
+                },
+                {
+                    "q": "التصريع يكون في النثر والشعر.",
+                    "options": [
+                        "صح",
+                        "خطأ"
+                    ],
+                    "ans": 1
+                },
+                {
+                    "q": "التصريع يكون في البيت الأول من القصيدة غالبًا.",
+                    "options": [
+                        "خطأ",
+                        "صح"
+                    ],
+                    "ans": 1
+                },
+                {
+                    "q": "الازدواج تساوي الجمل في الطول والجرس الموسيقي ويكون في النثر.",
+                    "options": [
+                        "صح",
+                        "خطأ"
+                    ],
+                    "ans": 0
+                },
+                {
+                    "q": "حسن التقسيم يكون في النثر فقط.",
+                    "options": [
+                        "خطأ",
+                        "صح"
+                    ],
+                    "ans": 0
+                },
+                {
+                    "q": "«متفرد بصبابتي متفرد بكآبتي متفرد بعنائي» مثال لحسن التقسيم.",
+                    "options": [
+                        "خطأ",
+                        "صح"
+                    ],
+                    "ans": 1
+                },
+                {
+                    "q": "الجناس اتفاق الكلمتين في المعنى واختلافهما في اللفظ.",
+                    "options": [
+                        "خطأ",
+                        "صح"
+                    ],
+                    "ans": 0
+                },
+                {
+                    "q": "الجناس التام يتفق فيه اللفظان في نوع الحروف وعددها وترتيبها وضبطها.",
+                    "options": [
+                        "صح",
+                        "خطأ"
+                    ],
+                    "ans": 0
+                },
+                {
+                    "q": "«لملأت العيون من العيون» جناس ناقص.",
+                    "options": [
+                        "خطأ",
+                        "صح"
+                    ],
+                    "ans": 0
+                },
+                {
+                    "q": "«السِّحر - السَّحَر» جناس ناقص باختلاف الضبط.",
+                    "options": [
+                        "خطأ",
+                        "صح"
+                    ],
+                    "ans": 1
+                },
+                {
+                    "q": "«عوراتنا - روعاتنا» جناس ناقص باختلاف عدد الحروف.",
+                    "options": [
+                        "خطأ",
+                        "صح"
+                    ],
+                    "ans": 0
+                },
+                {
+                    "q": "«تلاق - تلاف» جناس ناقص باختلاف نوع الحروف.",
+                    "options": [
+                        "صح",
+                        "خطأ"
+                    ],
+                    "ans": 0
+                },
+                {
+                    "q": "المحسنات اللفظية تعطي جرسًا موسيقيًا تطرب له الأذن.",
+                    "options": [
+                        "خطأ",
+                        "صح"
+                    ],
+                    "ans": 1
+                },
+                {
+                    "q": "«أحرام على بلابله الدوح حلال للطير» بين «حرام - حلال» طباق سلب.",
+                    "options": [
+                        "خطأ",
+                        "صح"
+                    ],
+                    "ans": 0
+                },
+                {
+                    "q": "«يستخفون من الناس ولا يستخفون من الله» طباق سلب.",
+                    "options": [
+                        "صح",
+                        "خطأ"
+                    ],
+                    "ans": 0
+                },
+                {
+                    "q": "«اللهم إن كنت قد أبليت فإنك طالما قد عافيت» فيه تصريع.",
+                    "options": [
+                        "خطأ",
+                        "صح"
+                    ],
+                    "ans": 0
+                },
+                {
+                    "q": "«على قدر أهل العزم تأتي العزائم * وتأتي على قدر الكرام المكارم» فيه تصريع.",
+                    "options": [
+                        "صح",
+                        "خطأ"
+                    ],
+                    "ans": 0
+                },
+                {
+                    "q": "قول ابن المقفع: «لكل مخلوق حاجة ولكل حاجة غاية» فيه ازدواج.",
+                    "options": [
+                        "خطأ",
+                        "صح"
+                    ],
+                    "ans": 1
+                },
+                {
+                    "q": "في وصية أمامة «خرجتِ - درجتِ» طباق.",
+                    "options": [
+                        "صح",
+                        "خطأ"
+                    ],
+                    "ans": 1
+                },
+                {
+                    "q": "في وصية أمامة «العاقل - الغافل» طباق.",
+                    "options": [
+                        "خطأ",
+                        "صح"
+                    ],
+                    "ans": 1
+                },
+                {
+                    "q": "«الترح إن كان فرحًا والاكتئاب إن كان ترحًا» مقابلة.",
+                    "options": [
+                        "صح",
+                        "خطأ"
+                    ],
+                    "ans": 0
+                },
+                {
+                    "q": "«يبلغها - تبغيل» جناس تام.",
+                    "options": [
+                        "خطأ",
+                        "صح"
+                    ],
+                    "ans": 0
+                },
+                {
+                    "q": "«ما ظهر منها وما بطن» طباق يفيد العموم والشمول.",
+                    "options": [
+                        "خطأ",
+                        "صح"
+                    ],
+                    "ans": 1
+                },
+                {
+                    "q": "التحول من ضمير الغيبة إلى ضمير المتكلم في «حرم ربكم... نحن نرزقكم» التفات.",
+                    "options": [
+                        "صح",
+                        "خطأ"
+                    ],
+                    "ans": 0
+                },
+                {
+                    "q": "«غرر - حجول» طباق.",
+                    "options": [
+                        "صح",
+                        "خطأ"
+                    ],
+                    "ans": 1
+                },
+                {
+                    "q": "«الحلم - الحكم» جناس ناقص.",
+                    "options": [
+                        "خطأ",
+                        "صح"
+                    ],
+                    "ans": 1
+                },
+                {
+                    "q": "«الإقدام - الإحجام» جناس تام.",
+                    "options": [
+                        "صح",
+                        "خطأ"
+                    ],
+                    "ans": 1
+                },
+                {
+                    "q": "«أحكمه - لم يحكمه» طباق سلب.",
+                    "options": [
+                        "صح",
+                        "خطأ"
+                    ],
+                    "ans": 0
+                },
+                {
+                    "q": "«العلم - التعليم» جناس ناقص يعطي جرسًا موسيقيًا.",
+                    "options": [
+                        "صح",
+                        "خطأ"
+                    ],
+                    "ans": 0
+                },
+                {
+                    "q": "«وتحسبهم أيقاظًا وهم رقود» طباق سلب.",
+                    "options": [
+                        "صح",
+                        "خطأ"
+                    ],
+                    "ans": 1
+                },
+                {
+                    "q": "«هل يستوي الذين يعلمون والذين لا يعلمون» طباق سلب.",
+                    "options": [
+                        "خطأ",
+                        "صح"
+                    ],
+                    "ans": 1
+                },
+                {
+                    "q": "«فليضحكوا قليلًا وليبكوا كثيرًا» مقابلة.",
+                    "options": [
+                        "خطأ",
+                        "صح"
+                    ],
+                    "ans": 1
+                },
+                {
+                    "q": "«ويوم تقوم الساعة يقسم المجرمون ما لبثوا غير ساعة» جناس ناقص.",
+                    "options": [
+                        "خطأ",
+                        "صح"
+                    ],
+                    "ans": 0
+                },
+                {
+                    "q": "«ويل لكل همزة لمزة» جناس ناقص.",
+                    "options": [
+                        "صح",
+                        "خطأ"
+                    ],
+                    "ans": 0
+                },
+                {
+                    "q": "سر جمال المقابلة الجرس الموسيقي فقط.",
+                    "options": [
+                        "خطأ",
+                        "صح"
+                    ],
+                    "ans": 0
+                },
+                {
+                    "q": "التورية من المحسنات المعنوية.",
+                    "options": [
+                        "خطأ",
+                        "صح"
+                    ],
+                    "ans": 1
+                },
+                {
+                    "q": "السجع من المحسنات المعنوية.",
+                    "options": [
+                        "خطأ",
+                        "صح"
+                    ],
+                    "ans": 0
+                },
+                {
+                    "q": "«قفا نبك من ذكرى حبيب ومنزل * بسقط اللوى بين الدخول فحومل» فيه تصريع.",
+                    "options": [
+                        "خطأ",
+                        "صح"
+                    ],
+                    "ans": 1
+                },
+                {
+                    "q": "«اللهم أعط منفقًا خلفًا وأعط ممسكًا تلفًا» فيه سجع ومقابلة.",
+                    "options": [
+                        "صح",
+                        "خطأ"
+                    ],
+                    "ans": 0
+                },
+                {
+                    "q": "في «أبيات شعرك كالقصور ولا قصور بها» تورية في كلمة «قصور».",
+                    "options": [
+                        "خطأ",
+                        "صح"
+                    ],
+                    "ans": 1
+                },
+                {
+                    "q": "الطباق لا يكون إلا في الشعر.",
+                    "options": [
+                        "صح",
+                        "خطأ"
+                    ],
+                    "ans": 1
+                },
+                {
+                    "q": "في «الدواء - السقام» طباق بحسب الكتاب.",
+                    "options": [
+                        "خطأ",
+                        "صح"
+                    ],
+                    "ans": 1
+                },
+                {
+                    "q": "«عدته - عتاده - عادته» جناس تام.",
+                    "options": [
+                        "صح",
+                        "خطأ"
+                    ],
+                    "ans": 1
+                },
+                {
+                    "q": "«تعقلون - تذكرون» تناسب فواصل يعطي جرسًا موسيقيًا.",
+                    "options": [
+                        "صح",
+                        "خطأ"
+                    ],
+                    "ans": 0
+                },
+                {
+                    "q": "الجناس الناقص قد يكون باختلاف عدد الحروف مثل «عزم - عازم».",
+                    "options": [
+                        "خطأ",
+                        "صح"
+                    ],
+                    "ans": 1
+                },
+                {
+                    "q": "«وباسط خير فيكم بيمينه وقابض شر عنكم بشماله» طباق فقط وليس مقابلة.",
+                    "options": [
+                        "خطأ",
+                        "صح"
+                    ],
+                    "ans": 0
+                },
+                {
+                    "q": "«تعز من تشاء وتذل من تشاء» بين «تعز - تذل» طباق إيجاب.",
+                    "options": [
+                        "صح",
+                        "خطأ"
+                    ],
+                    "ans": 0
+                },
+                {
+                    "q": "حسن التقسيم قد تتكرر فيه بعض الكلمات.",
+                    "options": [
+                        "خطأ",
+                        "صح"
+                    ],
+                    "ans": 1
+                },
+                {
+                    "q": "المعنى القريب في التورية هو المقصود دائمًا.",
+                    "options": [
+                        "صح",
+                        "خطأ"
+                    ],
+                    "ans": 1
+                }
+            ]
+        },
+        {
+            "id": "genius_5178",
+            "title": "تحدي العباقرة",
+            "type": "genius",
+            "desc": "تحدٍّ سريع لعباقرة المحسنات البديعية",
+            "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M9.663 17h4.673M12 3a6 6 0 0 0-6 6c0 1.887.454 2.921 1.5 4.5.5.75 1 1.5 1 2.5h7c0-1 .5-1.75 1-2.5C17.546 11.921 18 10.887 18 9a6 6 0 0 0-6-6z\"></path></svg>",
+            "questions": [
+                {
+                    "q": "ما الفرق بين المحسن المعنوي والمحسن اللفظي؟",
+                    "options": [
+                        "لا فرق بينهما",
+                        "المعنوي في الشعر واللفظي في النثر",
+                        "المعنوي يرجع حسنه إلى المعنى، واللفظي يرجع حسنه إلى اللفظ والموسيقا",
+                        "المعنوي موسيقي واللفظي معنوي"
+                    ],
+                    "ans": 2
+                },
+                {
+                    "q": "لماذا تُعدّ «يستخفون - لا يستخفون» طباقًا رغم أن اللفظ واحد؟",
+                    "options": [
+                        "لأن إحداهما مثبتة والأخرى منفية فهو طباق سلب",
+                        "لأنهما جناس تام",
+                        "لأنهما متضادتان في الحروف",
+                        "لأنهما مقابلة"
+                    ],
+                    "ans": 0
+                },
+                {
+                    "q": "كيف يفيد الطباق في «ما ظهر منها وما بطن» العموم والشمول؟",
+                    "options": [
+                        "لأنه كرر اللفظ",
+                        "لأنه جمع بين الطرفين المتضادين فشمل كل الفواحش",
+                        "لأنه أثار الذهن بالمعنى البعيد",
+                        "لأنه أعطى جرسًا"
+                    ],
+                    "ans": 1
+                },
+                {
+                    "q": "لماذا لا تُعدّ «أحرام - حلال» مقابلة؟",
+                    "options": [
+                        "لأن التضاد بين كلمتين مفردتين فقط",
+                        "لأنها جناس",
+                        "لأنها تورية",
+                        "لأنها في الشعر"
+                    ],
+                    "ans": 0
+                },
+                {
+                    "q": "لماذا عُدّ «فليضحكوا قليلًا وليبكوا كثيرًا» مقابلة؟",
+                    "options": [
+                        "لأنه أتى بمعنيين (يضحكوا - قليلًا) ثم بما يقابلهما بالترتيب (يبكوا - كثيرًا)",
+                        "لأن فيه كلمتين متضادتين فقط",
+                        "لأن فيه جناسًا",
+                        "لأن فيه سجعًا"
+                    ],
+                    "ans": 0
+                },
+                {
+                    "q": "ما سر الإثارة في التورية «آكل العيش بالجبن»؟",
+                    "options": [
+                        "يتكرر اللفظ",
+                        "يتساوى الشطران",
+                        "يتبادر المعنى القريب (الطعام) ثم ينصرف الذهن إلى المعنى البعيد (الخوف)",
+                        "يتضاد المعنيان"
+                    ],
+                    "ans": 2
+                },
+                {
+                    "q": "ما الذي يلائم المعنى القريب لكلمة «الجبن» في البيت؟",
+                    "options": [
+                        "شنّوا إلى الحرب",
+                        "آكل العيش",
+                        "غارة",
+                        "دعوني"
+                    ],
+                    "ans": 1
+                },
+                {
+                    "q": "ما الذي يلائم المعنى البعيد المراد لكلمة «الجبن»؟",
+                    "options": [
+                        "آكل العيش",
+                        "دعوني",
+                        "شنّوا إلى الحرب غارة",
+                        "أقول"
+                    ],
+                    "ans": 2
+                },
+                {
+                    "q": "لماذا لا يُعدّ «لكل مخلوق حاجة ولكل حاجة غاية» سجعًا كاملًا؟",
+                    "options": [
+                        "لأنه شعر",
+                        "لأنه طباق",
+                        "لأن الفواصل لم تتفق في الحرف الأخير، والمعتبر تساوي الجمل فهو ازدواج",
+                        "لأنه جناس تام"
+                    ],
+                    "ans": 2
+                },
+                {
+                    "q": "لماذا يُعدّ «العزائم - المكارم» تصريعًا لا سجعًا؟",
+                    "options": [
+                        "لأنه في النثر",
+                        "لأن الحرفين مختلفان",
+                        "لأنه في نهاية شطري البيت الأول من الشعر",
+                        "لأنه جناس"
+                    ],
+                    "ans": 2
+                },
+                {
+                    "q": "في «لملأت العيونَ من العيون» لماذا الجناس تام؟",
+                    "options": [
+                        "لاتفاق اللفظين في نوع الحروف وعددها وترتيبها وضبطها مع اختلاف المعنى",
+                        "لاتفاقهما في المعنى",
+                        "لاختلاف الضبط",
+                        "لاختلاف الترتيب"
+                    ],
+                    "ans": 0
+                },
+                {
+                    "q": "«الساعة - ساعة» في الآية: الأولى بمعنى ... والثانية بمعنى ...",
+                    "options": [
+                        "مدة من الزمن - يوم القيامة",
+                        "يوم القيامة - مدة من الزمن",
+                        "يوم القيامة في الموضعين",
+                        "الآلة - الزمن"
+                    ],
+                    "ans": 1
+                },
+                {
+                    "q": "أي العبارات فيها جناس ناقص باختلاف الضبط؟",
+                    "options": [
+                        "نفثة السِّحر - نفحة السَّحَر",
+                        "عوراتنا - روعاتنا",
+                        "عزم - عازم",
+                        "تلاق - تلاف"
+                    ],
+                    "ans": 0
+                },
+                {
+                    "q": "أي العبارات فيها جناس ناقص باختلاف الترتيب؟",
+                    "options": [
+                        "السِّحر - السَّحَر",
+                        "عزم - عازم",
+                        "عوراتنا - روعاتنا",
+                        "تلاق - تلاف"
+                    ],
+                    "ans": 2
+                },
+                {
+                    "q": "«وما ضرّنا أنا قليلٌ وجارنا عزيز وجار الأكثرين ذليل» القيمة البلاغية للمقابلة:",
+                    "options": [
+                        "إثارة الذهن",
+                        "الجرس الموسيقي فقط",
+                        "توضيح المعنى وتقويته",
+                        "التجسيم"
+                    ],
+                    "ans": 2
+                },
+                {
+                    "q": "في وصية أمامة «فإن الخصلة الأولى من التقصير والثانية من التكدير» المحسن بين «التقصير - التكدير»:",
+                    "options": [
+                        "سجع",
+                        "طباق",
+                        "تورية",
+                        "مقابلة"
+                    ],
+                    "ans": 0
+                },
+                {
+                    "q": "في وصية أمامة «والكحل أحسن الحسن الموجود، والماء أطيب الطيب المفقود» المحسنات:",
+                    "options": [
+                        "تصريع وتورية",
+                        "سجع وازدواج وطباق",
+                        "جناس تام فقط",
+                        "مقابلة فقط"
+                    ],
+                    "ans": 1
+                },
+                {
+                    "q": "لماذا عدّ الكتاب «حرّم ربكم... نحن نرزقكم» التفاتًا؟",
+                    "options": [
+                        "لأنه تحوّل من ضمير الغيبة إلى ضمير المتكلم لإثارة الذهن",
+                        "لأنه تضاد بين كلمتين",
+                        "لأنه جناس",
+                        "لأنه سجع"
+                    ],
+                    "ans": 0
+                },
+                {
+                    "q": "ما قيمة الالتفات؟",
+                    "options": [
+                        "إثارة الذهن وتجديد نشاط السامع",
+                        "الجرس الموسيقي",
+                        "التجسيم",
+                        "التضاد"
+                    ],
+                    "ans": 0
+                },
+                {
+                    "q": "لماذا يُعدّ «غرر - حجول» مراعاة نظير لا طباقًا؟",
+                    "options": [
+                        "لأنهما متناسبان (من صفات الخيل) لا متضادان",
+                        "لأنهما متضادان",
+                        "لأنهما جناس",
+                        "لأنهما سجع"
+                    ],
+                    "ans": 0
+                },
+                {
+                    "q": "في «يبلغها - تبغيل» لماذا عُدّ جناسًا ناقصًا؟",
+                    "options": [
+                        "لتشابه الحروف مع اختلاف في العدد والترتيب والمعنى",
+                        "لاتفاقهما في كل شيء",
+                        "لتضادهما",
+                        "لأنهما مترادفان"
+                    ],
+                    "ans": 0
+                },
+                {
+                    "q": "أي المحسنات لا يكون إلا في الشعر؟",
+                    "options": [
+                        "السجع والازدواج",
+                        "التصريع وحسن التقسيم",
+                        "الطباق والمقابلة",
+                        "الجناس والتورية"
+                    ],
+                    "ans": 1
+                },
+                {
+                    "q": "أي المحسنات لا يكون إلا في النثر؟",
+                    "options": [
+                        "التصريع وحسن التقسيم",
+                        "السجع والازدواج",
+                        "الطباق والجناس",
+                        "التورية والمقابلة"
+                    ],
+                    "ans": 1
+                },
+                {
+                    "q": "قال شوقي: «نفسي مرجلٌ وقلبي شراعٌ * بهما في الدموع سيري وأرسي» المحسن البديعي:",
+                    "options": [
+                        "حسن التقسيم",
+                        "سجع",
+                        "تورية",
+                        "جناس تام"
+                    ],
+                    "ans": 0
+                },
+                {
+                    "q": "وفي البيت السابق «سيري - أرسي» من المحسنات:",
+                    "options": [
+                        "جناس تام",
+                        "تصريع",
+                        "تورية",
+                        "طباق"
+                    ],
+                    "ans": 3
+                },
+                {
+                    "q": "قال تعالى: «تؤتي الملك من تشاء وتنزع الملك ممن تشاء وتعز من تشاء وتذل من تشاء» المحسن:",
+                    "options": [
+                        "جناس تام",
+                        "طباق يوضح المعنى ويقويه",
+                        "تورية",
+                        "سجع"
+                    ],
+                    "ans": 1
+                },
+                {
+                    "q": "«خير المال عينٌ ساهرةٌ لعينٍ نائمة» المحسنات:",
+                    "options": [
+                        "مقابلة فقط",
+                        "سجع فقط",
+                        "طباق (ساهرة - نائمة) وجناس تام (عين - عين)",
+                        "تورية وتصريع"
+                    ],
+                    "ans": 2
+                },
+                {
+                    "q": "قال تعالى: «وأنه هو أضحك وأبكى وأنه هو أمات وأحيا» المحسن:",
+                    "options": [
+                        "جناس تام",
+                        "طباق (أضحك - أبكى) و(أمات - أحيا)",
+                        "تورية",
+                        "تصريع"
+                    ],
+                    "ans": 1
+                },
+                {
+                    "q": "«قال: أبيات شعرك كالقصور ولا قصور بها يعوق» المعنى القريب والبعيد لـ«قصور»:",
+                    "options": [
+                        "المباني (قريب) - العجز والنقص (بعيد مراد)",
+                        "العجز (قريب) - المباني (بعيد)",
+                        "المباني في الموضعين",
+                        "العجز في الموضعين"
+                    ],
+                    "ans": 0
+                },
+                {
+                    "q": "لماذا يُعدّ «قصور - قصور» في البيت السابق جناسًا تامًا أيضًا؟",
+                    "options": [
+                        "لاختلاف الضبط",
+                        "لاختلاف العدد",
+                        "لاتفاق اللفظين حروفًا وعددًا وترتيبًا وضبطًا واختلاف المعنى",
+                        "لأنهما متضادان"
+                    ],
+                    "ans": 2
+                },
+                {
+                    "q": "ما الفرق بين التورية والجناس التام؟",
+                    "options": [
+                        "لا فرق بينهما",
+                        "التورية لفظان والجناس لفظ واحد",
+                        "التورية لفظ واحد له معنيان، والجناس التام لفظان متفقان مختلفا المعنى",
+                        "كلاهما تضاد"
+                    ],
+                    "ans": 2
+                },
+                {
+                    "q": "في «الإقدام - الإحجام» نوع المحسن وقيمته:",
+                    "options": [
+                        "جناس يعطي جرسًا",
+                        "تورية تثير الذهن",
+                        "سجع يطرب الأذن",
+                        "طباق يؤكد المعنى ويوضحه"
+                    ],
+                    "ans": 3
+                },
+                {
+                    "q": "«ما يرد عليه قبل وروده - ما يصدر عنه قبل صدوره» المحسن:",
+                    "options": [
+                        "جناس تام",
+                        "تورية",
+                        "مقابلة تؤكد المعنى وتوضحه",
+                        "تصريع"
+                    ],
+                    "ans": 2
+                },
+                {
+                    "q": "«يحتاج من نفسه - يحتاج منه صاحبه» في آداب الكتاب المحسن:",
+                    "options": [
+                        "طباق",
+                        "تورية",
+                        "سجع وازدواج",
+                        "تصريع"
+                    ],
+                    "ans": 2
+                },
+                {
+                    "q": "«غريزة عقله - حسن أدبه - فضل تجربته» المحسن:",
+                    "options": [
+                        "ازدواج",
+                        "طباق",
+                        "تورية",
+                        "جناس تام"
+                    ],
+                    "ans": 0
+                },
+                {
+                    "q": "قال الشاعر: «وإذا عتبتَ على السفيه ولمتَه * في مثل ما تأتي فأنت ظلوم» بين «عتبت - لمت»:",
+                    "options": [
+                        "طباق",
+                        "جناس",
+                        "ترادف (إطناب) وليس محسنًا بديعيًا",
+                        "مقابلة"
+                    ],
+                    "ans": 2
+                },
+                {
+                    "q": "أي العبارات فيها طباق سلب؟",
+                    "options": [
+                        "وتحسبهم أيقاظًا وهم رقود",
+                        "فليضحكوا قليلًا وليبكوا كثيرًا",
+                        "تعز من تشاء وتذل من تشاء",
+                        "قل هل يستوي الذين يعلمون والذين لا يعلمون"
+                    ],
+                    "ans": 3
+                },
+                {
+                    "q": "أي العبارات فيها مقابلة؟",
+                    "options": [
+                        "ما ظهر منها وما بطن",
+                        "اللهم أعط منفقًا خلفًا وأعط ممسكًا تلفًا",
+                        "يستخفون ولا يستخفون",
+                        "أحرام... حلال"
+                    ],
+                    "ans": 1
+                },
+                {
+                    "q": "أي العبارات فيها تورية؟",
+                    "options": [
+                        "دعوني فإني آكل العيش بالجبن",
+                        "لملأت العيون من العيون",
+                        "استر عوراتنا وآمن روعاتنا",
+                        "على قدر أهل العزم تأتي العزائم"
+                    ],
+                    "ans": 0
+                },
+                {
+                    "q": "أي العبارات فيها تصريع؟",
+                    "options": [
+                        "اللهم إن كنت قد أبليت فإنك طالما قد عافيت",
+                        "لكل مخلوق حاجة ولكل حاجة غاية",
+                        "متفرد بصبابتي متفرد بكآبتي",
+                        "على قدر أهل العزم تأتي العزائم * وتأتي على قدر الكرام المكارم"
+                    ],
+                    "ans": 3
+                },
+                {
+                    "q": "أي العبارات فيها ازدواج؟",
+                    "options": [
+                        "على قدر أهل العزم تأتي العزائم",
+                        "آكل العيش بالجبن",
+                        "لكل مخلوق حاجة ولكل حاجة غاية ولكل غاية سبيل",
+                        "يستخفون ولا يستخفون"
+                    ],
+                    "ans": 2
+                },
+                {
+                    "q": "أي العبارات فيها حسن تقسيم؟",
+                    "options": [
+                        "اللهم إن كنت قد أبليت",
+                        "آكل العيش بالجبن",
+                        "ما ظهر منها وما بطن",
+                        "متفرد بصبابتي، متفرد بكآبتي، متفرد بعنائي"
+                    ],
+                    "ans": 3
+                },
+                {
+                    "q": "قال تعالى: «فأما من أعطى واتقى وصدّق بالحسنى... وأما من بخل واستغنى وكذّب بالحسنى» المحسن:",
+                    "options": [
+                        "طباق فقط",
+                        "جناس تام",
+                        "تورية",
+                        "مقابلة"
+                    ],
+                    "ans": 3
+                },
+                {
+                    "q": "قال تعالى: «يخرج الحي من الميت ويخرج الميت من الحي» المحسن:",
+                    "options": [
+                        "جناس تام",
+                        "طباق يوضح المعنى ويقويه",
+                        "تورية",
+                        "سجع"
+                    ],
+                    "ans": 1
+                },
+                {
+                    "q": "القيمة الفنية للطباق في «سلامته - محمول» في قصيدة كعب:",
+                    "options": [
+                        "يعطي جرسًا موسيقيًا",
+                        "يثير الذهن بالمعنى البعيد",
+                        "يشخّص المعنوي",
+                        "يبرز المعنى ويوضحه"
+                    ],
+                    "ans": 3
+                },
+                {
+                    "q": "«أوعدني - العفو» في قصيدة كعب:",
+                    "options": [
+                        "جناس ناقص",
+                        "سجع",
+                        "تورية",
+                        "طباق يبرز المعنى ويوضحه"
+                    ],
+                    "ans": 3
+                },
+                {
+                    "q": "المحسنات البديعية في الشعر الجاهلي بحسب الكتاب جاءت:",
+                    "options": [
+                        "كثيرة ومتكلفة",
+                        "منعدمة تمامًا",
+                        "قليلة وغير متكلفة",
+                        "مقتصرة على الجناس"
+                    ],
+                    "ans": 2
+                },
+                {
+                    "q": "سر جمال حسن التقسيم والتصريع والسجع والازدواج:",
+                    "options": [
+                        "إثارة الذهن",
+                        "توضيح المعنى بالتضاد",
+                        "التشخيص",
+                        "تعطي جرسًا موسيقيًا تطرب له الأذن"
+                    ],
+                    "ans": 3
+                },
+                {
+                    "q": "أي الأمور الأربعة يتفق فيها الجناس التام؟",
+                    "options": [
+                        "المعنى - الوزن - القافية - الحرف",
+                        "العدد - المعنى - الضبط - الوزن",
+                        "نوع الحروف - عددها - ترتيبها - ضبطها",
+                        "الترتيب - المعنى - الضبط - النوع"
+                    ],
+                    "ans": 2
+                },
+                {
+                    "q": "لماذا الجناس في «الحلم - الحكم» ناقص؟",
+                    "options": [
+                        "لاختلاف نوع حرف واحد (اللام - الكاف)",
+                        "لاختلاف الضبط",
+                        "لاختلاف الترتيب",
+                        "لاتفاقهما تمامًا"
+                    ],
+                    "ans": 0
+                },
+                {
+                    "q": "ما المحسن في «عدّته - عتاده - عادته»؟",
+                    "options": [
+                        "جناس ناقص يعطي جرسًا موسيقيًا",
+                        "طباق",
+                        "تورية",
+                        "مقابلة"
+                    ],
+                    "ans": 0
+                },
+                {
+                    "q": "ما العلاقة بين «ورود المنايا - نيل المنى» في «ونفس الشريف لها غايتان»؟",
+                    "options": [
+                        "تفصيل بعد إجمال، وبين «المنايا - المنى» جناس ناقص",
+                        "طباق فقط",
+                        "تورية",
+                        "مقابلة"
+                    ],
+                    "ans": 0
+                },
+                {
+                    "q": "قال تعالى: «لا يستوي أصحاب النار وأصحاب الجنة» المحسن بين «النار - الجنة»:",
+                    "options": [
+                        "طباق",
+                        "جناس",
+                        "سجع",
+                        "تورية"
+                    ],
+                    "ans": 0
+                },
+                {
+                    "q": "أي مما يلي ليس من المحسنات اللفظية؟",
+                    "options": [
+                        "الجناس",
+                        "التورية",
+                        "السجع",
+                        "التصريع"
+                    ],
+                    "ans": 1
+                },
+                {
+                    "q": "أي مما يلي ليس من المحسنات المعنوية؟",
+                    "options": [
+                        "الطباق",
+                        "المقابلة",
+                        "الازدواج",
+                        "التورية"
+                    ],
+                    "ans": 2
+                },
+                {
+                    "q": "«الصبر مرٌّ وعاقبته حلوة» المحسن:",
+                    "options": [
+                        "جناس تام",
+                        "تورية",
+                        "طباق (مر - حلوة)",
+                        "تصريع"
+                    ],
+                    "ans": 2
+                },
+                {
+                    "q": "«إن العيون التي في طرفها حَوَر * قتلننا ثم لم يحيين قتلانا» المحسن بين «قتلننا - يحيين»:",
+                    "options": [
+                        "طباق",
+                        "جناس",
+                        "سجع",
+                        "تورية"
+                    ],
+                    "ans": 0
+                },
+                {
+                    "q": "«المجد للبطل والهزيمة للجبان» المحسن:",
+                    "options": [
+                        "مقابلة",
+                        "طباق فقط",
+                        "جناس",
+                        "تصريع"
+                    ],
+                    "ans": 0
+                },
+                {
+                    "q": "القيمة الفنية للمحسنات اللفظية في وصية أمامة:",
+                    "options": [
+                        "تثير الذهن بالمعنى البعيد",
+                        "تعطي الكلام نغمة موسيقية تطرب لها الأذن وتؤثر في النفس",
+                        "توضح المعنى بالتضاد",
+                        "تشخّص المعاني"
+                    ],
+                    "ans": 1
+                },
+                {
+                    "q": "لماذا كثر السجع في الوصايا والخطب؟",
+                    "options": [
+                        "لأنه يعطي جرسًا موسيقيًا يجذب الانتباه ويسهل الحفظ",
+                        "لأنه يكون في الشعر فقط",
+                        "لأنه يثير الذهن بالتورية",
+                        "لأنه يوضح بالتضاد"
+                    ],
+                    "ans": 0
+                }
+            ]
+        }
+    ];
+
+    // --- محرك الصوت للمؤثرات التفاعلية ---
+    const AudioContext = window.AudioContext || window.webkitAudioContext;
+    let audioCtx = null;
+
+    function initAudio() {
+        if (!audioCtx) {
+            audioCtx = new AudioContext();
+        }
+        if (audioCtx.state === 'suspended') {
+            audioCtx.resume();
+        }
+    }
+
+    function playTone(freq, type, duration, vol = 0.1) {
+        if (!audioCtx) return;
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        osc.type = type;
+        osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
+        gain.gain.setValueAtTime(vol, audioCtx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + duration);
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+        osc.start();
+        osc.stop(audioCtx.currentTime + duration);
+    }
+
+    function playCorrect() {
+        initAudio();
+        playTone(523.25, 'sine', 0.1, 0.1); 
+        setTimeout(() => playTone(659.25, 'sine', 0.1, 0.1), 100); 
+        setTimeout(() => playTone(783.99, 'sine', 0.2, 0.15), 200); 
+        setTimeout(() => playTone(1046.50, 'sine', 0.4, 0.2), 300); 
+        triggerConfetti();
+    }
+
+    function playWrong() {
+        initAudio();
+        playTone(300, 'sawtooth', 0.15, 0.1);
+        setTimeout(() => playTone(200, 'sawtooth', 0.25, 0.15), 150);
+        
+        const qBox = document.querySelector('.question-box');
+        if(qBox) {
+            qBox.classList.remove('shake');
+            void qBox.offsetWidth; 
+            qBox.classList.add('shake');
+        }
+    }
+
+    // --- مؤثرات بصرية ---
+    function triggerConfetti() {
+        const colors = ['#f72585', '#4cc9f0', '#fee440', '#00f5d4', '#8b5cf6'];
+        for(let i=0; i<40; i++) {
+            let conf = document.createElement('div');
+            conf.className = 'confetti';
+            conf.style.left = Math.random() * 100 + 'vw';
+            conf.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+            conf.style.animationDuration = (Math.random() * 2 + 1) + 's';
+            document.body.appendChild(conf);
+            setTimeout(() => conf.remove(), 3000);
+        }
+    }
+
+    function shuffleArray(arr) {
+        return arr.map(a => ({sort: Math.random(), value: a}))
+            .sort((a, b) => a.sort - b.sort)
+            .map(a => a.value);
+    }
+
+    function showFeedback(isCorrect, callback) {
+        const modal = document.getElementById('feedback-modal');
+        const icon = document.getElementById('feedback-icon');
+        const title = document.getElementById('feedback-title');
+        
+        if (isCorrect) {
+            playCorrect();
+            icon.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="var(--success)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>`;
+            title.textContent = 'إجابة صحيحة، بطل!';
+            title.style.color = 'var(--success)';
+        } else {
+            playWrong();
+            icon.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="var(--danger)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="15" y1="9" x2="9" y2="15"></line><line x1="9" y1="9" x2="15" y2="15"></line></svg>`;
+            title.textContent = 'إجابة خاطئة!';
+            title.style.color = 'var(--danger)';
+        }
+
+        modal.classList.add('active');
+        setTimeout(() => {
+            modal.classList.remove('active');
+            if (callback) callback();
+        }, 1300); // وقت الانتقال للسؤال التالي
+    }
+
+    // --- متغيرات محرك اللعبة ---
+    let currentGame = null;
+    let currentQuestions = [];
+    let qIndex = 0;
+    let animInterval = null;
+    let geniusTimerInterval = null;
+    let wrongAnswers = []; // مصفوفة لتخزين الأخطاء
+
+    // --- التهيئة ---
+    function initApp() {
+        const menuGrid = document.getElementById('menu-grid');
+        menuGrid.innerHTML = '';
+        allGamesData.forEach(game => {
+            const card = document.createElement('div');
+            card.className = 'menu-card';
+            card.innerHTML = `
+                <div class="icon-container">${game.icon}</div>
+                <h3>${game.title}</h3>
+                <p>${game.desc}</p>
+            `;
+            card.onclick = () => startGame(game);
+            menuGrid.appendChild(card);
+        });
+        
+        document.body.addEventListener('touchstart', initAudio, { once: true });
+        document.body.addEventListener('click', initAudio, { once: true });
+    }
+
+    function returnToMenu() {
+        clearInterval(animInterval); clearInterval(geniusTimerInterval);
+        goalTimeouts.forEach(t => clearTimeout(t)); goalTimeouts = [];
+        document.getElementById('game-screen').classList.add('hidden');
+        document.getElementById('home-screen').classList.remove('hidden');
+        document.getElementById('main-header').classList.remove('hidden');
+        document.getElementById('main-footer').classList.remove('hidden');
+    }
+
+    function updateProgress() {
+        document.getElementById('game-progress').innerText = `${qIndex + 1} / ${currentQuestions.length}`;
+    }
+
+    function gameComplete() {
+        const gc = document.getElementById('game-container');
+        playCorrect();
+        setTimeout(playCorrect, 300);
+
+        let score = currentQuestions.length - wrongAnswers.length;
+        let summaryHTML = '';
+
+        if (wrongAnswers.length > 0) {
+            summaryHTML += `
+            <div style="margin-top: 25px; text-align: right; background: #f8fafc; padding: 20px; border-radius: 15px; border: 2px solid #e2e8f0; max-height: 350px; overflow-y: auto;" class="errors-list">
+                <h3 style="color: var(--danger); margin-bottom: 15px; text-align: center; font-size: 1.4rem;">الأسئلة التي أخطأت فيها 📝</h3>
+                <ul style="list-style: none; padding: 0; display: flex; flex-direction: column; gap: 15px;">`;
+            
+            wrongAnswers.forEach((item, index) => {
+                summaryHTML += `
+                <li style="background: white; padding: 15px; border-radius: 10px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); border-right: 5px solid var(--danger);">
+                    <div style="font-weight: bold; color: var(--primary); margin-bottom: 8px; font-size: 1.1rem;">${index + 1}. ${item.question}</div>
+                    <div style="color: #64748b; font-size: 1rem; margin-bottom: 5px;">إجابتك: <span style="color: var(--danger); text-decoration: line-through;">${item.selected}</span></div>
+                    <div style="color: var(--success); font-weight: bold; font-size: 1.1rem;">الإجابة الصحيحة: ${item.correct}</div>
+                </li>`;
+            });
+            summaryHTML += `</ul></div>`;
+        } else {
+            summaryHTML += `<p style="color: var(--success); font-size: 1.5rem; font-weight: bold; margin-top: 20px;">أداء مثالي! لم تخطئ في أي سؤال 🌟</p>`;
+        }
+
+        gc.innerHTML = `
+            <div style="text-align:center; padding: 40px 20px; background: white; border-radius: 20px; box-shadow: 0 10px 25px rgba(0,0,0,0.1);">
+                <div style="display:flex; justify-content:center; margin-bottom: 20px;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 24 24" fill="none" stroke="var(--warning)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 21h10"/><path d="M12 17v4"/><path d="M12 3v14"/><path d="M5 7h14"/><path d="M12 3l-4 4 4 4 4-4-4-4z"/></svg>
+                </div>
+                <h2 style="color: var(--primary); margin-bottom: 10px; font-size:2rem; font-weight:800;">انتهت اللعبة!</h2>
+                <p style="font-size: 1.4rem; margin-bottom: 10px; color:#64748b; font-weight:bold;">نتيجتك: ${score} من ${currentQuestions.length}</p>
+                ${summaryHTML}
+                <div class="share-box">
+                    <h4>📲 أرسل نتيجتك إلى الأستاذ كَرِيم بَكْر</h4>
+                    <input type="text" id="student-name-input" class="share-name-input" placeholder="اكتب اسمك هنا أولًا">
+                    <div id="share-warning" class="share-warning">من فضلك اكتب اسمك أولًا قبل الإرسال ✋</div>
+                    <div>
+                        <button class="btn btn-share" onclick="sendResultToTeacher(${score}, ${currentQuestions.length})">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M12.031 0C5.385 0 0 5.385 0 12.031c0 2.656.843 5.12 2.26 7.15L.626 24l5.01-1.61c1.983 1.25 4.27 1.91 6.395 1.91 6.646 0 12.03-5.385 12.03-12.031S18.677 0 12.031 0zm6.544 17.202c-.273.766-1.58 1.464-2.185 1.503-.56.035-1.28.23-4.085-.86-3.39-1.32-5.59-4.78-5.736-4.97-.145-.19-1.37-1.82-1.37-3.475 0-1.655.857-2.47 1.164-2.8.307-.33.67-.413.89-.413.22 0 .44 0 .633.01.205.01.482-.08.736.53.264.634.904 2.203.984 2.366.08.163.133.353.033.553-.1.2-.153.326-.307.506-.154.18-.32.38-.453.506-.153.153-.314.316-.134.626.18.31.8 1.32 1.71 2.13.176.157.363.31.558.45 1.05.76 1.83 1.05 2.13 1.18.3.13.474.11.652-.09.18-.205.766-.893.97-1.2.204-.307.41-.256.69-.153.28.103 1.77.836 2.074.99.304.153.506.23.582.356.076.126.076.73-.197 1.496z"/></svg>
+                            إرسال النتيجة عبر واتساب
+                        </button>
+                    </div>
+                </div>
+                <button class="btn back-btn" style="font-size:1.1rem; padding:15px 30px; margin-top: 18px;" onclick="returnToMenu()">العودة للقائمة الرئيسية</button>
+            </div>
+        `;
+    }
+
+    function sendResultToTeacher(score, total) {
+        const nameInput = document.getElementById('student-name-input');
+        const warning = document.getElementById('share-warning');
+        const name = nameInput.value.trim();
+        if (!name) {
+            warning.style.display = 'block';
+            nameInput.classList.add('shake');
+            nameInput.focus();
+            setTimeout(() => nameInput.classList.remove('shake'), 500);
+            return;
+        }
+        warning.style.display = 'none';
+        const gameTitle = currentGame ? currentGame.title : '';
+        const message =
+            `📚 نتيجة طالب - ${LESSON_NAME}\n` +
+            `👤 اسم الطالب: ${name}\n` +
+            `🎮 اللعبة: ${gameTitle}\n` +
+            `✅ النتيجة: ${score} من ${total}\n` +
+            `⭐ نسبة النجاح: ${Math.round((score/total)*100)}%`;
+        const url = `https://wa.me/201033621345?text=${encodeURIComponent(message)}`;
+        window.open(url, '_blank');
+    }
+
+    function startGame(gameData) {
+        initAudio();
+        currentGame = gameData;
+        currentQuestions = shuffleArray([...gameData.questions]);
+        qIndex = 0;
+        wrongAnswers = []; // تصفير قائمة الأخطاء
+        
+        document.getElementById('home-screen').classList.add('hidden');
+        document.getElementById('main-header').classList.add('hidden');
+        document.getElementById('main-footer').classList.add('hidden');
+        document.getElementById('game-screen').classList.remove('hidden');
+        document.getElementById('game-title').innerText = gameData.title;
+        
+        renderNextState();
+    }
+
+    function renderNextState() {
+        if (qIndex >= currentQuestions.length) {
+            gameComplete();
+            return;
+        }
+
+        const gc = document.getElementById('game-container');
+        gc.innerHTML = '';
+        updateProgress();
+
+        if (currentGame.type === 'goals') {
+            renderGoals(gc);
+        } else if (currentGame.type === 'mcq') {
+            renderMCQ(gc);
+        } else if (currentGame.type === 'bubbles') {
+            renderBubbles(gc);
+        } else if (currentGame.type === 'shooting') {
+            renderShooting(gc);
+        } else if (currentGame.type === 'true_false') {
+            renderTrueFalse(gc);
+        } else if (currentGame.type === 'genius') {
+            renderGenius(gc);
+        }
+    }
+
+    // --- أنماط الألعاب ---
+
+    // 1. اختيارات (MCQ)
+    function renderMCQ(container) {
+        clearInterval(geniusTimerInterval);
+        const qData = currentQuestions[qIndex];
+        const correctText = qData.options[qData.ans];
+        const shuffledOptions = shuffleArray([...qData.options]);
+
+        const btnContainer = document.createElement('div');
+        btnContainer.className = 'options-grid';
+        
+        let isAnswered = false;
+
+        shuffledOptions.forEach(opt => {
+            const btn = document.createElement('button');
+            btn.className = 'btn';
+            btn.innerText = opt;
+            btn.onclick = () => {
+                if(isAnswered) return;
+                isAnswered = true;
+
+                if (opt === correctText) {
+                    btn.classList.add('btn-correct');
+                    showFeedback(true, () => { qIndex++; renderNextState(); });
+                } else {
+                    btn.classList.add('btn-wrong');
+                    wrongAnswers.push({ question: qData.q, correct: correctText, selected: opt });
+                    showFeedback(false, () => { qIndex++; renderNextState(); });
+                }
+            };
+            btnContainer.appendChild(btn);
+        });
+
+        const qBox = document.createElement('div');
+        qBox.className = 'question-box';
+        qBox.innerText = qData.q;
+        
+        container.appendChild(qBox);
+        container.appendChild(btnContainer);
+    }
+
+    // 2. صح أم خطأ
+    function renderTrueFalse(container) {
+        clearInterval(geniusTimerInterval);
+        const qData = currentQuestions[qIndex];
+        const correctText = qData.options[qData.ans];
+
+        const qBox = document.createElement('div');
+        qBox.className = 'question-box';
+        qBox.innerText = qData.q;
+        
+        const tfContainer = document.createElement('div');
+        tfContainer.className = 'tf-grid';
+        
+        let isAnswered = false;
+
+        // ترتيب ثابت (صح يميناً وخطأ يساراً)
+        const fixedOptions = ["صح", "خطأ"];
+
+        fixedOptions.forEach(opt => {
+            const btn = document.createElement('button');
+            btn.className = 'btn';
+            btn.style.flex = '1';
+            btn.style.minWidth = '200px';
+            btn.style.fontSize = '2rem';
+            btn.style.padding = '30px';
+            btn.style.justifyContent = 'center';
+            
+            if(opt === "صح") {
+                btn.style.background = "linear-gradient(to bottom, #10b981, #0e7490)";
+                btn.style.borderBottomColor = "#047857";
+            } else {
+                btn.style.background = "linear-gradient(to bottom, #ef4444, #dc2626)";
+                btn.style.borderBottomColor = "#b91c1c";
+            }
+
+            btn.innerText = opt;
+            
+            btn.onclick = () => {
+                if(isAnswered) return;
+                isAnswered = true;
+
+                if (opt === correctText) {
+                    btn.classList.add('btn-correct');
+                    showFeedback(true, () => { qIndex++; renderNextState(); });
+                } else {
+                    btn.classList.add('btn-wrong');
+                    wrongAnswers.push({ question: qData.q, correct: correctText, selected: opt });
+                    showFeedback(false, () => { qIndex++; renderNextState(); });
+                }
+            };
+            tfContainer.appendChild(btn);
+        });
+
+        container.appendChild(qBox);
+        container.appendChild(tfContainer);
+    }
+
+    // 5. تحدي العباقرة (سؤال بعدّاد زمني)
+    function renderGenius(container) {
+        clearInterval(animInterval); clearInterval(geniusTimerInterval);
+        clearInterval(geniusTimerInterval);
+        const qData = currentQuestions[qIndex];
+        const correctText = qData.options[qData.ans];
+        const shuffledOptions = shuffleArray([...qData.options]);
+
+        const wrap = document.createElement('div');
+        wrap.className = 'genius-wrap';
+
+        const badge = document.createElement('div');
+        badge.className = 'genius-badge';
+        badge.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9.663 17h4.673M12 3a6 6 0 0 0-6 6c0 1.887.454 2.921 1.5 4.5.5.75 1 1.5 1 2.5h7c0-1 .5-1.75 1-2.5C17.546 11.921 18 10.887 18 9a6 6 0 0 0-6-6z"></path></svg> تحدي العباقرة`;
+
+        const timerTrack = document.createElement('div');
+        timerTrack.className = 'genius-timer-track';
+        const timerBar = document.createElement('div');
+        timerBar.className = 'genius-timer-bar';
+        timerTrack.appendChild(timerBar);
+
+        const qBox = document.createElement('div');
+        qBox.className = 'question-box';
+        qBox.style.background = 'rgba(255,255,255,0.95)';
+        qBox.innerText = qData.q;
+
+        const optContainer = document.createElement('div');
+        optContainer.className = 'genius-options';
+
+        let isAnswered = false;
+        const TOTAL_TIME = 12000; // 12 ثانية لكل سؤال
+        let startTime = Date.now();
+
+        function finishQuestion(isCorrect, selectedText) {
+            if (isAnswered) return;
+            isAnswered = true;
+            clearInterval(geniusTimerInterval);
+            if (!isCorrect) {
+                wrongAnswers.push({ question: qData.q, correct: correctText, selected: selectedText || "انتهى الوقت!" });
+            }
+            showFeedback(isCorrect, () => { qIndex++; renderNextState(); });
+        }
+
+        shuffledOptions.forEach(opt => {
+            const btn = document.createElement('button');
+            btn.className = 'btn';
+            btn.innerText = opt;
+            btn.onclick = () => {
+                if (isAnswered) return;
+                if (opt === correctText) {
+                    btn.classList.add('btn-correct');
+                    finishQuestion(true, opt);
+                } else {
+                    btn.classList.add('btn-wrong');
+                    finishQuestion(false, opt);
+                }
+            };
+            optContainer.appendChild(btn);
+        });
+
+        wrap.appendChild(badge);
+        wrap.appendChild(timerTrack);
+        container.appendChild(wrap);
+        container.appendChild(qBox);
+        container.appendChild(optContainer);
+
+        geniusTimerInterval = setInterval(() => {
+            if (isAnswered) { clearInterval(geniusTimerInterval); return; }
+            const elapsed = Date.now() - startTime;
+            const pct = Math.max(0, 100 - (elapsed / TOTAL_TIME) * 100);
+            timerBar.style.width = pct + '%';
+            if (elapsed >= TOTAL_TIME) {
+                clearInterval(geniusTimerInterval);
+                finishQuestion(false, null);
+            }
+        }, 80);
+    }
+
+
+    // 6. تسجيل الأهداف (سدّد الكرة نحو الإجابة الصحيحة)
+    let goalTimeouts = [];
+    function renderGoals(container) {
+        clearInterval(animInterval); clearInterval(geniusTimerInterval);
+        goalTimeouts.forEach(t => clearTimeout(t)); goalTimeouts = [];
+        const qData = currentQuestions[qIndex];
+        const correctText = qData.options[qData.ans];
+        const shuffledOptions = shuffleArray([...qData.options]);
+
+        const qBox = document.createElement('div');
+        qBox.className = 'question-box';
+        qBox.innerText = qData.q;
+
+        const pitch = document.createElement('div');
+        pitch.className = 'pitch';
+        pitch.innerHTML = `
+            <div class="goal-frame"></div>
+            <div class="keeper idle">
+                <svg viewBox="0 0 64 82" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="32" cy="12" r="10" fill="#fcd9b6" stroke="#7c2d12" stroke-width="1.5"/>
+                    <path d="M22 9 Q32 -1 42 9" fill="#1e293b"/>
+                    <rect x="20" y="23" width="24" height="30" rx="7" fill="#f97316" stroke="#9a3412" stroke-width="1.5"/>
+                    <text x="32" y="44" font-size="13" font-weight="900" text-anchor="middle" fill="#fff" font-family="Cairo, sans-serif">1</text>
+                    <path d="M20 27 L4 14" stroke="#f97316" stroke-width="7" stroke-linecap="round"/>
+                    <path d="M44 27 L60 14" stroke="#f97316" stroke-width="7" stroke-linecap="round"/>
+                    <circle cx="4" cy="13" r="5.5" fill="#facc15" stroke="#a16207" stroke-width="1.5"/>
+                    <circle cx="60" cy="13" r="5.5" fill="#facc15" stroke="#a16207" stroke-width="1.5"/>
+                    <rect x="22" y="52" width="20" height="10" rx="3" fill="#1e293b"/>
+                    <path d="M26 62 L24 79" stroke="#1e293b" stroke-width="6" stroke-linecap="round"/>
+                    <path d="M38 62 L40 79" stroke="#1e293b" stroke-width="6" stroke-linecap="round"/>
+                </svg>
+            </div>
+            <div class="soccer-ball">⚽</div>
+            <div class="goal-banner"></div>
+        `;
+
+        const optContainer = document.createElement('div');
+        optContainer.className = 'shot-options';
+
+        // مواقع التسديد داخل المرمى (يمين أعلى، يسار أعلى، يمين أسفل، يسار أسفل)
+        const targets = [
+            { left: 74, top: 40 }, { left: 26, top: 40 },
+            { left: 74, top: 95 }, { left: 26, top: 95 }
+        ];
+
+        let isAnswered = false;
+        const keeper = pitch.querySelector('.keeper');
+        const ball = pitch.querySelector('.soccer-ball');
+        const goalFrame = pitch.querySelector('.goal-frame');
+        const banner = pitch.querySelector('.goal-banner');
+
+        shuffledOptions.forEach((opt, index) => {
+            const btn = document.createElement('button');
+            btn.className = 'btn';
+            btn.innerHTML = `<span class="ball-ico">⚽</span><span></span>`;
+            btn.lastChild.innerText = opt;
+            btn.onclick = () => {
+                if (isAnswered) return;
+                isAnswered = true;
+                const isCorrect = (opt === correctText);
+                btn.classList.add(isCorrect ? 'btn-correct' : 'btn-wrong');
+                const t = targets[index];
+
+                // تسديد الكرة
+                ball.style.left = t.left + '%';
+                ball.style.top = (t.top - 14) + 'px';
+                ball.style.transform = 'translate(-50%, 0) scale(0.6) rotate(540deg)';
+
+                // حركة الحارس
+                keeper.classList.remove('idle');
+                keeper.style.marginLeft = '0px';
+                if (isCorrect) {
+                    const wrongSide = t.left > 50 ? 26 : 74;
+                    keeper.style.left = wrongSide + '%';
+                    keeper.style.transform = `translateX(-50%) rotate(${t.left > 50 ? -70 : 70}deg)`;
+                } else {
+                    keeper.style.left = t.left + '%';
+                    keeper.style.transform = `translateX(-50%) rotate(${t.left > 50 ? 70 : -70}deg)`;
+                }
+
+                goalTimeouts.push(setTimeout(() => {
+                    if (isCorrect) {
+                        goalFrame.classList.add('net-shake');
+                        banner.textContent = '⚽ هدف!';
+                        banner.classList.remove('miss');
+                    } else {
+                        // الحارس يبعد الكرة
+                        ball.style.top = '200px';
+                        ball.style.left = (t.left > 50 ? 92 : 8) + '%';
+                        banner.textContent = '🧤 تصدّى الحارس!';
+                        banner.classList.add('miss');
+                        wrongAnswers.push({ question: qData.q, correct: correctText, selected: opt });
+                    }
+                    banner.classList.add('show');
+                }, 620));
+
+                goalTimeouts.push(setTimeout(() => {
+                    showFeedback(isCorrect, () => { qIndex++; renderNextState(); });
+                }, 1350));
+            };
+            optContainer.appendChild(btn);
+        });
+
+        container.appendChild(qBox);
+        container.appendChild(pitch);
+        container.appendChild(optContainer);
+
+        let hint = document.createElement('div');
+        hint.style.textAlign = 'center';
+        hint.style.marginTop = '15px';
+        hint.style.color = 'var(--primary)';
+        hint.style.fontWeight = 'bold';
+        hint.style.fontSize = '1.1rem';
+        hint.innerHTML = `⚽ اختر الإجابة الصحيحة لتسدد الكرة في المرمى وتسجّل هدفًا!`;
+        container.appendChild(hint);
+    }
+
+    // 3. الفقاعات المتساقطة
+    function renderBubbles(container) {
+        clearInterval(animInterval); clearInterval(geniusTimerInterval);
+        const qData = currentQuestions[qIndex];
+        const correctText = qData.options[qData.ans];
+        const shuffledOptions = shuffleArray([...qData.options]);
+
+        const qBox = document.createElement('div');
+        qBox.className = 'question-box';
+        qBox.innerText = qData.q;
+        
+        const area = document.createElement('div');
+        area.className = 'bubbles-area';
+
+        let bubbles = [];
+        let isAnswered = false;
+
+        shuffledOptions.forEach((opt, index) => {
+            const bubble = document.createElement('div');
+            bubble.className = 'bubble';
+            bubble.innerHTML = `<span>${opt}</span>`;
+            
+            let leftPos = 2 + (index * 24); 
+            bubble.style.left = leftPos + '%';
+            
+            let topPos = -100 - (Math.random() * 80);
+            bubble.style.top = topPos + 'px';
+            
+            let speed = 0.95 + Math.random() * 0.65; 
+
+            bubble.onclick = () => {
+                if (isAnswered) return;
+                isAnswered = true;
+                clearInterval(animInterval); clearInterval(geniusTimerInterval);
+                if (opt === correctText) {
+                    bubble.style.background = 'var(--success)';
+                    bubble.style.color = 'white';
+                    showFeedback(true, () => { qIndex++; renderNextState(); });
+                } else {
+                    bubble.style.background = 'var(--danger)';
+                    bubble.style.color = 'white';
+                    wrongAnswers.push({ question: qData.q, correct: correctText, selected: opt });
+                    showFeedback(false, () => { qIndex++; renderNextState(); });
+                }
+            };
+
+            area.appendChild(bubble);
+            bubbles.push({ el: bubble, top: topPos, speed: speed, isCorrect: opt === correctText, active: true });
+        });
+
+        container.appendChild(qBox);
+        container.appendChild(area);
+        
+        let hint = document.createElement('div');
+        hint.style.textAlign = 'center';
+        hint.style.marginTop = '15px';
+        hint.style.color = 'var(--primary)';
+        hint.style.fontWeight = 'bold';
+        hint.style.fontSize = '1.1rem';
+        hint.innerHTML = `💡 اضغط على الفقاعة التي تحمل الإجابة الصحيحة قبل أن تسقط!`;
+        container.appendChild(hint);
+
+        let areaHeight = 400;
+
+        animInterval = setInterval(() => {
+            if (isAnswered) return;
+            bubbles.forEach(b => {
+                if (!b.active) return;
+                b.top += b.speed;
+                b.el.style.top = b.top + 'px';
+                
+                b.el.style.transform = `translateX(${Math.sin(b.top / 20) * 5}px)`;
+
+                if (b.top > areaHeight) {
+                    b.active = false;
+                    b.el.style.display = 'none';
+                    if (b.isCorrect && !isAnswered) {
+                        isAnswered = true;
+                        clearInterval(animInterval); clearInterval(geniusTimerInterval);
+                        wrongAnswers.push({ question: qData.q, correct: correctText, selected: "سقطت دون اختيار" });
+                        showFeedback(false, () => { qIndex++; renderNextState(); });
+                    }
+                }
+            });
+        }, 30);
+    }
+
+    // 4. التنشين
+    function renderShooting(container) {
+        clearInterval(animInterval); clearInterval(geniusTimerInterval);
+        const qData = currentQuestions[qIndex];
+        const correctText = qData.options[qData.ans];
+        const shuffledOptions = shuffleArray([...qData.options]);
+
+        const qBox = document.createElement('div');
+        qBox.className = 'question-box';
+        qBox.innerText = qData.q;
+        
+        const area = document.createElement('div');
+        area.className = 'shooting-area';
+
+        let isAnswered = false;
+
+        shuffledOptions.forEach((opt, index) => {
+            const bird = document.createElement('div');
+            bird.className = 'target-bird';
+            
+            bird.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="6"></circle><circle cx="12" cy="12" r="2"></circle></svg> <span>${opt}</span>`;
+            
+            let topPos = 15 + (index * 20); 
+            bird.style.top = topPos + '%';
+            
+            let pos = (index % 2 === 0) ? -200 : window.innerWidth;
+            let speed = (Math.random() * 2.5 + 1.5) * ((index % 2 === 0) ? 1 : -1);
+            
+            bird.style.left = pos + 'px';
+
+            bird.onclick = () => {
+                if(isAnswered) return;
+                isAnswered = true;
+
+                if (opt === correctText) {
+                    bird.style.background = 'var(--success)';
+                    bird.style.color = 'white';
+                    bird.style.borderColor = 'white';
+                    showFeedback(true, () => { qIndex++; renderNextState(); });
+                } else {
+                    bird.style.background = 'var(--danger)';
+                    bird.style.color = 'white';
+                    bird.style.borderColor = 'white';
+                    wrongAnswers.push({ question: qData.q, correct: correctText, selected: opt });
+                    showFeedback(false, () => { qIndex++; renderNextState(); });
+                }
+            };
+
+            area.appendChild(bird);
+
+            animInterval = setInterval(() => {
+                if (isAnswered) return;
+                pos += speed;
+                if (pos > window.innerWidth + 50) pos = -250;
+                if (pos < -250) pos = window.innerWidth + 50;
+                bird.style.left = pos + 'px';
+            }, 20);
+        });
+
+        container.appendChild(qBox);
+        container.appendChild(area);
+        
+        let hint = document.createElement('div');
+        hint.style.textAlign = 'center';
+        hint.style.marginTop = '15px';
+        hint.style.color = 'var(--primary)';
+        hint.style.fontWeight = 'bold';
+        hint.style.fontSize = '1.1rem';
+        hint.style.display = 'flex';
+        hint.style.alignItems = 'center';
+        hint.style.justifyContent = 'center';
+        hint.style.gap = '8px';
+        hint.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="6"></circle><circle cx="12" cy="12" r="2"></circle></svg> اضغط على الإجابة الصحيحة وهي تتحرك لاصطيادها!`;
+        container.appendChild(hint);
+    }
+
+    window.onload = initApp;
+</script>
+</body>
+</html>

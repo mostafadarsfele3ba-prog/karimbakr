@@ -1,0 +1,2716 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>درس الإيجاز - الصف الأول الثانوي</title>
+    <!-- استدعاء خط احترافي -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;800;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #134e4a;      
+            --primary-light: #0d9488; 
+            --secondary: #0e7490;    
+            --success: #10b981;      
+            --danger: #ef4444;       
+            --warning: #f59e0b;      
+            --dark: #1e293b;         
+            --light: #f8fafc;
+            --card-bg: #ffffff;
+        }
+
+        * {
+            box-sizing: border-box;
+            font-family: 'Cairo', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            user-select: none;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            background-color: #ecfeff;
+            background-image: radial-gradient(#a5d4ce 1.5px, transparent 1.5px);
+            background-size: 25px 25px;
+            color: var(--dark);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow-x: hidden;
+        }
+
+        .hidden { display: none !important; }
+        
+        /* --- الهيدر الرئيسي --- */
+        .header-main {
+            background: linear-gradient(135deg, #042f2e, var(--primary), var(--secondary));
+            color: white;
+            padding: 30px 20px 90px 20px; 
+            text-align: center;
+            position: relative;
+            margin-bottom: 20px;
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .title-line1 {
+            font-size: clamp(1.1rem, 4vw, 1.5rem); 
+            font-weight: 700;
+            color: #ccfbf1;
+            margin-bottom: 5px;
+            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-shadow: 1px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .title-line2 {
+            font-size: clamp(1.4rem, 5.5vw, 2.6rem); 
+            font-weight: 900;
+            background: linear-gradient(to right, #2dd4bf, #0f766e);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 15px;
+            filter: drop-shadow(2px 4px 6px rgba(0,0,0,0.5));
+            line-height: 1.3;
+            text-align: center;
+        }
+
+        .header-main h2 { font-size: clamp(1rem, 3vw, 1.3rem); font-weight: 600; color: #f0fdfa; margin-bottom: 8px; text-shadow: 1px 1px 2px rgba(0,0,0,0.3);}
+        .header-main p { font-size: clamp(0.9rem, 2.5vw, 1.1rem); font-weight: 600; background: rgba(0,0,0,0.3); display: inline-block; padding: 6px 20px; border-radius: 30px; border: 1px solid rgba(255,255,255,0.15); box-shadow: 0 4px 6px rgba(0,0,0,0.1);}
+
+        .header-wave {
+            position: absolute;
+            bottom: -1px;
+            left: 0;
+            width: 100%;
+            height: auto;
+            z-index: 1;
+        }
+
+        /* --- الأزرار --- */
+        .btn {
+            background: linear-gradient(to bottom, var(--primary-light), var(--primary));
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            border-bottom: 3px solid rgba(0,0,0,0.3);
+        }
+        .btn:hover { transform: translateY(-2px); box-shadow: 0 6px 12px rgba(0,0,0,0.2); }
+        .btn:active { transform: translateY(2px); border-bottom: 0px; margin-top: 3px; }
+        .btn-correct { filter: brightness(1.2); pointer-events: none; border-bottom-width: 0; transform: translateY(2px);}
+        .btn-wrong { filter: brightness(0.8); pointer-events: none; border-bottom-width: 0; transform: translateY(2px);}
+
+        /* --- الشاشة الرئيسية --- */
+        #home-screen {
+            flex: 1;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .grid-menu {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            width: 100%;
+            max-width: 1000px;
+            padding-bottom: 80px;
+        }
+
+        .menu-card {
+            background: var(--card-bg);
+            border-radius: 20px;
+            padding: 30px 20px;
+            text-align: center;
+            box-shadow: 0 10px 15px -3px rgba(0,0,0,0.05), 0 4px 6px -2px rgba(0,0,0,0.025);
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: 2px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
+        .menu-card::before {
+            content: ""; position: absolute; top: 0; left: 0; right: 0; height: 6px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            opacity: 0; transition: opacity 0.3s;
+        }
+        .menu-card:hover { transform: translateY(-8px); box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1); border-color: rgba(34, 197, 94, 0.25); }
+        .menu-card:hover::before { opacity: 1; }
+        
+        .menu-card .icon-container {
+            width: 80px; height: 80px;
+            margin: 0 auto 15px auto;
+            background: linear-gradient(135deg, #ccfbf1, #99f6e4);
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            box-shadow: inset 0 3px 6px rgba(255,255,255,0.8), 0 4px 8px rgba(0,0,0,0.05);
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .menu-card .icon-container svg {
+            width: 40px; height: 40px; stroke: #134e4a; fill: none;
+            stroke-width: 2; stroke-linecap: round; stroke-linejoin: round;
+        }
+        .menu-card:hover .icon-container { transform: scale(1.1) rotate(10deg); }
+        .menu-card h3 { font-size: 1.4rem; color: var(--dark); font-weight: 800; margin-bottom: 8px;}
+        .menu-card p { font-size: 1rem; color: #64748b; font-weight: 600;}
+
+        /* --- شاشة اللعب --- */
+        #game-screen {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .game-nav {
+            background: white;
+            padding: 15px 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            border-bottom-left-radius: 20px;
+            border-bottom-right-radius: 20px;
+            margin-bottom: 20px;
+            font-weight: bold;
+            font-size: clamp(0.9rem, 3vw, 1.2rem);
+        }
+        .back-btn { background: #e2e8f0; color: var(--dark); border-bottom: 3px solid #cbd5e1; padding: 8px 15px;}
+        #game-progress { background: #0d9488; color: white; padding: 6px 15px; border-radius: 20px;}
+        
+        .game-container {
+            flex: 1;
+            padding: 0 20px 40px 20px;
+            max-width: 900px;
+            margin: 0 auto;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .question-box {
+            background: white;
+            padding: 20px 25px;
+            border-radius: 16px;
+            text-align: center;
+            font-size: clamp(1.2rem, 4vw, 1.6rem);
+            font-weight: 800;
+            color: #134e4a;
+            margin-bottom: 25px;
+            box-shadow: 0 10px 15px -3px rgba(0,0,0,0.05);
+            border-right: 8px solid #0e7490;
+            line-height: 1.6;
+        }
+
+        .shake { animation: shake 0.5s cubic-bezier(.36,.07,.19,.97) both; }
+        @keyframes shake {
+            10%, 90% { transform: translate3d(-2px, 0, 0); }
+            20%, 80% { transform: translate3d(4px, 0, 0); }
+            30%, 50%, 70% { transform: translate3d(-6px, 0, 0); }
+            40%, 60% { transform: translate3d(6px, 0, 0); }
+        }
+
+        /* MCQ Style */
+        .options-grid { display: flex; flex-direction: column; gap: 15px; }
+        .options-grid .btn { padding: 18px; font-size: clamp(1.1rem, 3.5vw, 1.4rem); text-align: right; justify-content: flex-start; border-radius: 12px;}
+
+        /* True/False Style */
+        .tf-grid { display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; }
+
+        /* Bubbles Style */
+        .bubbles-area {
+            position: relative; height: 400px;
+            background: linear-gradient(to bottom, #042f2e, #134e4a);
+            border-radius: 16px; overflow: hidden;
+            border: 4px solid #0d9488; margin-top: 10px;
+            box-shadow: inset 0 0 20px rgba(0,0,0,0.5);
+        }
+        .bubble {
+            position: absolute;
+            background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.9), rgba(224,231,255,0.9));
+            color: #134e4a;
+            border: 2px solid #ffffff;
+            padding: 10px 5px;
+            border-radius: 30px;
+            font-weight: 800; font-size: clamp(0.85rem, 2vw, 1.05rem);
+            box-shadow: 0 10px 15px rgba(0,0,0,0.2), inset -4px -4px 10px rgba(0,0,0,0.1);
+            cursor: pointer;
+            display: flex; align-items: center; justify-content: center;
+            text-align: center;
+            width: 22%;
+            transition: transform 0.2s, background 0.2s;
+            z-index: 5;
+        }
+        .bubble:hover { transform: scale(1.05); }
+        .bubble::after {
+            content: ''; position: absolute; top: 10%; left: 15%;
+            width: 20%; height: 20%; background: rgba(255,255,255,0.8);
+            border-radius: 50%; filter: blur(2px);
+        }
+
+        /* Shooting Style */
+        .shooting-area {
+            position: relative; height: 400px; background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%"><rect fill="%23e0fbfc" width="100%" height="100%"/><circle fill="%23bae6fd" cx="20%" cy="30%" r="50"/><circle fill="%23bae6fd" cx="80%" cy="60%" r="70"/><circle fill="%23bae6fd" cx="50%" cy="80%" r="40"/></svg>') no-repeat center center;
+            background-size: cover; border-radius: 16px; overflow: hidden;
+            border: 4px solid #0d9488; margin-top: 10px; box-shadow: inset 0 0 20px rgba(0,0,0,0.1);
+        }
+        .target-bird {
+            position: absolute; background: white; color: var(--dark);
+            padding: 10px 20px; border-radius: 30px; font-weight: 800; font-size: clamp(0.95rem, 3vw, 1.15rem);
+            box-shadow: 0 8px 15px rgba(0,0,0,0.15); cursor: crosshair;
+            border: 3px solid var(--warning); white-space: nowrap; transition: background 0.2s;
+            display: flex; align-items: center; gap: 8px;
+        }
+        .target-bird:hover { transform: scale(1.05); background: #f0fdfa; }
+
+        /* Genius Challenge Style */
+        .genius-wrap {
+            background: linear-gradient(135deg, #042f2e, #134e4a, #0f766e);
+            border-radius: 16px; padding: 20px; margin-top: 10px;
+            border: 4px solid #2dd4bf; box-shadow: inset 0 0 25px rgba(0,0,0,0.4), 0 10px 20px rgba(21,128,61,0.35);
+        }
+        .genius-timer-track {
+            width: 100%; height: 14px; background: rgba(0,0,0,0.35);
+            border-radius: 10px; overflow: hidden; margin-bottom: 18px;
+            border: 2px solid rgba(255,255,255,0.2);
+        }
+        .genius-timer-bar {
+            height: 100%; width: 100%;
+            background: linear-gradient(to right, #2dd4bf, #0d9488, #ef4444);
+            border-radius: 10px;
+            transition: width 0.1s linear;
+        }
+        .genius-options { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+        @media (max-width: 600px) { .genius-options { grid-template-columns: 1fr; } }
+        .genius-options .btn {
+            padding: 16px 10px; font-size: clamp(1rem, 3vw, 1.25rem);
+            background: linear-gradient(to bottom, #14b8a6, #0f766e);
+            border-bottom: 3px solid #134e4a; border-radius: 14px; min-height: 70px;
+        }
+        .genius-badge {
+            display: inline-flex; align-items: center; gap: 8px;
+            background: rgba(74, 222, 128, 0.15); color: #2dd4bf;
+            font-weight: 800; padding: 6px 16px; border-radius: 20px;
+            border: 1px solid rgba(253,224,71,0.4); margin-bottom: 12px; font-size: 0.95rem;
+        }
+
+        /* Result Share (WhatsApp) */
+        .share-box {
+            margin-top: 25px; background: #f0fdfa; border: 2px solid #99f6e4;
+            border-radius: 16px; padding: 20px; text-align: center;
+        }
+        .share-box h4 { color: #115e59; font-size: 1.2rem; margin-bottom: 12px; font-weight: 800;}
+        .share-name-input {
+            width: 100%; max-width: 320px; padding: 12px 16px; border-radius: 12px;
+            border: 2px solid #5eead4; font-size: 1.05rem; text-align: center;
+            font-family: 'Cairo', sans-serif; font-weight: 700; margin-bottom: 12px;
+            color: var(--dark);
+        }
+        .share-name-input:focus { outline: none; border-color: #0d9488; }
+        .btn-share {
+            background: linear-gradient(to bottom, #25d366, #1da851);
+            border-bottom-color: #128c3e; display: inline-flex; gap: 10px;
+        }
+        .share-warning { color: var(--danger); font-weight: 700; font-size: 0.9rem; margin-top: 8px; display: none; }
+
+        /* Modal Overlay */
+        .overlay {
+            position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(15, 23, 42, 0.8); backdrop-filter: blur(4px);
+            display: flex; justify-content: center; align-items: center;
+            z-index: 1000; opacity: 0; pointer-events: none; transition: opacity 0.3s ease;
+        }
+        .overlay.active { opacity: 1; pointer-events: all; }
+        .modal {
+            background: white; padding: 40px; border-radius: 25px;
+            text-align: center; max-width: 90%; width: 400px;
+            transform: scale(0.7) translateY(50px); transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 25px 50px -12px rgba(0,0,0,0.25);
+        }
+        .overlay.active .modal { transform: scale(1) translateY(0); }
+        .modal-icon { display: flex; justify-content: center; margin-bottom: 20px; }
+
+        /* Summary Errors Scrolling */
+        .errors-list::-webkit-scrollbar { width: 8px; }
+        .errors-list::-webkit-scrollbar-track { background: #f1f5f9; border-radius: 8px; }
+        .errors-list::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 8px; }
+        .errors-list::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+
+        /* الفوتر (Footer) */
+        .footer-main {
+            background: var(--dark); color: #cbd5e1;
+            text-align: center; padding: 25px 20px; margin-top: auto;
+            border-top: 4px solid var(--primary);
+        }
+        .footer-main p { margin: 5px 0; font-size: 1.1rem; font-weight: 600;}
+        .footer-main .designer { font-size: 1rem; color: #94a3b8; font-weight: 400;}
+
+        /* WhatsApp */
+        .whatsapp-float {
+            position: fixed; bottom: 25px; left: 25px;
+            background: #25d366; color: white;
+            width: 65px; height: 65px; border-radius: 50%;
+            display: flex; justify-content: center; align-items: center;
+            text-decoration: none; box-shadow: 0 8px 15px rgba(37, 211, 102, 0.4);
+            z-index: 100; transition: all 0.3s;
+        }
+        .whatsapp-float:hover { transform: scale(1.15) rotate(-5deg); box-shadow: 0 12px 20px rgba(37, 211, 102, 0.6); }
+        .whatsapp-float svg { width: 35px; height: 35px; fill: currentColor; }
+
+        /* Confetti effect */
+        .confetti {
+            position: fixed; top: -10px; width: 12px; height: 12px; z-index: 9999;
+            animation: fall linear forwards; border-radius: 3px;
+        }
+        @keyframes fall { to { transform: translateY(110vh) rotate(720deg); opacity: 0; } }
+
+        /* Goals (تسجيل الأهداف) Style */
+        .pitch {
+            position: relative; height: 320px; margin-top: 10px; border-radius: 16px; overflow: hidden;
+            border: 4px solid #0d9488; box-shadow: inset 0 0 25px rgba(0,0,0,0.35);
+            background: repeating-linear-gradient(to bottom, #15803d 0px, #15803d 40px, #16a34a 40px, #16a34a 80px);
+        }
+        .pitch::before { /* منطقة الجزاء */
+            content: ""; position: absolute; left: 8%; right: 8%; top: 0; height: 200px;
+            border: 3px solid rgba(255,255,255,0.75); border-top: none; border-radius: 0 0 10px 10px;
+        }
+        .pitch::after { /* نقطة الجزاء */
+            content: ""; position: absolute; left: 50%; bottom: 52px; width: 10px; height: 10px;
+            background: rgba(255,255,255,0.85); border-radius: 50%; transform: translateX(-50%);
+        }
+        .goal-frame {
+            position: absolute; left: 15%; right: 15%; top: 14px; height: 120px; z-index: 1;
+            border: 7px solid #ffffff; border-bottom: none; border-radius: 6px 6px 0 0;
+            box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+            background:
+                repeating-linear-gradient(0deg, rgba(255,255,255,0.35) 0 2px, transparent 2px 14px),
+                repeating-linear-gradient(90deg, rgba(255,255,255,0.35) 0 2px, transparent 2px 14px),
+                rgba(4,47,46,0.35);
+        }
+        .goal-frame.net-shake { animation: netShake 0.5s ease; }
+        @keyframes netShake {
+            0%,100% { transform: scale(1); } 30% { transform: scale(1.04, 1.07); } 60% { transform: scale(0.98); }
+        }
+        .keeper {
+            position: absolute; left: 50%; top: 58px; width: 64px; height: 82px; z-index: 3;
+            transform: translateX(-50%); transition: left 0.45s ease-out, transform 0.45s ease-out;
+        }
+        .keeper.idle { animation: keeperSway 1.6s ease-in-out infinite alternate; }
+        @keyframes keeperSway { from { margin-left: -45px; } to { margin-left: 45px; } }
+        .keeper svg { width: 100%; height: 100%; filter: drop-shadow(0 4px 4px rgba(0,0,0,0.35)); }
+        .soccer-ball {
+            position: absolute; left: 50%; top: 250px; width: 46px; height: 46px; z-index: 4;
+            font-size: 42px; line-height: 46px; text-align: center;
+            transform: translate(-50%, 0) scale(1); filter: drop-shadow(0 6px 4px rgba(0,0,0,0.4));
+            transition: left 0.6s cubic-bezier(.2,.8,.3,1), top 0.6s cubic-bezier(.2,.8,.3,1), transform 0.6s ease;
+        }
+        .goal-banner {
+            position: absolute; left: 50%; top: 50%; z-index: 6; transform: translate(-50%, -50%) scale(0.4);
+            background: rgba(255,255,255,0.96); color: var(--primary); font-weight: 900;
+            font-size: clamp(1.4rem, 5vw, 2.2rem); padding: 10px 28px; border-radius: 40px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.35); opacity: 0; transition: all 0.3s cubic-bezier(.17,.89,.32,1.27);
+            white-space: nowrap; pointer-events: none;
+        }
+        .goal-banner.show { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+        .goal-banner.miss { color: var(--danger); }
+        .shot-options { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 18px; }
+        @media (max-width: 600px) { .shot-options { grid-template-columns: 1fr; } }
+        .shot-options .btn {
+            padding: 14px 12px; font-size: clamp(1rem, 3vw, 1.2rem); min-height: 64px; border-radius: 14px;
+            background: linear-gradient(to bottom, #16a34a, #15803d); border-bottom: 3px solid #14532d;
+            justify-content: flex-start; text-align: right;
+        }
+        .shot-options .btn .ball-ico { font-size: 1.3rem; flex-shrink: 0; }
+    </style>
+</head>
+<body>
+
+    <!-- الهيدر مع اللوجو -->
+    <header class="header-main" id="main-header">
+        <div class="header-content">
+            <div style="display: flex; align-items: center; justify-content: center; gap: 40px; flex-wrap: wrap;">
+                <!-- اللوجو (على اليمين) -->
+                <img src="logo.jpg" alt="شعار الأستاذ كَرِيم بَكْر" style="width: 260px; height: 260px; border-radius: 30px; border: 4px solid var(--warning); box-shadow: 0 8px 16px rgba(0,0,0,0.4); background-color: white; object-fit: cover; flex-shrink: 0;">
+                
+                <!-- النصوص -->
+                <div style="display: flex; flex-direction: column; align-items: center; text-align: center;">
+                    <h1 class="title-line1">
+                        درس 
+                        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#2dd4bf" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="6"></circle><circle cx="12" cy="12" r="2"></circle></svg>
+                        لعبة
+                    </h1>
+                    <h1 class="title-line2">مع الأستاذ كَرِيم بَكْر</h1>
+                    <h2>الصَّفُّ الْأَوَّلُ الثَّانَوِيُّ - الْفَصْلُ الدِّرَاسِيُّ الْأَوَّلُ - الْإِيجَازُ</h2>
+                    <p style="margin-top: 10px;">البَلَاغَةُ</p>
+                </div>
+            </div>
+        </div>
+        <!-- تموجات زخرفية -->
+        <svg class="header-wave" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+            <path fill="#ecfeff" fill-opacity="1" d="M0,192L48,197.3C96,203,192,213,288,229.3C384,245,480,267,576,250.7C672,235,768,181,864,170.7C960,160,1056,192,1152,208C1248,224,1344,224,1392,224L1440,224L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
+        </svg>
+    </header>
+
+    <!-- الشاشة الرئيسية -->
+    <div id="home-screen">
+        <div class="grid-menu" id="menu-grid">
+            <!-- سيتم حقن البطاقات هنا برمجياً -->
+        </div>
+    </div>
+
+    <!-- شاشة اللعب -->
+    <div id="game-screen" class="hidden">
+        <div class="game-nav">
+            <button class="btn back-btn" onclick="returnToMenu()">
+                <svg width="20" height="20" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+                رجوع
+            </button>
+            <strong id="game-title">عنوان اللعبة</strong>
+            <span id="game-progress">1 / 25</span>
+        </div>
+        <div class="game-container" id="game-container">
+            <!-- سيتم حقن الأسئلة هنا برمجياً -->
+        </div>
+    </div>
+
+    <!-- نافذة الملاحظات السريعة -->
+    <div class="overlay" id="feedback-modal">
+        <div class="modal">
+            <div class="modal-icon" id="feedback-icon"></div>
+            <h2 id="feedback-title" style="font-size: 2.5rem; font-weight: 900;">إجابة صحيحة!</h2>
+        </div>
+    </div>
+
+    <!-- الفوتر -->
+    <footer class="footer-main" id="main-footer">
+        <p>جميع الحقوق محفوظة &copy; | دروس وألعاب تعليمية</p>
+        <p class="designer">الأستاذ / كَرِيم بَكْر</p>
+    </footer>
+
+    <!-- زر الواتساب -->
+    <a href="https://wa.me/201033621345" class="whatsapp-float" target="_blank" title="تواصل معنا">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M12.031 0C5.385 0 0 5.385 0 12.031c0 2.656.843 5.12 2.26 7.15L.626 24l5.01-1.61c1.983 1.25 4.27 1.91 6.395 1.91 6.646 0 12.03-5.385 12.03-12.031S18.677 0 12.031 0zm6.544 17.202c-.273.766-1.58 1.464-2.185 1.503-.56.035-1.28.23-4.085-.86-3.39-1.32-5.59-4.78-5.736-4.97-.145-.19-1.37-1.82-1.37-3.475 0-1.655.857-2.47 1.164-2.8.307-.33.67-.413.89-.413.22 0 .44 0 .633.01.205.01.482-.08.736.53.264.634.904 2.203.984 2.366.08.163.133.353.033.553-.1.2-.153.326-.307.506-.154.18-.32.38-.453.506-.153.153-.314.316-.134.626.18.31.8 1.32 1.71 2.13.176.157.363.31.558.45 1.05.76 1.83 1.05 2.13 1.18.3.13.474.11.652-.09.18-.205.766-.893.97-1.2.204-.307.41-.256.69-.153.28.103 1.77.836 2.074.99.304.153.506.23.582.356.076.126.076.73-.197 1.496z"/>
+        </svg>
+    </a>
+
+<script>
+    const LESSON_NAME = "البَلَاغَةُ: الْإِيجَازُ";
+    const allGamesData = [
+        {
+            "id": "goals_1214",
+            "title": "تسجيل الأهداف",
+            "type": "goals",
+            "desc": "سدّد الكرة نحو الإجابة الصحيحة عن الإيجاز وسجّل هدفًا",
+            "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\"><circle cx=\"12\" cy=\"12\" r=\"10\"></circle><polygon points=\"12 7 16 10 14.5 15 9.5 15 8 10 12 7\"></polygon><path d=\"M12 7V2.5M16 10l4.5-1.5M14.5 15l2.8 3.8M9.5 15l-2.8 3.8M8 10L3.5 8.5\"></path></svg>",
+            "questions": [
+                {
+                    "q": "الإيجاز هو:",
+                    "options": [
+                        "أداء المعنى الكثير بألفاظ قليلة مع الوفاء بالغرض",
+                        "زيادة اللفظ على المعنى لفائدة",
+                        "تضاد بين كلمتين",
+                        "تشبيه حُذف أحد طرفيه"
+                    ],
+                    "ans": 0
+                },
+                {
+                    "q": "الإيجاز والإطناب من موضوعات علم:",
+                    "options": [
+                        "المعاني",
+                        "البيان",
+                        "البديع",
+                        "العروض"
+                    ],
+                    "ans": 0
+                },
+                {
+                    "q": "نوعا الإيجاز:",
+                    "options": [
+                        "إيجاز تام وناقص",
+                        "إيجاز لفظي ومعنوي",
+                        "إيجاز قِصَر وإيجاز حذف",
+                        "إيجاز إيجاب وسلب"
+                    ],
+                    "ans": 2
+                },
+                {
+                    "q": "إيجاز القصر هو:",
+                    "options": [
+                        "حذف كلمة أو جملة يدل عليها السياق",
+                        "تضمين العبارة القصيرة معاني كثيرة دون حذف",
+                        "تكرار اللفظ للتوكيد",
+                        "زيادة جملة معترضة"
+                    ],
+                    "ans": 1
+                },
+                {
+                    "q": "إيجاز الحذف هو:",
+                    "options": [
+                        "تضمين عبارة قصيرة معاني كثيرة دون حذف",
+                        "حذف حرف أو كلمة أو جملة مع وجود قرينة تدل على المحذوف",
+                        "زيادة اللفظ لفائدة",
+                        "تكرار المعنى"
+                    ],
+                    "ans": 1
+                },
+                {
+                    "q": "قال تعالى: «ولكم في القصاص حياة» نوع الإيجاز:",
+                    "options": [
+                        "إيجاز حذف",
+                        "إيجاز قصر",
+                        "إطناب بالتذييل",
+                        "إطناب بالاعتراض"
+                    ],
+                    "ans": 1
+                },
+                {
+                    "q": "قال تعالى: «خذ العفو وأمر بالعرف وأعرض عن الجاهلين» نوع الإيجاز:",
+                    "options": [
+                        "إيجاز حذف",
+                        "إيجاز قصر (جمعت مكارم الأخلاق)",
+                        "إطناب بالتفصيل",
+                        "إطناب بالتكرار"
+                    ],
+                    "ans": 1
+                },
+                {
+                    "q": "«إذا المرء لم يدنس من اللؤم عرضه» بحسب الكتاب فيها إيجاز بحذف:",
+                    "options": [
+                        "جواب الشرط",
+                        "فعل الشرط (والتقدير: إذا لم يدنس المرء)",
+                        "المبتدأ",
+                        "أداة النداء"
+                    ],
+                    "ans": 1
+                },
+                {
+                    "q": "«ما أُخمدت نارٌ لنا دون طارق» وسيلة الإيجاز:",
+                    "options": [
+                        "حذف المفعول",
+                        "حذف المبتدأ",
+                        "بناء الفعل للمجهول (حذف الفاعل)",
+                        "حذف جواب الشرط"
+                    ],
+                    "ans": 2
+                },
+                {
+                    "q": "«سلي إن جهلت الناس عنا وعنهم» في «إن جهلت» إيجاز بحذف:",
+                    "options": [
+                        "فعل الشرط",
+                        "الفاعل",
+                        "جواب الشرط",
+                        "المفعول"
+                    ],
+                    "ans": 2
+                },
+                {
+                    "q": "«أُنبئت أن رسول الله أوعدني» وسيلة الإيجاز وغرضه:",
+                    "options": [
+                        "حذف المفعول للتعظيم",
+                        "حذف الفاعل للعموم والشمول، ولأن التهديد جاءه من طريق غير مباشر",
+                        "حذف أداة النداء للقرب",
+                        "حذف المبتدأ للعلم به"
+                    ],
+                    "ans": 1
+                },
+                {
+                    "q": "في وصية أمامة: «لو تُركت» و«خُلقن» وسيلة الإيجاز:",
+                    "options": [
+                        "حذف المفعول",
+                        "حذف الفاعل ببناء الفعل للمجهول، ويفيد العموم والشمول",
+                        "حذف جواب الشرط",
+                        "حذف أداة النداء"
+                    ],
+                    "ans": 1
+                },
+                {
+                    "q": "قال تعالى: «وبالوالدين إحسانًا» إيجاز بحذف:",
+                    "options": [
+                        "المبتدأ",
+                        "الفعل، والتقدير: وأحسنوا",
+                        "الفاعل",
+                        "جواب الشرط"
+                    ],
+                    "ans": 1
+                },
+                {
+                    "q": "قال تعالى: «ولا تقتلوا النفس التي حرّم الله» إيجاز بحذف:",
+                    "options": [
+                        "الفاعل",
+                        "المفعول به، أي حرّم قتلها",
+                        "الفعل",
+                        "أداة النداء"
+                    ],
+                    "ans": 1
+                },
+                {
+                    "q": "قال تعالى: «وإذا قلتم فاعدلوا ولو كان ذا قربى» في «ولو كان ذا قربى»:",
+                    "options": [
+                        "إيجاز بحذف الفاعل",
+                        "إيجاز قصر",
+                        "إيجاز بحذف جواب الشرط لأنه مفهوم من السياق",
+                        "إطناب بالتكرار"
+                    ],
+                    "ans": 2
+                },
+                {
+                    "q": "«معشر الكتّاب» في رسالة عبد الحميد وسيلة الإيجاز:",
+                    "options": [
+                        "حذف الفاعل",
+                        "حذف المفعول",
+                        "حذف جواب الشرط",
+                        "حذف أداة النداء"
+                    ],
+                    "ans": 3
+                },
+                {
+                    "q": "«أخذ منه بمقدار ما يكتفي به» في «يُكتفى» وسيلة الإيجاز:",
+                    "options": [
+                        "حذف أداة النداء",
+                        "حذف المبتدأ",
+                        "حذف الفاعل",
+                        "حذف الخبر"
+                    ],
+                    "ans": 2
+                },
+                {
+                    "q": "«كالسيف في إخذامه والغيث في إرهامه» بحسب الكتاب فيها إيجاز بحذف:",
+                    "options": [
+                        "الخبر",
+                        "الفاعل",
+                        "أداة التشبيه",
+                        "المبتدأ (وتقديره: هو)"
+                    ],
+                    "ans": 3
+                },
+                {
+                    "q": "قال الشاعر: «إذا عتبت على السفيه ولمته في مثل ما تأتي» في «تأتي» إيجاز بحذف:",
+                    "options": [
+                        "الفاعل",
+                        "الفعل",
+                        "جواب الشرط",
+                        "المفعول به للعموم والشمول"
+                    ],
+                    "ans": 3
+                },
+                {
+                    "q": "قال تعالى: «يوسف أعرض عن هذا» إيجاز بحذف:",
+                    "options": [
+                        "أداة النداء",
+                        "الفاعل",
+                        "المفعول",
+                        "الخبر"
+                    ],
+                    "ans": 0
+                },
+                {
+                    "q": "قال تعالى: «واسأل القرية» من حيث الإيجاز:",
+                    "options": [
+                        "إيجاز قصر",
+                        "إطناب",
+                        "إيجاز بحذف المضاف (أهل القرية)",
+                        "لا إيجاز فيها"
+                    ],
+                    "ans": 2
+                },
+                {
+                    "q": "قال تعالى: «تالله تفتأ تذكر يوسف» إيجاز بحذف:",
+                    "options": [
+                        "حرف النفي (لا تفتأ)",
+                        "الفاعل",
+                        "المفعول",
+                        "أداة النداء"
+                    ],
+                    "ans": 0
+                },
+                {
+                    "q": "من أغراض الإيجاز بالحذف:",
+                    "options": [
+                        "التكرار والتوكيد فقط",
+                        "الجرس الموسيقي",
+                        "العموم والشمول، وتحريك الذهن، والعلم بالمحذوف",
+                        "التشخيص"
+                    ],
+                    "ans": 2
+                },
+                {
+                    "q": "حذف الفاعل ببناء الفعل للمجهول قد يكون:",
+                    "options": [
+                        "للتشبيه",
+                        "للطباق",
+                        "للعموم أو للعلم به أو للتحقير أو للخوف منه أو عليه",
+                        "للجناس"
+                    ],
+                    "ans": 2
+                },
+                {
+                    "q": "«الحِكم والأمثال» من أبرز خصائصها:",
+                    "options": [
+                        "الإطناب",
+                        "الاستطراد",
+                        "الإيجاز",
+                        "كثرة الجمل الاعتراضية"
+                    ],
+                    "ans": 2
+                },
+                {
+                    "q": "من سمات الشعر الجاهلي بحسب الكتاب:",
+                    "options": [
+                        "إيثار الإيجاز إلا إذا دعت الحاجة للإطالة",
+                        "الإطناب الدائم",
+                        "الإسهاب في المعاني",
+                        "الحذف بلا قرينة"
+                    ],
+                    "ans": 0
+                },
+                {
+                    "q": "الأحاديث النبوية تأثر بها الأدباء في:",
+                    "options": [
+                        "الإطناب والاستطراد",
+                        "الفصاحة والبلاغة والإيجاز",
+                        "التكلف في البديع",
+                        "الغموض"
+                    ],
+                    "ans": 1
+                },
+                {
+                    "q": "قال ﷺ: «الدين النصيحة» نوع الإيجاز:",
+                    "options": [
+                        "إيجاز حذف",
+                        "إطناب",
+                        "لا يوجد إيجاز",
+                        "إيجاز قصر"
+                    ],
+                    "ans": 3
+                },
+                {
+                    "q": "قال تعالى: «ألا له الخلق والأمر» نوع الإيجاز:",
+                    "options": [
+                        "إيجاز حذف",
+                        "إيجاز قصر",
+                        "إطناب بالتذييل",
+                        "إطناب بالاعتراض"
+                    ],
+                    "ans": 1
+                },
+                {
+                    "q": "الفرق بين إيجاز القصر وإيجاز الحذف:",
+                    "options": [
+                        "القصر لا حذف فيه، والحذف يُقدَّر فيه محذوف",
+                        "القصر فيه حذف، والحذف لا حذف فيه",
+                        "لا فرق بينهما",
+                        "القصر في الشعر والحذف في النثر"
+                    ],
+                    "ans": 0
+                }
+            ]
+        },
+        {
+            "id": "bubbles_9808",
+            "title": "الفقاعات المتساقطة",
+            "type": "bubbles",
+            "desc": "التقط الفقاعة ذات الإجابة الصحيحة عن الإيجاز",
+            "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\"><path d=\"M21.21 15.89A10 10 0 1 1 8 2.83\"></path><path d=\"M22 12A10 10 0 0 0 12 2v10z\"></path></svg>",
+            "questions": [
+                {
+                    "q": "«ولكم في القصاص حياة»:",
+                    "options": [
+                        "حذف",
+                        "إطناب",
+                        "تذييل",
+                        "قصر"
+                    ],
+                    "ans": 3
+                },
+                {
+                    "q": "«الدين النصيحة»:",
+                    "options": [
+                        "قصر",
+                        "حذف",
+                        "إطناب",
+                        "تكرار"
+                    ],
+                    "ans": 0
+                },
+                {
+                    "q": "«له الخلق والأمر»:",
+                    "options": [
+                        "قصر",
+                        "حذف",
+                        "إطناب",
+                        "اعتراض"
+                    ],
+                    "ans": 0
+                },
+                {
+                    "q": "«خذ العفو وأمر بالعرف»:",
+                    "options": [
+                        "قصر",
+                        "حذف",
+                        "إطناب",
+                        "تذييل"
+                    ],
+                    "ans": 0
+                },
+                {
+                    "q": "«وبالوالدين إحسانًا» المحذوف:",
+                    "options": [
+                        "الفعل",
+                        "الفاعل",
+                        "المبتدأ",
+                        "المفعول"
+                    ],
+                    "ans": 0
+                },
+                {
+                    "q": "«التي حرم الله» المحذوف:",
+                    "options": [
+                        "الفاعل",
+                        "المفعول",
+                        "الفعل",
+                        "الخبر"
+                    ],
+                    "ans": 1
+                },
+                {
+                    "q": "«ما أخمدت نار» المحذوف:",
+                    "options": [
+                        "المفعول",
+                        "المبتدأ",
+                        "الفاعل",
+                        "الخبر"
+                    ],
+                    "ans": 2
+                },
+                {
+                    "q": "«أنبئت» المحذوف:",
+                    "options": [
+                        "المفعول",
+                        "النداء",
+                        "الفاعل",
+                        "الخبر"
+                    ],
+                    "ans": 2
+                },
+                {
+                    "q": "«لو تُركت» المحذوف:",
+                    "options": [
+                        "المفعول",
+                        "الخبر",
+                        "النداء",
+                        "الفاعل"
+                    ],
+                    "ans": 3
+                },
+                {
+                    "q": "«خُلقن» المحذوف:",
+                    "options": [
+                        "المفعول",
+                        "الفاعل",
+                        "المبتدأ",
+                        "الخبر"
+                    ],
+                    "ans": 1
+                },
+                {
+                    "q": "«يُكتفى» المحذوف:",
+                    "options": [
+                        "المفعول",
+                        "الفاعل",
+                        "المبتدأ",
+                        "النداء"
+                    ],
+                    "ans": 1
+                },
+                {
+                    "q": "«معشر الكتاب» المحذوف:",
+                    "options": [
+                        "أداة النداء",
+                        "الفاعل",
+                        "المفعول",
+                        "الخبر"
+                    ],
+                    "ans": 0
+                },
+                {
+                    "q": "«يوسف أعرض» المحذوف:",
+                    "options": [
+                        "الفاعل",
+                        "أداة النداء",
+                        "المفعول",
+                        "الخبر"
+                    ],
+                    "ans": 1
+                },
+                {
+                    "q": "«إن جهلت» المحذوف:",
+                    "options": [
+                        "جواب الشرط",
+                        "فعل الشرط",
+                        "الفاعل",
+                        "المفعول"
+                    ],
+                    "ans": 0
+                },
+                {
+                    "q": "«ولو كان ذا قربى» المحذوف:",
+                    "options": [
+                        "جواب الشرط",
+                        "فعل الشرط",
+                        "الفاعل",
+                        "المبتدأ"
+                    ],
+                    "ans": 0
+                },
+                {
+                    "q": "«إذا المرء لم يدنس» المحذوف:",
+                    "options": [
+                        "فعل الشرط",
+                        "جواب الشرط",
+                        "الفاعل",
+                        "النداء"
+                    ],
+                    "ans": 0
+                },
+                {
+                    "q": "«كالسيف في إخذامه» المحذوف:",
+                    "options": [
+                        "الخبر",
+                        "الفاعل",
+                        "المبتدأ",
+                        "المفعول"
+                    ],
+                    "ans": 2
+                },
+                {
+                    "q": "«مثل ما تأتي» المحذوف:",
+                    "options": [
+                        "الفاعل",
+                        "الفعل",
+                        "الخبر",
+                        "المفعول"
+                    ],
+                    "ans": 3
+                },
+                {
+                    "q": "«واسأل القرية» المحذوف:",
+                    "options": [
+                        "الفاعل",
+                        "المضاف",
+                        "الفعل",
+                        "المبتدأ"
+                    ],
+                    "ans": 1
+                },
+                {
+                    "q": "«تالله تفتأ» المحذوف:",
+                    "options": [
+                        "الفاعل",
+                        "حرف النفي",
+                        "المفعول",
+                        "النداء"
+                    ],
+                    "ans": 1
+                },
+                {
+                    "q": "«ربِّ اغفر لي» المحذوف:",
+                    "options": [
+                        "الفاعل",
+                        "المفعول",
+                        "أداة النداء",
+                        "الخبر"
+                    ],
+                    "ans": 2
+                },
+                {
+                    "q": "«سلامٌ عليكم» نوعه:",
+                    "options": [
+                        "حذف",
+                        "إطناب",
+                        "قصر",
+                        "تكرار"
+                    ],
+                    "ans": 2
+                },
+                {
+                    "q": "الإيجاز من علم:",
+                    "options": [
+                        "المعاني",
+                        "البيان",
+                        "البديع",
+                        "النحو"
+                    ],
+                    "ans": 0
+                },
+                {
+                    "q": "ضد الإيجاز:",
+                    "options": [
+                        "الإطناب",
+                        "الطباق",
+                        "الجناس",
+                        "القصر"
+                    ],
+                    "ans": 0
+                },
+                {
+                    "q": "الحِكم تمتاز بـ:",
+                    "options": [
+                        "الإيجاز",
+                        "الإطناب",
+                        "الاستطراد",
+                        "الغموض"
+                    ],
+                    "ans": 0
+                },
+                {
+                    "q": "الأمثال تمتاز بـ:",
+                    "options": [
+                        "الإيجاز",
+                        "الإطناب",
+                        "التكرار",
+                        "الاعتراض"
+                    ],
+                    "ans": 0
+                },
+                {
+                    "q": "حذف الفاعل يفيد غالبًا:",
+                    "options": [
+                        "التخصيص",
+                        "التكرار",
+                        "الجناس",
+                        "العموم"
+                    ],
+                    "ans": 3
+                },
+                {
+                    "q": "حذف المفعول يفيد:",
+                    "options": [
+                        "التخصيص",
+                        "التحقير دائمًا",
+                        "الطباق",
+                        "العموم"
+                    ],
+                    "ans": 3
+                },
+                {
+                    "q": "الإيجاز يحرّك:",
+                    "options": [
+                        "الجرس",
+                        "التضاد",
+                        "الذهن",
+                        "القافية"
+                    ],
+                    "ans": 2
+                },
+                {
+                    "q": "الرسائل في صدر الإسلام تميزت بـ:",
+                    "options": [
+                        "الإطناب",
+                        "التكلف",
+                        "الإيجاز",
+                        "الغموض"
+                    ],
+                    "ans": 2
+                }
+            ]
+        },
+        {
+            "id": "shooting_2750",
+            "title": "التنشين والاصطياد",
+            "type": "shooting",
+            "desc": "صوّب نحو الإجابة الصحيحة عن الإيجاز",
+            "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\"><circle cx=\"12\" cy=\"12\" r=\"10\"></circle><circle cx=\"12\" cy=\"12\" r=\"6\"></circle><circle cx=\"12\" cy=\"12\" r=\"2\"></circle></svg>",
+            "questions": [
+                {
+                    "q": "أكمل: «الإيجاز: معانٍ كثيرة في ألفاظ ...».",
+                    "options": [
+                        "كثيرة",
+                        "مكررة",
+                        "قليلة",
+                        "غريبة"
+                    ],
+                    "ans": 2
+                },
+                {
+                    "q": "أكمل: «نوعا الإيجاز: قِصَر و...».",
+                    "options": [
+                        "تكرار",
+                        "حذف",
+                        "تذييل",
+                        "اعتراض"
+                    ],
+                    "ans": 1
+                },
+                {
+                    "q": "أكمل: «إيجاز ... لا حذف فيه».",
+                    "options": [
+                        "القِصَر",
+                        "الحذف",
+                        "التذييل",
+                        "الترادف"
+                    ],
+                    "ans": 0
+                },
+                {
+                    "q": "أكمل: «إيجاز الحذف لا بد له من ...».",
+                    "options": [
+                        "تكرار",
+                        "سجع",
+                        "قرينة",
+                        "طباق"
+                    ],
+                    "ans": 2
+                },
+                {
+                    "q": "أكمل: «ولكم في القصاص ...».",
+                    "options": [
+                        "موت",
+                        "حياة",
+                        "عدل",
+                        "أمان"
+                    ],
+                    "ans": 1
+                },
+                {
+                    "q": "أكمل: «خذ العفو وأمر بالعرف وأعرض عن ...».",
+                    "options": [
+                        "الكافرين",
+                        "الظالمين",
+                        "المنافقين",
+                        "الجاهلين"
+                    ],
+                    "ans": 3
+                },
+                {
+                    "q": "أكمل: «ألا له الخلق و...».",
+                    "options": [
+                        "الأمر",
+                        "الملك",
+                        "الحكم",
+                        "الرزق"
+                    ],
+                    "ans": 0
+                },
+                {
+                    "q": "أكمل: «الدين ...».",
+                    "options": [
+                        "النصيحة",
+                        "المعاملة",
+                        "العبادة",
+                        "الأخلاق"
+                    ],
+                    "ans": 0
+                },
+                {
+                    "q": "أكمل: «وبالوالدين ...».",
+                    "options": [
+                        "برًّا",
+                        "خيرًا",
+                        "رحمةً",
+                        "إحسانًا"
+                    ],
+                    "ans": 3
+                },
+                {
+                    "q": "أكمل: «تقدير (وبالوالدين إحسانًا): و... بالوالدين».",
+                    "options": [
+                        "برّوا",
+                        "أطيعوا",
+                        "أحسنوا",
+                        "ارحموا"
+                    ],
+                    "ans": 2
+                },
+                {
+                    "q": "أكمل: «ولا تقتلوا النفس التي ... الله».",
+                    "options": [
+                        "خلق",
+                        "أحيا",
+                        "أراد",
+                        "حرّم"
+                    ],
+                    "ans": 3
+                },
+                {
+                    "q": "أكمل: «وما ... نار لنا دون طارق».",
+                    "options": [
+                        "أوقدت",
+                        "أشعلت",
+                        "أُخمدت",
+                        "انطفأت"
+                    ],
+                    "ans": 2
+                },
+                {
+                    "q": "أكمل: «... أن رسول الله أوعدني».",
+                    "options": [
+                        "علمتُ",
+                        "سمعتُ",
+                        "أُنبئت",
+                        "رأيتُ"
+                    ],
+                    "ans": 2
+                },
+                {
+                    "q": "أكمل: «سلي إن ... الناس عنا وعنهم».",
+                    "options": [
+                        "جهلت",
+                        "علمت",
+                        "سألت",
+                        "نسيت"
+                    ],
+                    "ans": 0
+                },
+                {
+                    "q": "أكمل: «وإذا قلتم فاعدلوا ولو كان ذا ...».",
+                    "options": [
+                        "قربى",
+                        "مال",
+                        "جاه",
+                        "سلطان"
+                    ],
+                    "ans": 0
+                },
+                {
+                    "q": "أكمل: «... الكتّاب» (بحذف أداة النداء).",
+                    "options": [
+                        "أيها",
+                        "معشرَ",
+                        "يا",
+                        "معشرُ"
+                    ],
+                    "ans": 1
+                },
+                {
+                    "q": "أكمل: «... أعرض عن هذا».",
+                    "options": [
+                        "يوسف",
+                        "يا يوسف",
+                        "أيها",
+                        "يا قوم"
+                    ],
+                    "ans": 0
+                },
+                {
+                    "q": "أكمل: «تالله ... تذكر يوسف».",
+                    "options": [
+                        "لا تفتأ",
+                        "تفتأ",
+                        "تزال",
+                        "تذكر"
+                    ],
+                    "ans": 1
+                },
+                {
+                    "q": "أكمل: «واسأل ... التي كنا فيها».",
+                    "options": [
+                        "أهل القرية",
+                        "القرية",
+                        "الناس",
+                        "القوم"
+                    ],
+                    "ans": 1
+                },
+                {
+                    "q": "أكمل: «في (يُكتفى) حُذف ...».",
+                    "options": [
+                        "المفعول",
+                        "الفاعل",
+                        "المبتدأ",
+                        "النداء"
+                    ],
+                    "ans": 1
+                },
+                {
+                    "q": "أكمل: «في (التي حرم الله) حُذف ...».",
+                    "options": [
+                        "الفاعل",
+                        "الفعل",
+                        "المفعول",
+                        "الخبر"
+                    ],
+                    "ans": 2
+                },
+                {
+                    "q": "أكمل: «في (إن جهلت) حُذف ... الشرط».",
+                    "options": [
+                        "فعل",
+                        "أداة",
+                        "اسم",
+                        "جواب"
+                    ],
+                    "ans": 3
+                },
+                {
+                    "q": "أكمل: «في (إذا المرء لم يدنس) حُذف ... الشرط».",
+                    "options": [
+                        "جواب",
+                        "فعل",
+                        "أداة",
+                        "خبر"
+                    ],
+                    "ans": 1
+                },
+                {
+                    "q": "أكمل: «(كالسيف في إخذامه) حُذف ...».",
+                    "options": [
+                        "الخبر",
+                        "الفاعل",
+                        "المفعول",
+                        "المبتدأ"
+                    ],
+                    "ans": 3
+                },
+                {
+                    "q": "أكمل: «حذف الفاعل في (لو تركت - خلقن) يفيد العموم و...».",
+                    "options": [
+                        "التخصيص",
+                        "الشمول",
+                        "التحقير",
+                        "الشك"
+                    ],
+                    "ans": 1
+                },
+                {
+                    "q": "أكمل: «الإيجاز يفيد تحريك الذهن وجذب ...».",
+                    "options": [
+                        "الأذن",
+                        "الجرس",
+                        "التضاد",
+                        "الانتباه"
+                    ],
+                    "ans": 3
+                },
+                {
+                    "q": "أكمل: «الإيجاز والإطناب من علم ...».",
+                    "options": [
+                        "البيان",
+                        "المعاني",
+                        "البديع",
+                        "الصرف"
+                    ],
+                    "ans": 1
+                },
+                {
+                    "q": "أكمل: «من خصائص الأمثال: ... وجمال الصياغة».",
+                    "options": [
+                        "الإطناب",
+                        "الغموض",
+                        "الإيجاز",
+                        "التكلف"
+                    ],
+                    "ans": 2
+                },
+                {
+                    "q": "أكمل: «تأثر الأدباء بالحديث في الفصاحة والبلاغة و...».",
+                    "options": [
+                        "الإطناب",
+                        "التكلف",
+                        "الإيجاز",
+                        "الغرابة"
+                    ],
+                    "ans": 2
+                },
+                {
+                    "q": "أكمل: «إيثار الإيجاز إلا إذا دعت الحاجة لـ...».",
+                    "options": [
+                        "الحذف",
+                        "الإطالة",
+                        "الاختصار",
+                        "الصمت"
+                    ],
+                    "ans": 1
+                }
+            ]
+        },
+        {
+            "id": "true_false_1313",
+            "title": "صح أم خطأ",
+            "type": "true_false",
+            "desc": "حدد صحة العبارات المتعلقة بـ الإيجاز",
+            "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\"><path d=\"M22 11.08V12a10 10 0 1 1-5.93-9.14\"></path><polyline points=\"22 4 12 14.01 9 11.01\"></polyline></svg>",
+            "questions": [
+                {
+                    "q": "الإيجاز أداء المعنى الكثير بألفاظ قليلة مع الوفاء بالغرض.",
+                    "options": [
+                        "صح",
+                        "خطأ"
+                    ],
+                    "ans": 0
+                },
+                {
+                    "q": "الإيجاز من موضوعات علم البيان.",
+                    "options": [
+                        "خطأ",
+                        "صح"
+                    ],
+                    "ans": 0
+                },
+                {
+                    "q": "الإيجاز نوعان: إيجاز قصر وإيجاز حذف.",
+                    "options": [
+                        "صح",
+                        "خطأ"
+                    ],
+                    "ans": 0
+                },
+                {
+                    "q": "إيجاز القصر يُقدَّر فيه محذوف.",
+                    "options": [
+                        "صح",
+                        "خطأ"
+                    ],
+                    "ans": 1
+                },
+                {
+                    "q": "إيجاز الحذف لا بد له من قرينة تدل على المحذوف.",
+                    "options": [
+                        "صح",
+                        "خطأ"
+                    ],
+                    "ans": 0
+                },
+                {
+                    "q": "«ولكم في القصاص حياة» إيجاز حذف.",
+                    "options": [
+                        "خطأ",
+                        "صح"
+                    ],
+                    "ans": 0
+                },
+                {
+                    "q": "«خذ العفو وأمر بالعرف وأعرض عن الجاهلين» إيجاز قصر.",
+                    "options": [
+                        "خطأ",
+                        "صح"
+                    ],
+                    "ans": 1
+                },
+                {
+                    "q": "«وبالوالدين إحسانًا» إيجاز بحذف الفعل وتقديره: وأحسنوا.",
+                    "options": [
+                        "خطأ",
+                        "صح"
+                    ],
+                    "ans": 1
+                },
+                {
+                    "q": "«ولا تقتلوا النفس التي حرم الله» إيجاز بحذف الفاعل.",
+                    "options": [
+                        "صح",
+                        "خطأ"
+                    ],
+                    "ans": 1
+                },
+                {
+                    "q": "«ما أُخمدت نار» إيجاز بحذف الفاعل ببناء الفعل للمجهول.",
+                    "options": [
+                        "خطأ",
+                        "صح"
+                    ],
+                    "ans": 1
+                },
+                {
+                    "q": "«أُنبئت» فيها إيجاز بحذف المفعول.",
+                    "options": [
+                        "صح",
+                        "خطأ"
+                    ],
+                    "ans": 1
+                },
+                {
+                    "q": "في «إن جهلت» إيجاز بحذف جواب الشرط.",
+                    "options": [
+                        "صح",
+                        "خطأ"
+                    ],
+                    "ans": 0
+                },
+                {
+                    "q": "«إذا المرء لم يدنس من اللؤم عرضه» فيها إيجاز بحذف فعل الشرط.",
+                    "options": [
+                        "صح",
+                        "خطأ"
+                    ],
+                    "ans": 0
+                },
+                {
+                    "q": "«معشر الكتاب» إيجاز بحذف الفاعل.",
+                    "options": [
+                        "خطأ",
+                        "صح"
+                    ],
+                    "ans": 0
+                },
+                {
+                    "q": "«يُكتفى» إيجاز بحذف الفاعل.",
+                    "options": [
+                        "صح",
+                        "خطأ"
+                    ],
+                    "ans": 0
+                },
+                {
+                    "q": "«يوسف أعرض عن هذا» إيجاز بحذف أداة النداء.",
+                    "options": [
+                        "خطأ",
+                        "صح"
+                    ],
+                    "ans": 1
+                },
+                {
+                    "q": "«ولو كان ذا قربى» إيجاز بحذف فعل الشرط.",
+                    "options": [
+                        "صح",
+                        "خطأ"
+                    ],
+                    "ans": 1
+                },
+                {
+                    "q": "حذف الفاعل ببناء الفعل للمجهول قد يفيد العموم والشمول.",
+                    "options": [
+                        "صح",
+                        "خطأ"
+                    ],
+                    "ans": 0
+                },
+                {
+                    "q": "«كالسيف في إخذامه» إيجاز بحذف الخبر.",
+                    "options": [
+                        "صح",
+                        "خطأ"
+                    ],
+                    "ans": 1
+                },
+                {
+                    "q": "«واسأل القرية» إيجاز بحذف المضاف أي أهل القرية.",
+                    "options": [
+                        "خطأ",
+                        "صح"
+                    ],
+                    "ans": 1
+                },
+                {
+                    "q": "من خصائص الأمثال الإيجاز وجمال الصياغة.",
+                    "options": [
+                        "خطأ",
+                        "صح"
+                    ],
+                    "ans": 1
+                },
+                {
+                    "q": "من سمات الشعر الجاهلي الميل الدائم إلى الإطناب والبعد عن الإيجاز.",
+                    "options": [
+                        "خطأ",
+                        "صح"
+                    ],
+                    "ans": 0
+                },
+                {
+                    "q": "الرسائل في عصر صدر الإسلام تميزت بالوضوح والإيجاز والبعد عن التكلف.",
+                    "options": [
+                        "صح",
+                        "خطأ"
+                    ],
+                    "ans": 0
+                },
+                {
+                    "q": "«الدين النصيحة» إيجاز حذف.",
+                    "options": [
+                        "خطأ",
+                        "صح"
+                    ],
+                    "ans": 0
+                },
+                {
+                    "q": "إيجاز الحذف قد يكون بحذف حرف أو كلمة أو جملة.",
+                    "options": [
+                        "خطأ",
+                        "صح"
+                    ],
+                    "ans": 1
+                },
+                {
+                    "q": "في «تالله تفتأ تذكر يوسف» إيجاز بحذف حرف النفي.",
+                    "options": [
+                        "خطأ",
+                        "صح"
+                    ],
+                    "ans": 1
+                },
+                {
+                    "q": "حذف المفعول في «مثل ما تأتي» يفيد التخصيص.",
+                    "options": [
+                        "خطأ",
+                        "صح"
+                    ],
+                    "ans": 0
+                },
+                {
+                    "q": "الإيجاز يحرك الذهن ويجذب الانتباه.",
+                    "options": [
+                        "خطأ",
+                        "صح"
+                    ],
+                    "ans": 1
+                },
+                {
+                    "q": "الإيجاز والإطناب لا يختلفان في المعنى.",
+                    "options": [
+                        "صح",
+                        "خطأ"
+                    ],
+                    "ans": 1
+                },
+                {
+                    "q": "الإيجاز يكون بليغًا إذا وفّى بالمعنى دون إخلال.",
+                    "options": [
+                        "خطأ",
+                        "صح"
+                    ],
+                    "ans": 1
+                }
+            ]
+        },
+        {
+            "id": "genius_9474",
+            "title": "تحدي العباقرة",
+            "type": "genius",
+            "desc": "تحدٍّ سريع لعباقرة الإيجاز",
+            "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M9.663 17h4.673M12 3a6 6 0 0 0-6 6c0 1.887.454 2.921 1.5 4.5.5.75 1 1.5 1 2.5h7c0-1 .5-1.75 1-2.5C17.546 11.921 18 10.887 18 9a6 6 0 0 0-6-6z\"></path></svg>",
+            "questions": [
+                {
+                    "q": "لماذا عُدّ «ولكم في القصاص حياة» من إيجاز القصر؟",
+                    "options": [
+                        "لأنه جمع معاني كثيرة (الردع وحفظ النفوس) في لفظ قليل دون حذف",
+                        "لأن فيه محذوفًا مقدرًا",
+                        "لأنه كرر المعنى",
+                        "لأن فيه جملة معترضة"
+                    ],
+                    "ans": 0
+                },
+                {
+                    "q": "ما المعنى الذي تضمنته «ولكم في القصاص حياة» رغم قلة ألفاظها؟",
+                    "options": [
+                        "أن القصاص يقتل الناس",
+                        "أن الحياة طويلة",
+                        "أن القتل مباح",
+                        "أن القاتل إذا علم أنه سيُقتل امتنع فحُفظت النفوس"
+                    ],
+                    "ans": 3
+                },
+                {
+                    "q": "لماذا حذف الشاعر فعل الشرط في «إذا المرء لم يدنس من اللؤم عرضه»؟",
+                    "options": [
+                        "لدلالة ما بعده عليه، لتحريك الذهن وجذب الانتباه",
+                        "للتعظيم",
+                        "لأنه نسيه",
+                        "للسجع"
+                    ],
+                    "ans": 0
+                },
+                {
+                    "q": "ما سر بناء «أُنبئت» للمجهول في قصيدة كعب؟",
+                    "options": [
+                        "لتحقير المخبِر",
+                        "العموم، ولأن التهديد جاءه من طريق غير مباشر، وهذا يناسب رحمة النبي ﷺ",
+                        "للجهل بالفاعل تمامًا",
+                        "للسجع مع ما بعده"
+                    ],
+                    "ans": 1
+                },
+                {
+                    "q": "ما الغرض من حذف الفاعل في «لو تُركت» و«خُلقن» في وصية أمامة؟",
+                    "options": [
+                        "التخصيص",
+                        "العموم والشمول",
+                        "التحقير",
+                        "الخوف من الفاعل"
+                    ],
+                    "ans": 1
+                },
+                {
+                    "q": "التقدير في «ولا تقتلوا النفس التي حرم الله»:",
+                    "options": [
+                        "التي حرّم الله أكلها",
+                        "التي حرّم الله قتلها",
+                        "التي حرّم الله ذكرها",
+                        "التي حرّم الله رؤيتها"
+                    ],
+                    "ans": 1
+                },
+                {
+                    "q": "لماذا حُذف جواب الشرط في «وإذا قلتم فاعدلوا ولو كان ذا قربى»؟",
+                    "options": [
+                        "للتهويل",
+                        "لأنه مفهوم من السياق والتقدير: فاعدلوا",
+                        "لأنه مجهول",
+                        "للسجع"
+                    ],
+                    "ans": 1
+                },
+                {
+                    "q": "في «سلي إن جهلت الناس عنا وعنهم» التقدير المحذوف:",
+                    "options": [
+                        "إن جهلتِ فسلي",
+                        "إن علمت فاسكتي",
+                        "إن سألت فأجيبي",
+                        "إن جهلت فلا تسألي"
+                    ],
+                    "ans": 0
+                },
+                {
+                    "q": "لماذا حذف الكاتب أداة النداء في «معشر الكتاب»؟",
+                    "options": [
+                        "للتحقير",
+                        "للبعد",
+                        "لأنه لا يناديهم",
+                        "للدلالة على القرب وسرعة التنبيه مع الإيجاز"
+                    ],
+                    "ans": 3
+                },
+                {
+                    "q": "في «كالسيف في إخذامه والغيث في إرهامه» التقدير:",
+                    "options": [
+                        "السيف هو",
+                        "هو كالسيف",
+                        "كأنه السيف",
+                        "مثل السيف هو الغيث"
+                    ],
+                    "ans": 1
+                },
+                {
+                    "q": "ما الفرق بين «وبالوالدين إحسانًا» و«وأحسنوا بالوالدين إحسانًا»؟",
+                    "options": [
+                        "الثانية أبلغ لأنها أطول",
+                        "لا فرق",
+                        "الأولى إطناب",
+                        "الأولى إيجاز بحذف الفعل مع تقديم الجار والمجرور للعناية"
+                    ],
+                    "ans": 3
+                },
+                {
+                    "q": "«ألا له الخلق والأمر» لماذا عُدّت إيجاز قصر؟",
+                    "options": [
+                        "لأن فيها محذوفًا",
+                        "لأن فيها تكرارًا",
+                        "لأنها جمعت كل شؤون الكون في كلمتين دون حذف",
+                        "لأنها تذييل"
+                    ],
+                    "ans": 2
+                },
+                {
+                    "q": "«خذ العفو وأمر بالعرف وأعرض عن الجاهلين» ما الذي جمعته الآية؟",
+                    "options": [
+                        "مكارم الأخلاق كلها",
+                        "أحكام الميراث",
+                        "قصص الأنبياء",
+                        "صفات الجنة"
+                    ],
+                    "ans": 0
+                },
+                {
+                    "q": "في «تالله تفتأ تذكر يوسف» لماذا جاز حذف «لا»؟",
+                    "options": [
+                        "لأنه مثبت",
+                        "لأن القسم يُحذف",
+                        "لأن الفعل جواب قسم مضارع منفي والنفي مفهوم",
+                        "لا يجوز الحذف"
+                    ],
+                    "ans": 2
+                },
+                {
+                    "q": "التقدير في «واسأل القرية التي كنا فيها»:",
+                    "options": [
+                        "واسأل جدران القرية",
+                        "واسأل طرق القرية",
+                        "واسأل أهل القرية",
+                        "واسأل عن القرية"
+                    ],
+                    "ans": 2
+                },
+                {
+                    "q": "في «وإذا عتبت على السفيه ولمته في مثل ما تأتي» لماذا حُذف المفعول؟",
+                    "options": [
+                        "للعموم والشمول (أي ما تأتيه من الأفعال)",
+                        "للتحقير",
+                        "للعلم به فقط",
+                        "للسجع"
+                    ],
+                    "ans": 0
+                },
+                {
+                    "q": "من أغراض حذف الفاعل: الخوف منه، ومن أمثلته:",
+                    "options": [
+                        "سُرق المال (خوفًا من ذكر السارق)",
+                        "كتب الطالب الدرس",
+                        "حضر المعلم",
+                        "جاء الربيع"
+                    ],
+                    "ans": 0
+                },
+                {
+                    "q": "من أغراض حذف الفاعل: العلم به، ومن أمثلته:",
+                    "options": [
+                        "كتب الطالب الدرس",
+                        "«وخُلق الإنسان ضعيفًا»",
+                        "حضر المعلم",
+                        "قرأ الولد"
+                    ],
+                    "ans": 1
+                },
+                {
+                    "q": "لماذا كان الإيجاز سمة الشعر الجاهلي؟",
+                    "options": [
+                        "لاعتماد العرب على الحفظ والمشافهة وحبهم للعبارة المكثفة",
+                        "لقلة الألفاظ عندهم",
+                        "لكثرة الكتابة",
+                        "لتأثرهم بالقرآن"
+                    ],
+                    "ans": 0
+                },
+                {
+                    "q": "لماذا كانت الأمثال موجزة؟",
+                    "options": [
+                        "لأنها شعر",
+                        "لتسهل روايتها وحفظها وتداولها",
+                        "لأنها غامضة",
+                        "لأنها طويلة المورد"
+                    ],
+                    "ans": 1
+                },
+                {
+                    "q": "قال تعالى: «وسارعوا إلى مغفرة من ربكم وجنةٍ عرضها السماوات والأرض» في «عرضها السماوات» إيجاز يدل على:",
+                    "options": [
+                        "ضيق الجنة",
+                        "سعة الجنة العظيمة بأقل لفظ",
+                        "قرب الجنة",
+                        "بُعد الجنة"
+                    ],
+                    "ans": 1
+                },
+                {
+                    "q": "أي العبارات فيها إيجاز حذف؟",
+                    "options": [
+                        "ولكم في القصاص حياة",
+                        "الدين النصيحة",
+                        "وبالوالدين إحسانًا",
+                        "ألا له الخلق والأمر"
+                    ],
+                    "ans": 2
+                },
+                {
+                    "q": "أي العبارات فيها إيجاز قصر؟",
+                    "options": [
+                        "ولكم في القصاص حياة",
+                        "معشر الكتاب",
+                        "أُنبئت أن رسول الله أوعدني",
+                        "يوسف أعرض عن هذا"
+                    ],
+                    "ans": 0
+                },
+                {
+                    "q": "أي العبارات حُذف فيها جواب الشرط؟",
+                    "options": [
+                        "إذا المرء لم يدنس",
+                        "ما أخمدت نار",
+                        "ولو كان ذا قربى",
+                        "التي حرم الله"
+                    ],
+                    "ans": 2
+                },
+                {
+                    "q": "أي العبارات حُذف فيها الفاعل؟",
+                    "options": [
+                        "التي حرم الله",
+                        "معشر الكتاب",
+                        "وبالوالدين إحسانًا",
+                        "ما أُخمدت نار لنا دون طارق"
+                    ],
+                    "ans": 3
+                },
+                {
+                    "q": "أي العبارات حُذف فيها المفعول به؟",
+                    "options": [
+                        "التي حرّم الله",
+                        "أُنبئت",
+                        "يُكتفى",
+                        "معشر الكتاب"
+                    ],
+                    "ans": 0
+                },
+                {
+                    "q": "أي العبارات حُذفت فيها أداة النداء؟",
+                    "options": [
+                        "ربِّ إني وهن العظم مني",
+                        "يا أيها الرجل",
+                        "أي بنية",
+                        "يا ابن أبي سلمى"
+                    ],
+                    "ans": 0
+                },
+                {
+                    "q": "«ربنا آتنا في الدنيا حسنة» في «ربنا» إيجاز بـ:",
+                    "options": [
+                        "حذف الفاعل",
+                        "حذف المفعول",
+                        "إيجاز قصر",
+                        "حذف أداة النداء"
+                    ],
+                    "ans": 3
+                },
+                {
+                    "q": "قيمة الإيجاز بحذف أداة النداء في «ربنا»:",
+                    "options": [
+                        "البعد",
+                        "الإشعار بقرب المنادى من المنادي",
+                        "التحقير",
+                        "التهديد"
+                    ],
+                    "ans": 1
+                },
+                {
+                    "q": "متى يكون الإيجاز معيبًا؟",
+                    "options": [
+                        "إذا كان في القرآن",
+                        "إذا كان قصيرًا",
+                        "إذا حذف الفاعل",
+                        "إذا أخلّ بالمعنى وغمض فلم يفهمه السامع"
+                    ],
+                    "ans": 3
+                }
+            ]
+        }
+    ];
+
+    // --- محرك الصوت للمؤثرات التفاعلية ---
+    const AudioContext = window.AudioContext || window.webkitAudioContext;
+    let audioCtx = null;
+
+    function initAudio() {
+        if (!audioCtx) {
+            audioCtx = new AudioContext();
+        }
+        if (audioCtx.state === 'suspended') {
+            audioCtx.resume();
+        }
+    }
+
+    function playTone(freq, type, duration, vol = 0.1) {
+        if (!audioCtx) return;
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        osc.type = type;
+        osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
+        gain.gain.setValueAtTime(vol, audioCtx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + duration);
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+        osc.start();
+        osc.stop(audioCtx.currentTime + duration);
+    }
+
+    function playCorrect() {
+        initAudio();
+        playTone(523.25, 'sine', 0.1, 0.1); 
+        setTimeout(() => playTone(659.25, 'sine', 0.1, 0.1), 100); 
+        setTimeout(() => playTone(783.99, 'sine', 0.2, 0.15), 200); 
+        setTimeout(() => playTone(1046.50, 'sine', 0.4, 0.2), 300); 
+        triggerConfetti();
+    }
+
+    function playWrong() {
+        initAudio();
+        playTone(300, 'sawtooth', 0.15, 0.1);
+        setTimeout(() => playTone(200, 'sawtooth', 0.25, 0.15), 150);
+        
+        const qBox = document.querySelector('.question-box');
+        if(qBox) {
+            qBox.classList.remove('shake');
+            void qBox.offsetWidth; 
+            qBox.classList.add('shake');
+        }
+    }
+
+    // --- مؤثرات بصرية ---
+    function triggerConfetti() {
+        const colors = ['#f72585', '#4cc9f0', '#fee440', '#00f5d4', '#8b5cf6'];
+        for(let i=0; i<40; i++) {
+            let conf = document.createElement('div');
+            conf.className = 'confetti';
+            conf.style.left = Math.random() * 100 + 'vw';
+            conf.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+            conf.style.animationDuration = (Math.random() * 2 + 1) + 's';
+            document.body.appendChild(conf);
+            setTimeout(() => conf.remove(), 3000);
+        }
+    }
+
+    function shuffleArray(arr) {
+        return arr.map(a => ({sort: Math.random(), value: a}))
+            .sort((a, b) => a.sort - b.sort)
+            .map(a => a.value);
+    }
+
+    function showFeedback(isCorrect, callback) {
+        const modal = document.getElementById('feedback-modal');
+        const icon = document.getElementById('feedback-icon');
+        const title = document.getElementById('feedback-title');
+        
+        if (isCorrect) {
+            playCorrect();
+            icon.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="var(--success)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>`;
+            title.textContent = 'إجابة صحيحة، بطل!';
+            title.style.color = 'var(--success)';
+        } else {
+            playWrong();
+            icon.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="var(--danger)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="15" y1="9" x2="9" y2="15"></line><line x1="9" y1="9" x2="15" y2="15"></line></svg>`;
+            title.textContent = 'إجابة خاطئة!';
+            title.style.color = 'var(--danger)';
+        }
+
+        modal.classList.add('active');
+        setTimeout(() => {
+            modal.classList.remove('active');
+            if (callback) callback();
+        }, 1300); // وقت الانتقال للسؤال التالي
+    }
+
+    // --- متغيرات محرك اللعبة ---
+    let currentGame = null;
+    let currentQuestions = [];
+    let qIndex = 0;
+    let animInterval = null;
+    let geniusTimerInterval = null;
+    let wrongAnswers = []; // مصفوفة لتخزين الأخطاء
+
+    // --- التهيئة ---
+    function initApp() {
+        const menuGrid = document.getElementById('menu-grid');
+        menuGrid.innerHTML = '';
+        allGamesData.forEach(game => {
+            const card = document.createElement('div');
+            card.className = 'menu-card';
+            card.innerHTML = `
+                <div class="icon-container">${game.icon}</div>
+                <h3>${game.title}</h3>
+                <p>${game.desc}</p>
+            `;
+            card.onclick = () => startGame(game);
+            menuGrid.appendChild(card);
+        });
+        
+        document.body.addEventListener('touchstart', initAudio, { once: true });
+        document.body.addEventListener('click', initAudio, { once: true });
+    }
+
+    function returnToMenu() {
+        clearInterval(animInterval); clearInterval(geniusTimerInterval);
+        goalTimeouts.forEach(t => clearTimeout(t)); goalTimeouts = [];
+        document.getElementById('game-screen').classList.add('hidden');
+        document.getElementById('home-screen').classList.remove('hidden');
+        document.getElementById('main-header').classList.remove('hidden');
+        document.getElementById('main-footer').classList.remove('hidden');
+    }
+
+    function updateProgress() {
+        document.getElementById('game-progress').innerText = `${qIndex + 1} / ${currentQuestions.length}`;
+    }
+
+    function gameComplete() {
+        const gc = document.getElementById('game-container');
+        playCorrect();
+        setTimeout(playCorrect, 300);
+
+        let score = currentQuestions.length - wrongAnswers.length;
+        let summaryHTML = '';
+
+        if (wrongAnswers.length > 0) {
+            summaryHTML += `
+            <div style="margin-top: 25px; text-align: right; background: #f8fafc; padding: 20px; border-radius: 15px; border: 2px solid #e2e8f0; max-height: 350px; overflow-y: auto;" class="errors-list">
+                <h3 style="color: var(--danger); margin-bottom: 15px; text-align: center; font-size: 1.4rem;">الأسئلة التي أخطأت فيها 📝</h3>
+                <ul style="list-style: none; padding: 0; display: flex; flex-direction: column; gap: 15px;">`;
+            
+            wrongAnswers.forEach((item, index) => {
+                summaryHTML += `
+                <li style="background: white; padding: 15px; border-radius: 10px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); border-right: 5px solid var(--danger);">
+                    <div style="font-weight: bold; color: var(--primary); margin-bottom: 8px; font-size: 1.1rem;">${index + 1}. ${item.question}</div>
+                    <div style="color: #64748b; font-size: 1rem; margin-bottom: 5px;">إجابتك: <span style="color: var(--danger); text-decoration: line-through;">${item.selected}</span></div>
+                    <div style="color: var(--success); font-weight: bold; font-size: 1.1rem;">الإجابة الصحيحة: ${item.correct}</div>
+                </li>`;
+            });
+            summaryHTML += `</ul></div>`;
+        } else {
+            summaryHTML += `<p style="color: var(--success); font-size: 1.5rem; font-weight: bold; margin-top: 20px;">أداء مثالي! لم تخطئ في أي سؤال 🌟</p>`;
+        }
+
+        gc.innerHTML = `
+            <div style="text-align:center; padding: 40px 20px; background: white; border-radius: 20px; box-shadow: 0 10px 25px rgba(0,0,0,0.1);">
+                <div style="display:flex; justify-content:center; margin-bottom: 20px;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 24 24" fill="none" stroke="var(--warning)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 21h10"/><path d="M12 17v4"/><path d="M12 3v14"/><path d="M5 7h14"/><path d="M12 3l-4 4 4 4 4-4-4-4z"/></svg>
+                </div>
+                <h2 style="color: var(--primary); margin-bottom: 10px; font-size:2rem; font-weight:800;">انتهت اللعبة!</h2>
+                <p style="font-size: 1.4rem; margin-bottom: 10px; color:#64748b; font-weight:bold;">نتيجتك: ${score} من ${currentQuestions.length}</p>
+                ${summaryHTML}
+                <div class="share-box">
+                    <h4>📲 أرسل نتيجتك إلى الأستاذ كَرِيم بَكْر</h4>
+                    <input type="text" id="student-name-input" class="share-name-input" placeholder="اكتب اسمك هنا أولًا">
+                    <div id="share-warning" class="share-warning">من فضلك اكتب اسمك أولًا قبل الإرسال ✋</div>
+                    <div>
+                        <button class="btn btn-share" onclick="sendResultToTeacher(${score}, ${currentQuestions.length})">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M12.031 0C5.385 0 0 5.385 0 12.031c0 2.656.843 5.12 2.26 7.15L.626 24l5.01-1.61c1.983 1.25 4.27 1.91 6.395 1.91 6.646 0 12.03-5.385 12.03-12.031S18.677 0 12.031 0zm6.544 17.202c-.273.766-1.58 1.464-2.185 1.503-.56.035-1.28.23-4.085-.86-3.39-1.32-5.59-4.78-5.736-4.97-.145-.19-1.37-1.82-1.37-3.475 0-1.655.857-2.47 1.164-2.8.307-.33.67-.413.89-.413.22 0 .44 0 .633.01.205.01.482-.08.736.53.264.634.904 2.203.984 2.366.08.163.133.353.033.553-.1.2-.153.326-.307.506-.154.18-.32.38-.453.506-.153.153-.314.316-.134.626.18.31.8 1.32 1.71 2.13.176.157.363.31.558.45 1.05.76 1.83 1.05 2.13 1.18.3.13.474.11.652-.09.18-.205.766-.893.97-1.2.204-.307.41-.256.69-.153.28.103 1.77.836 2.074.99.304.153.506.23.582.356.076.126.076.73-.197 1.496z"/></svg>
+                            إرسال النتيجة عبر واتساب
+                        </button>
+                    </div>
+                </div>
+                <button class="btn back-btn" style="font-size:1.1rem; padding:15px 30px; margin-top: 18px;" onclick="returnToMenu()">العودة للقائمة الرئيسية</button>
+            </div>
+        `;
+    }
+
+    function sendResultToTeacher(score, total) {
+        const nameInput = document.getElementById('student-name-input');
+        const warning = document.getElementById('share-warning');
+        const name = nameInput.value.trim();
+        if (!name) {
+            warning.style.display = 'block';
+            nameInput.classList.add('shake');
+            nameInput.focus();
+            setTimeout(() => nameInput.classList.remove('shake'), 500);
+            return;
+        }
+        warning.style.display = 'none';
+        const gameTitle = currentGame ? currentGame.title : '';
+        const message =
+            `📚 نتيجة طالب - ${LESSON_NAME}\n` +
+            `👤 اسم الطالب: ${name}\n` +
+            `🎮 اللعبة: ${gameTitle}\n` +
+            `✅ النتيجة: ${score} من ${total}\n` +
+            `⭐ نسبة النجاح: ${Math.round((score/total)*100)}%`;
+        const url = `https://wa.me/201033621345?text=${encodeURIComponent(message)}`;
+        window.open(url, '_blank');
+    }
+
+    function startGame(gameData) {
+        initAudio();
+        currentGame = gameData;
+        currentQuestions = shuffleArray([...gameData.questions]);
+        qIndex = 0;
+        wrongAnswers = []; // تصفير قائمة الأخطاء
+        
+        document.getElementById('home-screen').classList.add('hidden');
+        document.getElementById('main-header').classList.add('hidden');
+        document.getElementById('main-footer').classList.add('hidden');
+        document.getElementById('game-screen').classList.remove('hidden');
+        document.getElementById('game-title').innerText = gameData.title;
+        
+        renderNextState();
+    }
+
+    function renderNextState() {
+        if (qIndex >= currentQuestions.length) {
+            gameComplete();
+            return;
+        }
+
+        const gc = document.getElementById('game-container');
+        gc.innerHTML = '';
+        updateProgress();
+
+        if (currentGame.type === 'goals') {
+            renderGoals(gc);
+        } else if (currentGame.type === 'mcq') {
+            renderMCQ(gc);
+        } else if (currentGame.type === 'bubbles') {
+            renderBubbles(gc);
+        } else if (currentGame.type === 'shooting') {
+            renderShooting(gc);
+        } else if (currentGame.type === 'true_false') {
+            renderTrueFalse(gc);
+        } else if (currentGame.type === 'genius') {
+            renderGenius(gc);
+        }
+    }
+
+    // --- أنماط الألعاب ---
+
+    // 1. اختيارات (MCQ)
+    function renderMCQ(container) {
+        clearInterval(geniusTimerInterval);
+        const qData = currentQuestions[qIndex];
+        const correctText = qData.options[qData.ans];
+        const shuffledOptions = shuffleArray([...qData.options]);
+
+        const btnContainer = document.createElement('div');
+        btnContainer.className = 'options-grid';
+        
+        let isAnswered = false;
+
+        shuffledOptions.forEach(opt => {
+            const btn = document.createElement('button');
+            btn.className = 'btn';
+            btn.innerText = opt;
+            btn.onclick = () => {
+                if(isAnswered) return;
+                isAnswered = true;
+
+                if (opt === correctText) {
+                    btn.classList.add('btn-correct');
+                    showFeedback(true, () => { qIndex++; renderNextState(); });
+                } else {
+                    btn.classList.add('btn-wrong');
+                    wrongAnswers.push({ question: qData.q, correct: correctText, selected: opt });
+                    showFeedback(false, () => { qIndex++; renderNextState(); });
+                }
+            };
+            btnContainer.appendChild(btn);
+        });
+
+        const qBox = document.createElement('div');
+        qBox.className = 'question-box';
+        qBox.innerText = qData.q;
+        
+        container.appendChild(qBox);
+        container.appendChild(btnContainer);
+    }
+
+    // 2. صح أم خطأ
+    function renderTrueFalse(container) {
+        clearInterval(geniusTimerInterval);
+        const qData = currentQuestions[qIndex];
+        const correctText = qData.options[qData.ans];
+
+        const qBox = document.createElement('div');
+        qBox.className = 'question-box';
+        qBox.innerText = qData.q;
+        
+        const tfContainer = document.createElement('div');
+        tfContainer.className = 'tf-grid';
+        
+        let isAnswered = false;
+
+        // ترتيب ثابت (صح يميناً وخطأ يساراً)
+        const fixedOptions = ["صح", "خطأ"];
+
+        fixedOptions.forEach(opt => {
+            const btn = document.createElement('button');
+            btn.className = 'btn';
+            btn.style.flex = '1';
+            btn.style.minWidth = '200px';
+            btn.style.fontSize = '2rem';
+            btn.style.padding = '30px';
+            btn.style.justifyContent = 'center';
+            
+            if(opt === "صح") {
+                btn.style.background = "linear-gradient(to bottom, #10b981, #0e7490)";
+                btn.style.borderBottomColor = "#047857";
+            } else {
+                btn.style.background = "linear-gradient(to bottom, #ef4444, #dc2626)";
+                btn.style.borderBottomColor = "#b91c1c";
+            }
+
+            btn.innerText = opt;
+            
+            btn.onclick = () => {
+                if(isAnswered) return;
+                isAnswered = true;
+
+                if (opt === correctText) {
+                    btn.classList.add('btn-correct');
+                    showFeedback(true, () => { qIndex++; renderNextState(); });
+                } else {
+                    btn.classList.add('btn-wrong');
+                    wrongAnswers.push({ question: qData.q, correct: correctText, selected: opt });
+                    showFeedback(false, () => { qIndex++; renderNextState(); });
+                }
+            };
+            tfContainer.appendChild(btn);
+        });
+
+        container.appendChild(qBox);
+        container.appendChild(tfContainer);
+    }
+
+    // 5. تحدي العباقرة (سؤال بعدّاد زمني)
+    function renderGenius(container) {
+        clearInterval(animInterval); clearInterval(geniusTimerInterval);
+        clearInterval(geniusTimerInterval);
+        const qData = currentQuestions[qIndex];
+        const correctText = qData.options[qData.ans];
+        const shuffledOptions = shuffleArray([...qData.options]);
+
+        const wrap = document.createElement('div');
+        wrap.className = 'genius-wrap';
+
+        const badge = document.createElement('div');
+        badge.className = 'genius-badge';
+        badge.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9.663 17h4.673M12 3a6 6 0 0 0-6 6c0 1.887.454 2.921 1.5 4.5.5.75 1 1.5 1 2.5h7c0-1 .5-1.75 1-2.5C17.546 11.921 18 10.887 18 9a6 6 0 0 0-6-6z"></path></svg> تحدي العباقرة`;
+
+        const timerTrack = document.createElement('div');
+        timerTrack.className = 'genius-timer-track';
+        const timerBar = document.createElement('div');
+        timerBar.className = 'genius-timer-bar';
+        timerTrack.appendChild(timerBar);
+
+        const qBox = document.createElement('div');
+        qBox.className = 'question-box';
+        qBox.style.background = 'rgba(255,255,255,0.95)';
+        qBox.innerText = qData.q;
+
+        const optContainer = document.createElement('div');
+        optContainer.className = 'genius-options';
+
+        let isAnswered = false;
+        const TOTAL_TIME = 12000; // 12 ثانية لكل سؤال
+        let startTime = Date.now();
+
+        function finishQuestion(isCorrect, selectedText) {
+            if (isAnswered) return;
+            isAnswered = true;
+            clearInterval(geniusTimerInterval);
+            if (!isCorrect) {
+                wrongAnswers.push({ question: qData.q, correct: correctText, selected: selectedText || "انتهى الوقت!" });
+            }
+            showFeedback(isCorrect, () => { qIndex++; renderNextState(); });
+        }
+
+        shuffledOptions.forEach(opt => {
+            const btn = document.createElement('button');
+            btn.className = 'btn';
+            btn.innerText = opt;
+            btn.onclick = () => {
+                if (isAnswered) return;
+                if (opt === correctText) {
+                    btn.classList.add('btn-correct');
+                    finishQuestion(true, opt);
+                } else {
+                    btn.classList.add('btn-wrong');
+                    finishQuestion(false, opt);
+                }
+            };
+            optContainer.appendChild(btn);
+        });
+
+        wrap.appendChild(badge);
+        wrap.appendChild(timerTrack);
+        container.appendChild(wrap);
+        container.appendChild(qBox);
+        container.appendChild(optContainer);
+
+        geniusTimerInterval = setInterval(() => {
+            if (isAnswered) { clearInterval(geniusTimerInterval); return; }
+            const elapsed = Date.now() - startTime;
+            const pct = Math.max(0, 100 - (elapsed / TOTAL_TIME) * 100);
+            timerBar.style.width = pct + '%';
+            if (elapsed >= TOTAL_TIME) {
+                clearInterval(geniusTimerInterval);
+                finishQuestion(false, null);
+            }
+        }, 80);
+    }
+
+
+    // 6. تسجيل الأهداف (سدّد الكرة نحو الإجابة الصحيحة)
+    let goalTimeouts = [];
+    function renderGoals(container) {
+        clearInterval(animInterval); clearInterval(geniusTimerInterval);
+        goalTimeouts.forEach(t => clearTimeout(t)); goalTimeouts = [];
+        const qData = currentQuestions[qIndex];
+        const correctText = qData.options[qData.ans];
+        const shuffledOptions = shuffleArray([...qData.options]);
+
+        const qBox = document.createElement('div');
+        qBox.className = 'question-box';
+        qBox.innerText = qData.q;
+
+        const pitch = document.createElement('div');
+        pitch.className = 'pitch';
+        pitch.innerHTML = `
+            <div class="goal-frame"></div>
+            <div class="keeper idle">
+                <svg viewBox="0 0 64 82" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="32" cy="12" r="10" fill="#fcd9b6" stroke="#7c2d12" stroke-width="1.5"/>
+                    <path d="M22 9 Q32 -1 42 9" fill="#1e293b"/>
+                    <rect x="20" y="23" width="24" height="30" rx="7" fill="#f97316" stroke="#9a3412" stroke-width="1.5"/>
+                    <text x="32" y="44" font-size="13" font-weight="900" text-anchor="middle" fill="#fff" font-family="Cairo, sans-serif">1</text>
+                    <path d="M20 27 L4 14" stroke="#f97316" stroke-width="7" stroke-linecap="round"/>
+                    <path d="M44 27 L60 14" stroke="#f97316" stroke-width="7" stroke-linecap="round"/>
+                    <circle cx="4" cy="13" r="5.5" fill="#facc15" stroke="#a16207" stroke-width="1.5"/>
+                    <circle cx="60" cy="13" r="5.5" fill="#facc15" stroke="#a16207" stroke-width="1.5"/>
+                    <rect x="22" y="52" width="20" height="10" rx="3" fill="#1e293b"/>
+                    <path d="M26 62 L24 79" stroke="#1e293b" stroke-width="6" stroke-linecap="round"/>
+                    <path d="M38 62 L40 79" stroke="#1e293b" stroke-width="6" stroke-linecap="round"/>
+                </svg>
+            </div>
+            <div class="soccer-ball">⚽</div>
+            <div class="goal-banner"></div>
+        `;
+
+        const optContainer = document.createElement('div');
+        optContainer.className = 'shot-options';
+
+        // مواقع التسديد داخل المرمى (يمين أعلى، يسار أعلى، يمين أسفل، يسار أسفل)
+        const targets = [
+            { left: 74, top: 40 }, { left: 26, top: 40 },
+            { left: 74, top: 95 }, { left: 26, top: 95 }
+        ];
+
+        let isAnswered = false;
+        const keeper = pitch.querySelector('.keeper');
+        const ball = pitch.querySelector('.soccer-ball');
+        const goalFrame = pitch.querySelector('.goal-frame');
+        const banner = pitch.querySelector('.goal-banner');
+
+        shuffledOptions.forEach((opt, index) => {
+            const btn = document.createElement('button');
+            btn.className = 'btn';
+            btn.innerHTML = `<span class="ball-ico">⚽</span><span></span>`;
+            btn.lastChild.innerText = opt;
+            btn.onclick = () => {
+                if (isAnswered) return;
+                isAnswered = true;
+                const isCorrect = (opt === correctText);
+                btn.classList.add(isCorrect ? 'btn-correct' : 'btn-wrong');
+                const t = targets[index];
+
+                // تسديد الكرة
+                ball.style.left = t.left + '%';
+                ball.style.top = (t.top - 14) + 'px';
+                ball.style.transform = 'translate(-50%, 0) scale(0.6) rotate(540deg)';
+
+                // حركة الحارس
+                keeper.classList.remove('idle');
+                keeper.style.marginLeft = '0px';
+                if (isCorrect) {
+                    const wrongSide = t.left > 50 ? 26 : 74;
+                    keeper.style.left = wrongSide + '%';
+                    keeper.style.transform = `translateX(-50%) rotate(${t.left > 50 ? -70 : 70}deg)`;
+                } else {
+                    keeper.style.left = t.left + '%';
+                    keeper.style.transform = `translateX(-50%) rotate(${t.left > 50 ? 70 : -70}deg)`;
+                }
+
+                goalTimeouts.push(setTimeout(() => {
+                    if (isCorrect) {
+                        goalFrame.classList.add('net-shake');
+                        banner.textContent = '⚽ هدف!';
+                        banner.classList.remove('miss');
+                    } else {
+                        // الحارس يبعد الكرة
+                        ball.style.top = '200px';
+                        ball.style.left = (t.left > 50 ? 92 : 8) + '%';
+                        banner.textContent = '🧤 تصدّى الحارس!';
+                        banner.classList.add('miss');
+                        wrongAnswers.push({ question: qData.q, correct: correctText, selected: opt });
+                    }
+                    banner.classList.add('show');
+                }, 620));
+
+                goalTimeouts.push(setTimeout(() => {
+                    showFeedback(isCorrect, () => { qIndex++; renderNextState(); });
+                }, 1350));
+            };
+            optContainer.appendChild(btn);
+        });
+
+        container.appendChild(qBox);
+        container.appendChild(pitch);
+        container.appendChild(optContainer);
+
+        let hint = document.createElement('div');
+        hint.style.textAlign = 'center';
+        hint.style.marginTop = '15px';
+        hint.style.color = 'var(--primary)';
+        hint.style.fontWeight = 'bold';
+        hint.style.fontSize = '1.1rem';
+        hint.innerHTML = `⚽ اختر الإجابة الصحيحة لتسدد الكرة في المرمى وتسجّل هدفًا!`;
+        container.appendChild(hint);
+    }
+
+    // 3. الفقاعات المتساقطة
+    function renderBubbles(container) {
+        clearInterval(animInterval); clearInterval(geniusTimerInterval);
+        const qData = currentQuestions[qIndex];
+        const correctText = qData.options[qData.ans];
+        const shuffledOptions = shuffleArray([...qData.options]);
+
+        const qBox = document.createElement('div');
+        qBox.className = 'question-box';
+        qBox.innerText = qData.q;
+        
+        const area = document.createElement('div');
+        area.className = 'bubbles-area';
+
+        let bubbles = [];
+        let isAnswered = false;
+
+        shuffledOptions.forEach((opt, index) => {
+            const bubble = document.createElement('div');
+            bubble.className = 'bubble';
+            bubble.innerHTML = `<span>${opt}</span>`;
+            
+            let leftPos = 2 + (index * 24); 
+            bubble.style.left = leftPos + '%';
+            
+            let topPos = -100 - (Math.random() * 80);
+            bubble.style.top = topPos + 'px';
+            
+            let speed = 0.95 + Math.random() * 0.65; 
+
+            bubble.onclick = () => {
+                if (isAnswered) return;
+                isAnswered = true;
+                clearInterval(animInterval); clearInterval(geniusTimerInterval);
+                if (opt === correctText) {
+                    bubble.style.background = 'var(--success)';
+                    bubble.style.color = 'white';
+                    showFeedback(true, () => { qIndex++; renderNextState(); });
+                } else {
+                    bubble.style.background = 'var(--danger)';
+                    bubble.style.color = 'white';
+                    wrongAnswers.push({ question: qData.q, correct: correctText, selected: opt });
+                    showFeedback(false, () => { qIndex++; renderNextState(); });
+                }
+            };
+
+            area.appendChild(bubble);
+            bubbles.push({ el: bubble, top: topPos, speed: speed, isCorrect: opt === correctText, active: true });
+        });
+
+        container.appendChild(qBox);
+        container.appendChild(area);
+        
+        let hint = document.createElement('div');
+        hint.style.textAlign = 'center';
+        hint.style.marginTop = '15px';
+        hint.style.color = 'var(--primary)';
+        hint.style.fontWeight = 'bold';
+        hint.style.fontSize = '1.1rem';
+        hint.innerHTML = `💡 اضغط على الفقاعة التي تحمل الإجابة الصحيحة قبل أن تسقط!`;
+        container.appendChild(hint);
+
+        let areaHeight = 400;
+
+        animInterval = setInterval(() => {
+            if (isAnswered) return;
+            bubbles.forEach(b => {
+                if (!b.active) return;
+                b.top += b.speed;
+                b.el.style.top = b.top + 'px';
+                
+                b.el.style.transform = `translateX(${Math.sin(b.top / 20) * 5}px)`;
+
+                if (b.top > areaHeight) {
+                    b.active = false;
+                    b.el.style.display = 'none';
+                    if (b.isCorrect && !isAnswered) {
+                        isAnswered = true;
+                        clearInterval(animInterval); clearInterval(geniusTimerInterval);
+                        wrongAnswers.push({ question: qData.q, correct: correctText, selected: "سقطت دون اختيار" });
+                        showFeedback(false, () => { qIndex++; renderNextState(); });
+                    }
+                }
+            });
+        }, 30);
+    }
+
+    // 4. التنشين
+    function renderShooting(container) {
+        clearInterval(animInterval); clearInterval(geniusTimerInterval);
+        const qData = currentQuestions[qIndex];
+        const correctText = qData.options[qData.ans];
+        const shuffledOptions = shuffleArray([...qData.options]);
+
+        const qBox = document.createElement('div');
+        qBox.className = 'question-box';
+        qBox.innerText = qData.q;
+        
+        const area = document.createElement('div');
+        area.className = 'shooting-area';
+
+        let isAnswered = false;
+
+        shuffledOptions.forEach((opt, index) => {
+            const bird = document.createElement('div');
+            bird.className = 'target-bird';
+            
+            bird.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="6"></circle><circle cx="12" cy="12" r="2"></circle></svg> <span>${opt}</span>`;
+            
+            let topPos = 15 + (index * 20); 
+            bird.style.top = topPos + '%';
+            
+            let pos = (index % 2 === 0) ? -200 : window.innerWidth;
+            let speed = (Math.random() * 2.5 + 1.5) * ((index % 2 === 0) ? 1 : -1);
+            
+            bird.style.left = pos + 'px';
+
+            bird.onclick = () => {
+                if(isAnswered) return;
+                isAnswered = true;
+
+                if (opt === correctText) {
+                    bird.style.background = 'var(--success)';
+                    bird.style.color = 'white';
+                    bird.style.borderColor = 'white';
+                    showFeedback(true, () => { qIndex++; renderNextState(); });
+                } else {
+                    bird.style.background = 'var(--danger)';
+                    bird.style.color = 'white';
+                    bird.style.borderColor = 'white';
+                    wrongAnswers.push({ question: qData.q, correct: correctText, selected: opt });
+                    showFeedback(false, () => { qIndex++; renderNextState(); });
+                }
+            };
+
+            area.appendChild(bird);
+
+            animInterval = setInterval(() => {
+                if (isAnswered) return;
+                pos += speed;
+                if (pos > window.innerWidth + 50) pos = -250;
+                if (pos < -250) pos = window.innerWidth + 50;
+                bird.style.left = pos + 'px';
+            }, 20);
+        });
+
+        container.appendChild(qBox);
+        container.appendChild(area);
+        
+        let hint = document.createElement('div');
+        hint.style.textAlign = 'center';
+        hint.style.marginTop = '15px';
+        hint.style.color = 'var(--primary)';
+        hint.style.fontWeight = 'bold';
+        hint.style.fontSize = '1.1rem';
+        hint.style.display = 'flex';
+        hint.style.alignItems = 'center';
+        hint.style.justifyContent = 'center';
+        hint.style.gap = '8px';
+        hint.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="6"></circle><circle cx="12" cy="12" r="2"></circle></svg> اضغط على الإجابة الصحيحة وهي تتحرك لاصطيادها!`;
+        container.appendChild(hint);
+    }
+
+    window.onload = initApp;
+</script>
+</body>
+</html>
